@@ -5,26 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "TobaccosClub", suffix: " · Phoenix Framework" %>
+    <%= live_title_tag assigns[:page_title] || "tobaccos.club" %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
-          </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <%= @inner_content %>
+    <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
+      <div class="flex items-center flex-shrink-0 text-orange-900 mr-6">
+        <img
+          class="fill-current h-8 w-8 mr-2"
+          src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco Reviews Logo"/>
+        <span class="font-semibold text-xl tracking-tight">Tobaccos Club</span>
+      </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-900 hover:text-white mr-4">
+            Brands
+          </a>
+          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-orange-900 hover:text-white mr-4">
+            Blends
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container mx-auto">
+      <%= @inner_content %>
+    </div>
   </body>
 </html>
