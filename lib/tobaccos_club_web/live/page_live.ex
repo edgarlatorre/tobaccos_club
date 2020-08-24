@@ -3,37 +3,26 @@ defmodule TobaccosClubWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, query: "", results: %{})}
+    alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
+    {:ok, assign(socket, brands: get_brands(), alphabet: alphabet)}
   end
 
   @impl true
-  def handle_event("suggest", %{"q" => query}, socket) do
-    {:noreply, assign(socket, results: search(query), query: query)}
+  def handle_event("filter", %{"letter" => letter}, socket) do
+    brands = Enum.filter(get_brands(), fn brand -> String.starts_with?(brand["name"], letter) end)
+
+    {:noreply, assign(socket, brands: brands)}
   end
 
   @impl true
-  def handle_event("search", %{"q" => query}, socket) do
-    case search(query) do
-      %{^query => vsn} ->
-        {:noreply, redirect(socket, external: "https://hexdocs.pm/#{query}/#{vsn}")}
+  def handle_event("search", %{"brand" => brand_name}, socket) do
+    brands =
+      Enum.filter(get_brands(), fn brand -> String.contains?(brand["name"], brand_name) end)
 
-      _ ->
-        {:noreply,
-         socket
-         |> put_flash(:error, "No dependencies found matching \"#{query}\"")
-         |> assign(results: %{}, query: query)}
-    end
+    {:noreply, assign(socket, brands: brands)}
   end
 
-  defp search(query) do
-    if not TobaccosClubWeb.Endpoint.config(:code_reloader) do
-      raise "action disabled when not in development"
-    end
-
-    for {app, desc, vsn} <- Application.started_applications(),
-        app = to_string(app),
-        String.starts_with?(app, query) and not List.starts_with?(desc, ~c"ERTS"),
-        into: %{},
-        do: {app, vsn}
+  defp get_brands do
+    TobaccosClub.Tobaccos.Brand.all()
   end
 end

@@ -1,48 +1,41 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace-of-mind from prototype to production</p>
-
-  <form phx-change="suggest" phx-submit="search">
-    <input type="text" name="q" value="<%= @query %>" placeholder="Live dependency search" list="results" autocomplete="off"/>
-    <datalist id="results">
-      <%= for {app, _vsn} <- @results do %>
-        <option value="<%= app %>"><%= app %></option>
+<section>
+  <h1 class="text-orange-900 text-4xl font-bold text-center m-4">Brands</h1>
+  <div class="flex justify-center">
+    <form class="w-full max-w-sm" phx-submit="search">
+      <div class="flex items-center border-b border-teal-500 py-2">
+        <input
+          class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          type="text"
+          name="brand"
+          placeholder="Search"
+          aria-label="Brand name">
+        <button class="flex-shrink-0 bg-orange-500 hover:bg-orange-700 border-orange-500 hover:border-orange-700 text-sm border-4 text-white py-1 px-2 rounded"type="button">
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <ul class="flex justify-center m-6">
+      <%= for a <- @alphabet do %>
+        <li class="mr-6">
+          <a class="text-orange-900 hover:text-green-800"
+             href="#"
+             phx-click="filter"
+             phx-value-letter="<%= a %>"><%= a %></a>
+        </li>
       <% end %>
-    </datalist>
-    <button type="submit" phx-disable-with="Searching...">Go to Hexdocs</button>
-  </form>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
     </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-    </ul>
-  </article>
+  </div>
+  <div>
+    <table class="w-full text-left table-collapse">
+      <tbody>
+        <%= for brand <- @brands do %>
+          <tr>
+            <td class="border px-4 py-2"><%= brand["name"] %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </section>
