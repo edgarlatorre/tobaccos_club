@@ -1,5 +1,5 @@
 <section>
-  <h1 class="text-orange-900 text-4xl font-bold text-center m-4">Brands</h1>
+  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Brands" %></h1>
   <div class="flex justify-center">
     <form class="w-full max-w-sm" phx-submit="search">
       <div class="flex items-center border-b border-teal-500 py-2">
@@ -7,10 +7,10 @@
           class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
           name="brand"
-          placeholder="Search"
+          placeholder="<%= gettext "Search" %>"
           aria-label="Brand name">
         <button class="flex-shrink-0 bg-orange-500 hover:bg-orange-700 border-orange-500 hover:border-orange-700 text-sm border-4 text-white py-1 px-2 rounded"type="button">
-          Search
+          <%= gettext "Search" %>
         </button>
       </div>
     </form>
