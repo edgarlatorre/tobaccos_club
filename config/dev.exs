@@ -4,8 +4,8 @@ use Mix.Config
 config :tobaccos_club, TobaccosClub.Repo,
   username: "postgres",
   password: "postgres",
-  database: "tobaccos_club_dev",
-  hostname: "localhost",
+  database: System.get_env("POSTGRES_DB_NAME", "tobaccos_club_dev"),
+  hostname: System.get_env("POSTGRES_HOST", "localhost"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
