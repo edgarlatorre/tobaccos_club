@@ -1,5 +1,5 @@
 # Tobaccos Club
-![Build](https://github.com/edgarlatorre/tobaccos_club/workflows/Elixir%20CI/badge.svg)
+![Build](https://github.com/edgarlatorre/tobaccos_club/workflows/Build/badge.svg)
 
 To start the application:
 
