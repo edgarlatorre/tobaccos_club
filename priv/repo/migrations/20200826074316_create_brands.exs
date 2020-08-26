@@ -9,5 +9,8 @@ defmodule TobaccosClub.Repo.Migrations.CreateBrands do
 
       timestamps()
     end
+
+    create unique_index(:brands, :name)
+    create unique_index(:brands, :slug)
   end
 end

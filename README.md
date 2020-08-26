@@ -15,3 +15,8 @@ The database runs inside a docker container, below you can find some commands to
   * Start postgres container: `make start_db`
   * Stop postgres container: `make stop_db`
   * Access psql console: `make db_console`
+
+## Populate data
+To populate some data in the database there's some tasks
+
+* Populate brands: `mix populate_brands`
