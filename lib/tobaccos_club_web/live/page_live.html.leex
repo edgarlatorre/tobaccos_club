@@ -30,7 +30,9 @@
       <tbody>
         <%= for brand <- @brands do %>
           <tr>
-            <td class="border px-4 py-2"><%= brand.name %>
+            <td class="border px-4 py-2">
+              <a href="<%= brand.slug %>"><%= brand.name %></a>
+            </td>
           </tr>
         <% end %>
       </tbody>
