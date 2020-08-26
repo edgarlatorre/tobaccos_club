@@ -77,7 +77,7 @@ defmodule TobaccosClub.TobaccosTest do
 
     test "get_brand_by_slug/1 returns a brand changeset" do
       brand = brand_fixture()
-      assert Tobaccos.get_brand_by_slug("blend-test") == brand
+      assert Tobaccos.get_brand_by_slug("blend-test").id == brand.id
     end
 
     test "find_brands_name_includes/1 returns brands that name contains Test" do
@@ -145,6 +145,94 @@ defmodule TobaccosClub.TobaccosTest do
     test "change_blend_type/1 returns a blend_type changeset" do
       blend_type = blend_type_fixture()
       assert %Ecto.Changeset{} = Tobaccos.change_blend_type(blend_type)
+    end
+  end
+
+  describe "blends" do
+    alias TobaccosClub.Tobaccos.Blend
+
+    @valid_attrs %{
+      blended_by: "some blended_by",
+      contents: "some contents",
+      country: "some country",
+      cut: "some cut",
+      flavouring: "some flavouring",
+      image_url: "some image_url",
+      manufactured_by: "some manufactured_by",
+      name: "some name",
+      packaging: "some packaging",
+      production: "some production"
+    }
+    @update_attrs %{
+      blended_by: "some updated blended_by",
+      contents: "some updated contents",
+      country: "some updated country",
+      cut: "some updated cut",
+      flavouring: "some updated flavouring",
+      image_url: "some updated image_url",
+      manufactured_by: "some updated manufactured_by",
+      name: "some updated name",
+      packaging: "some updated packaging",
+      production: "some updated production"
+    }
+
+    def blend_fixture(attrs \\ %{}) do
+      {:ok, blend} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Tobaccos.create_blend()
+
+      blend
+    end
+
+    test "list_blends/0 returns all blends" do
+      blend = blend_fixture()
+      assert Tobaccos.list_blends() == [blend]
+    end
+
+    test "get_blend!/1 returns the blend with given id" do
+      blend = blend_fixture()
+      assert Tobaccos.get_blend!(blend.id) == blend
+    end
+
+    test "create_blend/1 with valid data creates a blend" do
+      assert {:ok, %Blend{} = blend} = Tobaccos.create_blend(@valid_attrs)
+      assert blend.blended_by == "some blended_by"
+      assert blend.contents == "some contents"
+      assert blend.country == "some country"
+      assert blend.cut == "some cut"
+      assert blend.flavouring == "some flavouring"
+      assert blend.image_url == "some image_url"
+      assert blend.manufactured_by == "some manufactured_by"
+      assert blend.name == "some name"
+      assert blend.packaging == "some packaging"
+      assert blend.production == "some production"
+    end
+
+    test "update_blend/2 with valid data updates the blend" do
+      blend = blend_fixture()
+      assert {:ok, %Blend{} = blend} = Tobaccos.update_blend(blend, @update_attrs)
+      assert blend.blended_by == "some updated blended_by"
+      assert blend.contents == "some updated contents"
+      assert blend.country == "some updated country"
+      assert blend.cut == "some updated cut"
+      assert blend.flavouring == "some updated flavouring"
+      assert blend.image_url == "some updated image_url"
+      assert blend.manufactured_by == "some updated manufactured_by"
+      assert blend.name == "some updated name"
+      assert blend.packaging == "some updated packaging"
+      assert blend.production == "some updated production"
+    end
+
+    test "delete_blend/1 deletes the blend" do
+      blend = blend_fixture()
+      assert {:ok, %Blend{}} = Tobaccos.delete_blend(blend)
+      assert_raise Ecto.NoResultsError, fn -> Tobaccos.get_blend!(blend.id) end
+    end
+
+    test "change_blend/1 returns a blend changeset" do
+      blend = blend_fixture()
+      assert %Ecto.Changeset{} = Tobaccos.change_blend(blend)
     end
   end
 end

@@ -110,7 +110,11 @@ defmodule TobaccosClub.Tobaccos do
   end
 
   def get_brand_by_slug(slug) do
-    Brand |> Repo.get_by(slug: slug)
+    Brand |> Repo.get_by(slug: slug) |> Repo.preload(:blends)
+  end
+
+  def get_brand_by_name(name) do
+    Brand |> Repo.get_by(name: name)
   end
 
   alias TobaccosClub.Tobaccos.BlendType
@@ -207,5 +211,105 @@ defmodule TobaccosClub.Tobaccos do
   """
   def change_blend_type(%BlendType{} = blend_type, attrs \\ %{}) do
     BlendType.changeset(blend_type, attrs)
+  end
+
+  def get_blend_type_by_name(name) do
+    BlendType |> Repo.get_by(name: name)
+  end
+
+  alias TobaccosClub.Tobaccos.Blend
+
+  @doc """
+  Returns the list of blends.
+
+  ## Examples
+
+      iex> list_blends()
+      [%Blend{}, ...]
+
+  """
+  def list_blends do
+    Repo.all(Blend)
+  end
+
+  @doc """
+  Gets a single blend.
+
+  Raises `Ecto.NoResultsError` if the Blend does not exist.
+
+  ## Examples
+
+      iex> get_blend!(123)
+      %Blend{}
+
+      iex> get_blend!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_blend!(id), do: Repo.get!(Blend, id)
+
+  @doc """
+  Creates a blend.
+
+  ## Examples
+
+      iex> create_blend(%{field: value})
+      {:ok, %Blend{}}
+
+      iex> create_blend(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_blend(attrs \\ %{}) do
+    %Blend{}
+    |> Blend.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a blend.
+
+  ## Examples
+
+      iex> update_blend(blend, %{field: new_value})
+      {:ok, %Blend{}}
+
+      iex> update_blend(blend, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_blend(%Blend{} = blend, attrs) do
+    blend
+    |> Blend.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a blend.
+
+  ## Examples
+
+      iex> delete_blend(blend)
+      {:ok, %Blend{}}
+
+      iex> delete_blend(blend)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_blend(%Blend{} = blend) do
+    Repo.delete(blend)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking blend changes.
+
+  ## Examples
+
+      iex> change_blend(blend)
+      %Ecto.Changeset{data: %Blend{}}
+
+  """
+  def change_blend(%Blend{} = blend, attrs \\ %{}) do
+    Blend.changeset(blend, attrs)
   end
 end

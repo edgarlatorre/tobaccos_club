@@ -4,6 +4,7 @@ defmodule TobaccosClub.Tobaccos.BlendType do
 
   schema "blend_types" do
     field :name, :string
+    has_many :blends, TobaccosClub.Tobaccos.Blend
 
     timestamps()
   end

@@ -6,6 +6,7 @@ defmodule TobaccosClub.Tobaccos.Brand do
     field :name, :string
     field :slug, :string
     field :url, :string
+    has_many :blends, TobaccosClub.Tobaccos.Blend
 
     timestamps()
   end
