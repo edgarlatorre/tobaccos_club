@@ -123,7 +123,10 @@ defmodule TobaccosClub.TobaccosTest do
 
     test "update_blend_type/2 with valid data updates the blend_type" do
       blend_type = blend_type_fixture()
-      assert {:ok, %BlendType{} = blend_type} = Tobaccos.update_blend_type(blend_type, @update_attrs)
+
+      assert {:ok, %BlendType{} = blend_type} =
+               Tobaccos.update_blend_type(blend_type, @update_attrs)
+
       assert blend_type.name == "some updated name"
     end
 
