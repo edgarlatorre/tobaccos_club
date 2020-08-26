@@ -163,6 +163,7 @@ defmodule TobaccosClub.TobaccosTest do
       packaging: "some packaging",
       production: "some production"
     }
+
     @update_attrs %{
       blended_by: "some updated blended_by",
       contents: "some updated contents",
