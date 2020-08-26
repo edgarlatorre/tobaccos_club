@@ -17,7 +17,7 @@ defmodule TobaccosClubWeb.PageLive do
 
   @impl true
   def handle_event("search", %{"brand" => brand_name}, socket) do
-    brands = Tobaccos.find_brands_by_name(brand_name)
+    brands = Tobaccos.find_brands_name_includes(brand_name)
     {:noreply, assign(socket, brands: brands)}
   end
 end
