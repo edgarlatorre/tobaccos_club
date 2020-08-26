@@ -19,4 +19,6 @@ The database runs inside a docker container, below you can find some commands to
 ## Populate data
 To populate some data in the database there's some tasks
 
-* Populate brands: `mix populate_brands`
+* Populate brands: `mix populate.brands`
+* Populate blend_types: `mix populate.blend_types`
+* Populate blends: `mix populate.blends`
