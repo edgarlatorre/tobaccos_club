@@ -15,5 +15,6 @@ defmodule TobaccosClub.Tobaccos.Brand do
     brand
     |> cast(attrs, [:name, :slug, :url])
     |> validate_required([:name, :slug, :url])
+    |> unique_constraint([:name, :slug])
   end
 end
