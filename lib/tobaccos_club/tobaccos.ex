@@ -112,4 +112,100 @@ defmodule TobaccosClub.Tobaccos do
   def get_brand_by_slug(slug) do
     Brand |> Repo.get_by(slug: slug)
   end
+
+  alias TobaccosClub.Tobaccos.BlendType
+
+  @doc """
+  Returns the list of blend_types.
+
+  ## Examples
+
+      iex> list_blend_types()
+      [%BlendType{}, ...]
+
+  """
+  def list_blend_types do
+    Repo.all(BlendType)
+  end
+
+  @doc """
+  Gets a single blend_type.
+
+  Raises `Ecto.NoResultsError` if the Blend type does not exist.
+
+  ## Examples
+
+      iex> get_blend_type!(123)
+      %BlendType{}
+
+      iex> get_blend_type!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_blend_type!(id), do: Repo.get!(BlendType, id)
+
+  @doc """
+  Creates a blend_type.
+
+  ## Examples
+
+      iex> create_blend_type(%{field: value})
+      {:ok, %BlendType{}}
+
+      iex> create_blend_type(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_blend_type(attrs \\ %{}) do
+    %BlendType{}
+    |> BlendType.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a blend_type.
+
+  ## Examples
+
+      iex> update_blend_type(blend_type, %{field: new_value})
+      {:ok, %BlendType{}}
+
+      iex> update_blend_type(blend_type, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_blend_type(%BlendType{} = blend_type, attrs) do
+    blend_type
+    |> BlendType.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a blend_type.
+
+  ## Examples
+
+      iex> delete_blend_type(blend_type)
+      {:ok, %BlendType{}}
+
+      iex> delete_blend_type(blend_type)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_blend_type(%BlendType{} = blend_type) do
+    Repo.delete(blend_type)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking blend_type changes.
+
+  ## Examples
+
+      iex> change_blend_type(blend_type)
+      %Ecto.Changeset{data: %BlendType{}}
+
+  """
+  def change_blend_type(%BlendType{} = blend_type, attrs \\ %{}) do
+    BlendType.changeset(blend_type, attrs)
+  end
 end

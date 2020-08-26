@@ -85,4 +85,63 @@ defmodule TobaccosClub.TobaccosTest do
       assert Tobaccos.find_brands_name_includes("test") == [brand]
     end
   end
+
+  describe "blend_types" do
+    alias TobaccosClub.Tobaccos.BlendType
+
+    @valid_attrs %{name: "some name"}
+    @update_attrs %{name: "some updated name"}
+    @invalid_attrs %{name: nil}
+
+    def blend_type_fixture(attrs \\ %{}) do
+      {:ok, blend_type} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Tobaccos.create_blend_type()
+
+      blend_type
+    end
+
+    test "list_blend_types/0 returns all blend_types" do
+      blend_type = blend_type_fixture()
+      assert Tobaccos.list_blend_types() == [blend_type]
+    end
+
+    test "get_blend_type!/1 returns the blend_type with given id" do
+      blend_type = blend_type_fixture()
+      assert Tobaccos.get_blend_type!(blend_type.id) == blend_type
+    end
+
+    test "create_blend_type/1 with valid data creates a blend_type" do
+      assert {:ok, %BlendType{} = blend_type} = Tobaccos.create_blend_type(@valid_attrs)
+      assert blend_type.name == "some name"
+    end
+
+    test "create_blend_type/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Tobaccos.create_blend_type(@invalid_attrs)
+    end
+
+    test "update_blend_type/2 with valid data updates the blend_type" do
+      blend_type = blend_type_fixture()
+      assert {:ok, %BlendType{} = blend_type} = Tobaccos.update_blend_type(blend_type, @update_attrs)
+      assert blend_type.name == "some updated name"
+    end
+
+    test "update_blend_type/2 with invalid data returns error changeset" do
+      blend_type = blend_type_fixture()
+      assert {:error, %Ecto.Changeset{}} = Tobaccos.update_blend_type(blend_type, @invalid_attrs)
+      assert blend_type == Tobaccos.get_blend_type!(blend_type.id)
+    end
+
+    test "delete_blend_type/1 deletes the blend_type" do
+      blend_type = blend_type_fixture()
+      assert {:ok, %BlendType{}} = Tobaccos.delete_blend_type(blend_type)
+      assert_raise Ecto.NoResultsError, fn -> Tobaccos.get_blend_type!(blend_type.id) end
+    end
+
+    test "change_blend_type/1 returns a blend_type changeset" do
+      blend_type = blend_type_fixture()
+      assert %Ecto.Changeset{} = Tobaccos.change_blend_type(blend_type)
+    end
+  end
 end
