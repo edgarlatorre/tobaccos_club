@@ -1,19 +1,115 @@
 defmodule TobaccosClub.Tobaccos do
+  alias TobaccosClub.Repo
+  alias TobaccosClub.Tobaccos.Brand
+  import Ecto.Query
+
+  @doc """
+  Returns the list of brands.
+
+  ## Examples
+
+      iex> list_brands()
+      [%Brand{}, ...]
+
+  """
   def list_brands do
-    File.read!("priv/resources/brands.json")
-    |> Jason.decode!()
-    |> Enum.map(fn brand ->
-      %TobaccosClub.Tobaccos.Brand{name: brand["name"], url: brand["url"]}
-    end)
+    Repo.all(Brand)
+  end
+
+  @doc """
+  Gets a single brand.
+
+  Raises `Ecto.NoResultsError` if the Brand does not exist.
+
+  ## Examples
+
+      iex> get_brand!(123)
+      %Brand{}
+
+      iex> get_brand!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_brand!(id), do: Repo.get!(Brand, id)
+
+  @doc """
+  Creates a brand.
+
+  ## Examples
+
+      iex> create_brand(%{field: value})
+      {:ok, %Brand{}}
+
+      iex> create_brand(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_brand(attrs \\ %{}) do
+    %Brand{}
+    |> Brand.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a brand.
+
+  ## Examples
+
+      iex> update_brand(brand, %{field: new_value})
+      {:ok, %Brand{}}
+
+      iex> update_brand(brand, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_brand(%Brand{} = brand, attrs) do
+    brand
+    |> Brand.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a brand.
+
+  ## Examples
+
+      iex> delete_brand(brand)
+      {:ok, %Brand{}}
+
+      iex> delete_brand(brand)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_brand(%Brand{} = brand) do
+    Repo.delete(brand)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking brand changes.
+
+  ## Examples
+
+      iex> change_brand(brand)
+      %Ecto.Changeset{data: %Brand{}}
+
+  """
+  def change_brand(%Brand{} = brand, attrs \\ %{}) do
+    Brand.changeset(brand, attrs)
   end
 
   def list_brands_starting_with(letter) do
-    list_brands()
-    |> Enum.filter(fn brand -> String.starts_with?(brand.name, letter) end)
+    Brand
+    |> where([brand], ilike(brand.name, ^"#{letter}%"))
+    |> Repo.all()
   end
 
-  def find_brands_by_name(content) do
-    list_brands()
-    |> Enum.filter(fn brand -> String.contains?(brand.name, content) end)
+  def find_brands_name_includes(search_text) do
+    Brand
+    |> where([brand], ilike(brand.name, ^"%#{search_text}%"))
+    |> Repo.all()
+  end
+
+  def get_brand_by_slug(slug) do
+    Brand |> Repo.get_by(slug: slug)
   end
 end
