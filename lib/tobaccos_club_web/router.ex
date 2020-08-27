@@ -19,6 +19,7 @@ defmodule TobaccosClubWeb.Router do
 
     live "/", PageLive, :index
     live "/:slug", BrandLive
+    live "/:brand/:blend_id", BlendLive
   end
 
   # Other scopes may use custom stacks.

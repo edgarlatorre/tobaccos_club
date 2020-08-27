@@ -7,7 +7,7 @@
         <%= for blend <- @brand.blends do %>
           <tr>
             <td class="border px-4 py-2">
-              <a href="/blends/<%= blend.id %>"><%= blend.name %></a>
+              <a href="/<%= @brand.slug %>/<%= blend.id %>"><%= blend.name %></a>
             </td>
           </tr>
         <% end %>

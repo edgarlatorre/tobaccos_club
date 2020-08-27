@@ -1,0 +1,35 @@
+<section>
+  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= @blend.name %></h1>
+            <%# "blended_by" => "some blended_by",
+          "blend_type" => "Virginia",
+          "brand" => "Brand",
+          "contents" => "some contents",
+          "country" => "some country",
+          "cut" => "some cut",
+          "flavouring" => "some flavouring",
+          "image_url" => "some image_url",
+          "manufactured_by" => "some manufactured_by",
+          "name" => "some name",
+          "packaging" => "some packaging",
+          "production" => "some production" %>
+  <div>
+    <ul>
+      <li>
+        <span><%= gettext("Blended By") %>:</span>
+        <%= @blend.blended_by %>
+      </li>
+      <li>
+        <span><%= gettext("Brand") %>:</span>
+        <%= @blend.brand_id %>
+      </li>
+      <li>
+        <span><%= gettext("Blend Type") %>:</span>
+        <%= @blend.blend_type_id %>
+      </li>
+      <li>
+        <span><%= gettext("Cut") %>:</span>
+        <%= @blend.cut %>
+      </li>
+    </ul>
+  </div>
+</section>
