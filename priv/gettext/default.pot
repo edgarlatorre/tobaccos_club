@@ -11,6 +11,7 @@ msgid ""
 msgstr ""
 
 #, elixir-format
+#: lib/tobaccos_club_web/live/brand_live.html.leex:3
 #: lib/tobaccos_club_web/templates/layout/root.html.leex:26
 msgid "Blends"
 msgstr ""
@@ -22,6 +23,12 @@ msgid "Brands"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/page_live.html.leex:13
+#: lib/tobaccos_club_web/live/page_live.html.leex:10
+#: lib/tobaccos_club_web/live/page_live.html.leex:12
 msgid "Search"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/page_live.html.leex:30
+msgid "All"
 msgstr ""

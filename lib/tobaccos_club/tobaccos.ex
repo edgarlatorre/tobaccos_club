@@ -13,7 +13,9 @@ defmodule TobaccosClub.Tobaccos do
 
   """
   def list_brands do
-    Repo.all(Brand)
+    Brand
+    |> order_by(asc: :name)
+    |> Repo.all()
   end
 
   @doc """
@@ -97,9 +99,12 @@ defmodule TobaccosClub.Tobaccos do
     Brand.changeset(brand, attrs)
   end
 
+  def list_brands_starting_with("all"), do: list_brands()
+
   def list_brands_starting_with(letter) do
     Brand
     |> where([brand], ilike(brand.name, ^"#{letter}%"))
+    |> order_by(asc: :name)
     |> Repo.all()
   end
 

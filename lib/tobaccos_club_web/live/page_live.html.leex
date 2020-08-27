@@ -23,6 +23,12 @@
              phx-value-letter="<%= a %>"><%= a %></a>
         </li>
       <% end %>
+      <li>
+        <a class="text-orange-900 hover:text-green-800"
+           href="#"
+           phx-click="filter"
+           phx-value-letter="all"><%= gettext("All") %></a>
+      </li>
     </ul>
   </div>
   <div>

@@ -75,6 +75,11 @@ defmodule TobaccosClub.TobaccosTest do
       assert Tobaccos.list_brands_starting_with("t") == []
     end
 
+    test "list_brands_starting_with/1 returns all" do
+      brand = brand_fixture()
+      assert Tobaccos.list_brands_starting_with("all") == [brand]
+    end
+
     test "get_brand_by_slug/1 returns a brand changeset" do
       brand = brand_fixture()
       assert Tobaccos.get_brand_by_slug("blend-test").id == brand.id
