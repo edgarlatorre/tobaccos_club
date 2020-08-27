@@ -1,23 +1,18 @@
 defmodule TobaccosClub.Services.Populate do
   alias TobaccosClub.Tobaccos
 
-  def brands() do
-    IO.puts("Populating data")
-
-    File.read!("priv/resources/brands.json")
-    |> Jason.decode!()
+  def brands(brands_data) do
+    brands_data
     |> Enum.each(fn brand -> create_brand(brand) end)
   end
 
-  def blends() do
-    File.read!("priv/resources/completed_blends.json")
-    |> Jason.decode!()
+  def blends(blends_data) do
+    blends_data
     |> Enum.each(fn params -> create_blend(params) end)
   end
 
-  def blend_types() do
-    File.read!("priv/resources/completed_blends.json")
-    |> Jason.decode!()
+  def blend_types(blend_types_data) do
+    blend_types_data
     |> Enum.map(fn b -> b["blend_type"] end)
     |> Enum.uniq()
     |> Enum.each(fn bt -> Tobaccos.create_blend_type(%{name: bt}) end)
@@ -31,7 +26,6 @@ defmodule TobaccosClub.Services.Populate do
   defp create_blend(params) do
     brand = Tobaccos.get_brand_by_name(params["brand"])
     blend_type = Tobaccos.get_blend_type_by_name(params["blend_type"])
-    IO.puts("Creating blend #{params["name"]} - b_id: #{brand.id} - bt_id: #{blend_type.id}")
 
     blend = %{
       brand_id: brand.id,
