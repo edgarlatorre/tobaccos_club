@@ -1,4 +1,4 @@
-defmodule TobaccosClubWeb.BrandLive do
+defmodule TobaccosClubWeb.Brands.ShowLive do
   use TobaccosClubWeb, :live_view
 
   alias TobaccosClub.Tobaccos

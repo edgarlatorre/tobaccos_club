@@ -18,8 +18,8 @@ defmodule TobaccosClubWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
-    live "/:slug", BrandLive
-    live "/:brand/:blend_id", BlendLive
+    live "/:slug", Brands.ShowLive, :show
+    live "/:brand/:blend_id", Blends.ShowLive, :show
   end
 
   # Other scopes may use custom stacks.
