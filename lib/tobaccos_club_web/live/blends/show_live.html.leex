@@ -1,34 +1,32 @@
 <section>
-  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= @blend.name %></h1>
-            <%# "blended_by" => "some blended_by",
-          "blend_type" => "Virginia",
-          "brand" => "Brand",
-          "contents" => "some contents",
-          "country" => "some country",
-          "cut" => "some cut",
-          "flavouring" => "some flavouring",
-          "image_url" => "some image_url",
-          "manufactured_by" => "some manufactured_by",
-          "name" => "some name",
-          "packaging" => "some packaging",
-          "production" => "some production" %>
+  <h1 class="text-orange-900 text-4xl font-bold text-center mt-4"><%= @blend.name %></h1>
+  <h5 class="text-orange-900 font-bold text-center"><%= gettext("By") %><h5>
+  <h5 class="text-orange-700 text-2xl font-bold text-center"><%= @brand.name %><h5>
   <div>
-    <ul>
+    <ul class="list-inside">
       <li>
-        <span><%= gettext("Blended By") %>:</span>
-        <%= @blend.blended_by %>
+        <span class="font-bold text-orange-700"><%= gettext("Blended By") %>:</span>
+        <span class="text-orange-700 text-3xl"><%= @blend.blended_by %></span>
       </li>
       <li>
-        <span><%= gettext("Brand") %>:</span>
-        <%= @blend.brand_id %>
+        <span class="font-bold text-orange-700"><%= gettext("Blend Type") %>:</span>
+        <%= @blend_type.name %>
       </li>
       <li>
-        <span><%= gettext("Blend Type") %>:</span>
-        <%= @blend.blend_type_id %>
-      </li>
-      <li>
-        <span><%= gettext("Cut") %>:</span>
+        <span class="font-bold text-orange-700"><%= gettext("Cut") %>:</span>
         <%= @blend.cut %>
+      </li>
+      <li>
+        <span class="font-bold text-orange-700"><%= gettext("Contents") %>:</span>
+        <%= @blend.contents %>
+      </li>
+      <li>
+        <span class="font-bold text-orange-700"><%= gettext("Country") %>:</span>
+        <%= @blend.country %>
+      </li>
+      <li>
+        <span class="font-bold text-orange-700"><%= gettext("Availability") %>:</span>
+        <%= @blend.production %>
       </li>
     </ul>
   </div>

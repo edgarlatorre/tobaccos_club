@@ -1,4 +1,4 @@
-defmodule TobaccosClubWeb.BrandLiveTest do
+defmodule TobaccosClubWeb.Brands.ShowLiveTest do
   alias TobaccosClub.Tobaccos
   use TobaccosClubWeb.ConnCase
 
