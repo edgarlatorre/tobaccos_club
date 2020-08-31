@@ -1,12 +1,18 @@
 <section>
   <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= @brand.name %></h1>
-  <h5 class="text-orange-400 text-4xl font-bold text-center m-4"><%= gettext "Blends" %></h5>
-  <div>
-    <table class="w-full text-left table-collapse">
+  <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+    <table class="text-left w-full border-collapse">
+      <thead class="border-b">
+        <tr>
+          <th class="py-3 px-5 bg-orange-200 font-medium uppercase text-lg text-orange-900 text-center">
+            <%= gettext "Blends" %>
+          </th>
+        </tr>
+      </thead>
       <tbody>
         <%= for blend <- @brand.blends do %>
-          <tr>
-            <td class="border px-4 py-2">
+          <tr class="hover:bg-orange-100">
+            <td class="py-4 px-6 border-b border-gray-200 text-orange-900 text-lg">
               <a href="/<%= @brand.slug %>/<%= blend.id %>"><%= blend.name %></a>
             </td>
           </tr>

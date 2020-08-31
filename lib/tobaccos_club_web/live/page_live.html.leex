@@ -2,41 +2,40 @@
   <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Brands" %></h1>
   <div class="flex justify-center">
     <form class="w-full max-w-sm" phx-submit="search">
-      <div class="flex items-center border-b border-teal-500 py-2">
+      <div class="flex items-center border-b border-orange-500 py-2">
         <input
           class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
           name="brand"
           placeholder="<%= gettext "Search" %>"
           aria-label="Brand name">
-        <input type="submit" class="flex-shrink-0 bg-orange-500 hover:bg-orange-700 border-orange-500 hover:border-orange-700 text-sm border-4 text-white py-1 px-2 rounded" value="<%= gettext "Search" %>">
       </div>
     </form>
   </div>
   <div>
     <ul class="flex justify-center m-6">
       <%= for a <- @alphabet do %>
-        <li class="mr-6">
-          <a class="text-orange-900 hover:text-green-800"
+        <li class="mr-6 text-lg">
+          <a class="text-orange-900 hover:text-orange-500"
              href="#"
              phx-click="filter"
              phx-value-letter="<%= a %>"><%= a %></a>
         </li>
       <% end %>
       <li>
-        <a class="text-orange-900 hover:text-green-800"
+        <a class="text-orange-900 hover:text-orange-500"
            href="#"
            phx-click="filter"
            phx-value-letter="all"><%= gettext("All") %></a>
       </li>
     </ul>
   </div>
-  <div>
-    <table class="w-full text-left table-collapse">
+  <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+    <table class="min-w-full leading-normal">
       <tbody>
         <%= for brand <- @brands do %>
-          <tr>
-            <td class="border px-4 py-2">
+          <tr class="hover:bg-orange-100">
+            <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
               <a href="<%= brand.slug %>"><%= brand.name %></a>
             </td>
           </tr>

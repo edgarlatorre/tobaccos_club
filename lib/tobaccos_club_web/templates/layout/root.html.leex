@@ -11,21 +11,15 @@
   </head>
   <body>
     <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
-      <div class="flex items-center flex-shrink-0 text-orange-900 mr-6">
+      <div class="flex items-center flex-shrink-0 text-orange-900">
         <img
           class="fill-current h-8 w-8 mr-2"
           src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
-        <span class="font-semibold text-xl tracking-tight">Tobacco's Club</span>
-      </div>
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-sm lg:flex-grow">
-          <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-orange-900 hover:text-white mr-4">
-            <%= gettext "Brands" %>
+        <span class="font-semibold text-xl tracking-tight">
+          <a href="/" class="blocklg:inline-block lg:mt-0 text-orange-900 hover:text-orange-700 mr-4">
+            Tobacco's Club
           </a>
-          <a href="/blends" class="block mt-4 lg:inline-block lg:mt-0 text-orange-900 hover:text-white mr-4">
-            <%= gettext "Blends" %>
-          </a>
-        </div>
+        </span>
       </div>
     </nav>
     <div class="container mx-auto">

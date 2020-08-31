@@ -1,32 +1,34 @@
 <section>
-  <h1 class="text-orange-900 text-4xl font-bold text-center mt-4"><%= @blend.name %></h1>
-  <h5 class="text-orange-900 font-bold text-center"><%= gettext("By") %><h5>
-  <h5 class="text-orange-700 text-2xl font-bold text-center"><%= @brand.name %><h5>
-  <div>
+  <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
+  <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %><h5>
+  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @brand.name %><h5>
+  <div class="p-6 bg-white rounded-md shadow-md">
     <ul class="list-inside">
-      <li>
-        <span class="font-bold text-orange-700"><%= gettext("Blended By") %>:</span>
-        <span class="text-orange-700 text-3xl"><%= @blend.blended_by %></span>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase">
+          <%= gettext("Blended By") %>
+        </label>
+        <p><%= @blend.blended_by %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Blend Type") %></label>
+        <p><%= @blend_type.name %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Cut") %></label>
+        <p><%= @blend.cut %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Contents") %></label>
+        <p><%= @blend.contents %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Country") %></label>
+        <p><%= @blend.country %></p>
       </li>
       <li>
-        <span class="font-bold text-orange-700"><%= gettext("Blend Type") %>:</span>
-        <%= @blend_type.name %>
-      </li>
-      <li>
-        <span class="font-bold text-orange-700"><%= gettext("Cut") %>:</span>
-        <%= @blend.cut %>
-      </li>
-      <li>
-        <span class="font-bold text-orange-700"><%= gettext("Contents") %>:</span>
-        <%= @blend.contents %>
-      </li>
-      <li>
-        <span class="font-bold text-orange-700"><%= gettext("Country") %>:</span>
-        <%= @blend.country %>
-      </li>
-      <li>
-        <span class="font-bold text-orange-700"><%= gettext("Availability") %>:</span>
-        <%= @blend.production %>
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Availability") %></label>
+        <p><%= @blend.production %></p>
       </li>
     </ul>
   </div>
