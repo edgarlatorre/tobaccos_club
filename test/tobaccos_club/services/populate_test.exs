@@ -1,11 +1,11 @@
 defmodule TobaccosClub.Services.PopulateTest do
   use TobaccosClub.DataCase
+  alias TobaccosClub.Services.Populate
   alias TobaccosClub.Tobaccos
-  alias TobaccosClub.Services
 
   describe "populate brands" do
     test "create brands with slug" do
-      Services.Populate.brands([
+      Populate.brands([
         %{"name" => "Brand One", "url" => "http://test.com/brand-one"},
         %{"name" => "Brand Two", "url" => "http://test.com/brand-two"}
       ])
@@ -18,7 +18,7 @@ defmodule TobaccosClub.Services.PopulateTest do
 
   describe "populate blend_types" do
     test "create blend_types" do
-      Services.Populate.blend_types([
+      Populate.blend_types([
         %{"blend_type" => "Aromatic"},
         %{"blend_type" => "Virginia/Perique"}
       ])
@@ -32,7 +32,7 @@ defmodule TobaccosClub.Services.PopulateTest do
       Tobaccos.create_blend_type(%{name: "Virginia"})
       Tobaccos.create_brand(%{name: "Brand", slug: "blend", url: "http://test.com"})
 
-      Services.Populate.blends([
+      Populate.blends([
         %{
           "blended_by" => "some blended_by",
           "blend_type" => "Virginia",

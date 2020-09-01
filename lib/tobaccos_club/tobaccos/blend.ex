@@ -22,8 +22,7 @@ defmodule TobaccosClub.Tobaccos.Blend do
 
   @doc false
   def changeset(blend, attrs) do
-    blend
-    |> cast(attrs, [
+    cast(blend, attrs, [
       :name,
       :brand_id,
       :blend_type_id,

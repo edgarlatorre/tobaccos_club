@@ -29,9 +29,7 @@ defmodule TobaccosClubWeb.Blends.ShowLiveTest do
   end
 
   def blend_type_fixture(attrs \\ %{}) do
-    {:ok, blend_type} =
-      attrs
-      |> Tobaccos.create_blend_type()
+    {:ok, blend_type} = Tobaccos.create_blend_type(attrs)
 
     blend_type
   end

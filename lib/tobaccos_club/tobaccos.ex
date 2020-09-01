@@ -119,7 +119,7 @@ defmodule TobaccosClub.Tobaccos do
   end
 
   def get_brand_by_name(name) do
-    Brand |> Repo.get_by(name: name)
+    Repo.get_by(Brand, name: name)
   end
 
   alias TobaccosClub.Tobaccos.BlendType
@@ -219,7 +219,7 @@ defmodule TobaccosClub.Tobaccos do
   end
 
   def get_blend_type_by_name(name) do
-    BlendType |> Repo.get_by(name: name)
+    Repo.get_by(BlendType, name: name)
   end
 
   alias TobaccosClub.Tobaccos.Blend

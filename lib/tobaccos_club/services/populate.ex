@@ -2,13 +2,11 @@ defmodule TobaccosClub.Services.Populate do
   alias TobaccosClub.Tobaccos
 
   def brands(brands_data) do
-    brands_data
-    |> Enum.each(fn brand -> create_brand(brand) end)
+    Enum.each(brands_data, fn brand -> create_brand(brand) end)
   end
 
   def blends(blends_data) do
-    blends_data
-    |> Enum.each(fn params -> create_blend(params) end)
+    Enum.each(blends_data, fn params -> create_blend(params) end)
   end
 
   def blend_types(blend_types_data) do
