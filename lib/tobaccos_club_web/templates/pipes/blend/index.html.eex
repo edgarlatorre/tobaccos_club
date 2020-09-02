@@ -1,0 +1,46 @@
+<span><%= link "New Blend", to: Routes.pipes_blend_path(@conn, :new) %></span>
+
+
+<section>
+  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Blends" %></h1>
+  <div class="flex justify-center">
+    <form class="w-full max-w-sm" phx-submit="search">
+      <div class="flex items-center border-b border-orange-500 py-2">
+        <input
+          class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+          type="text"
+          name="brand"
+          placeholder="<%= gettext "Search" %>"
+          aria-label="Brand name">
+      </div>
+    </form>
+  </div>
+  <div>
+    <ul class="flex justify-center m-6">
+      <%= for a <- @alphabet do %>
+        <li class="mr-6 text-lg">
+          <a class="text-orange-900 hover:text-orange-500" href="#"><%= a %></a>
+        </li>
+      <% end %>
+      <li>
+        <a class="text-orange-900 hover:text-orange-500" href="#"><%= gettext("All") %></a>
+      </li>
+    </ul>
+  </div>
+  <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+    <table class="min-w-full leading-normal">
+      <tbody>
+        <%= for blend <- @blends do %>
+          <tr class="hover:bg-orange-100">
+            <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
+              <%= link(blend.name, to: Routes.pipes_blend_path(@conn, :show, blend)) %>
+            </td>
+            <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
+              <span><%= link "Edit", to: Routes.pipes_blend_path(@conn, :edit, blend) %></span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
