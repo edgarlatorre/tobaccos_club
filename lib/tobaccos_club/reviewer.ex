@@ -237,6 +237,10 @@ defmodule TobaccosClub.Reviewer do
     Repo.all(Blend)
   end
 
+  def list_blends(%{page_size: _, page: _} = params) do
+    Repo.paginate(Blend, params)
+  end
+
   @doc """
   Gets a single blend.
 

@@ -4,9 +4,9 @@ defmodule TobaccosClubWeb.Pipes.BlendController do
   alias TobaccosClub.Pipes.Blend
   alias TobaccosClub.Reviewer
 
-  def index(conn, _params) do
+  def index(conn, params) do
     alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
-    blends = Reviewer.list_blends()
+    blends = Reviewer.list_blends(pagination_params(params))
     render(conn, "index.html", blends: blends, alphabet: alphabet)
   end
 
@@ -62,5 +62,12 @@ defmodule TobaccosClubWeb.Pipes.BlendController do
     conn
     |> put_flash(:info, "Blend deleted successfully.")
     |> redirect(to: Routes.pipes_blend_path(conn, :index))
+  end
+
+  defp pagination_params(params) do
+    %{
+      page: Map.get(params, "page", 1),
+      page_size: Map.get(params, "page_size", 10)
+    }
   end
 end
