@@ -1,4 +1,4 @@
-defmodule TobaccosClub.Tobaccos.Blend do
+defmodule TobaccosClub.Pipes.Blend do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -14,8 +14,8 @@ defmodule TobaccosClub.Tobaccos.Blend do
     field :packaging, :string
     field :production, :string
 
-    belongs_to :brand, TobaccosClub.Tobaccos.Brand
-    belongs_to :blend_type, TobaccosClub.Tobaccos.BlendType
+    belongs_to :brand, TobaccosClub.Pipes.Brand
+    belongs_to :blend_type, TobaccosClub.Pipes.BlendType
 
     timestamps()
   end

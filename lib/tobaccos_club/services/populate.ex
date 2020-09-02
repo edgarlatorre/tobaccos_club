@@ -1,5 +1,5 @@
 defmodule TobaccosClub.Services.Populate do
-  alias TobaccosClub.Tobaccos
+  alias TobaccosClub.Reviewer
 
   def brands(brands_data) do
     Enum.each(brands_data, fn brand -> create_brand(brand) end)
@@ -13,17 +13,17 @@ defmodule TobaccosClub.Services.Populate do
     blend_types_data
     |> Enum.map(fn b -> b["blend_type"] end)
     |> Enum.uniq()
-    |> Enum.each(fn bt -> Tobaccos.create_blend_type(%{name: bt}) end)
+    |> Enum.each(fn bt -> Reviewer.create_blend_type(%{name: bt}) end)
   end
 
   defp create_brand(params) do
     slug = List.last(String.split(params["url"], "/"))
-    {:ok, _} = Tobaccos.create_brand(%{name: params["name"], url: params["url"], slug: slug})
+    {:ok, _} = Reviewer.create_brand(%{name: params["name"], url: params["url"], slug: slug})
   end
 
   defp create_blend(params) do
-    brand = Tobaccos.get_brand_by_name(params["brand"])
-    blend_type = Tobaccos.get_blend_type_by_name(params["blend_type"])
+    brand = Reviewer.get_brand_by_name(params["brand"])
+    blend_type = Reviewer.get_blend_type_by_name(params["blend_type"])
 
     blend = %{
       brand_id: brand.id,
@@ -40,6 +40,6 @@ defmodule TobaccosClub.Services.Populate do
       image_url: params["image"]
     }
 
-    Tobaccos.create_blend(blend)
+    Reviewer.create_blend(blend)
   end
 end

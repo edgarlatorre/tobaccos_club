@@ -1,22 +1,22 @@
 defmodule TobaccosClub.TobaccosFactory do
   use ExMachina.Ecto, repo: TobaccosClub.Repo
-  alias TobaccosClub.Tobaccos
+  alias TobaccosClub.Pipes
 
   def brand_factory do
-    %Tobaccos.Brand{
+    %Pipes.Brand{
       name: sequence(:name, &"Brand #{&1}"),
       slug: sequence(:slug, &"brand-#{&1}")
     }
   end
 
   def blend_type_factory do
-    %Tobaccos.BlendType{
+    %Pipes.BlendType{
       name: sequence(:name, &"Virginia #{&1}")
     }
   end
 
   def blend_factory do
-    %Tobaccos.Blend{
+    %Pipes.Blend{
       blended_by: "Company B",
       blend_type: build(:blend_type),
       brand: build(:brand),

@@ -1,10 +1,10 @@
-defmodule TobaccosClub.Tobaccos.BlendType do
+defmodule TobaccosClub.Pipes.BlendType do
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "blend_types" do
     field :name, :string
-    has_many :blends, TobaccosClub.Tobaccos.Blend
+    has_many :blends, TobaccosClub.Pipes.Blend
 
     timestamps()
   end
