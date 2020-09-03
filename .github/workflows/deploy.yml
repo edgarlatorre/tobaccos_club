@@ -3,12 +3,10 @@ name: Build
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-  testing:
-    name: Build and test
+  build_test_deploy:
+    name: Build and test and deploy
     runs-on: ubuntu-latest
 
     services:

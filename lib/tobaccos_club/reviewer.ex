@@ -1,6 +1,6 @@
-defmodule TobaccosClub.Tobaccos do
+defmodule TobaccosClub.Reviewer do
+  alias TobaccosClub.Pipes.Brand
   alias TobaccosClub.Repo
-  alias TobaccosClub.Tobaccos.Brand
   import Ecto.Query
 
   @doc """
@@ -122,7 +122,7 @@ defmodule TobaccosClub.Tobaccos do
     Repo.get_by(Brand, name: name)
   end
 
-  alias TobaccosClub.Tobaccos.BlendType
+  alias TobaccosClub.Pipes.BlendType
 
   @doc """
   Returns the list of blend_types.
@@ -222,7 +222,7 @@ defmodule TobaccosClub.Tobaccos do
     Repo.get_by(BlendType, name: name)
   end
 
-  alias TobaccosClub.Tobaccos.Blend
+  alias TobaccosClub.Pipes.Blend
 
   @doc """
   Returns the list of blends.
@@ -235,6 +235,14 @@ defmodule TobaccosClub.Tobaccos do
   """
   def list_blends do
     Repo.all(Blend)
+  end
+
+  def list_blends(%{page_size: _, page: _} = params) do
+    Repo.paginate(Blend, params)
+  end
+
+  def paginate_brands(params \\ []) do
+    Repo.paginate(Brand, params)
   end
 
   @doc """

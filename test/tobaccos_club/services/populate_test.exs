@@ -1,7 +1,8 @@
 defmodule TobaccosClub.Services.PopulateTest do
   use TobaccosClub.DataCase
+  alias TobaccosClub.Pipes
+  alias TobaccosClub.Reviewer
   alias TobaccosClub.Services.Populate
-  alias TobaccosClub.Tobaccos
 
   describe "populate brands" do
     test "create brands with slug" do
@@ -10,9 +11,9 @@ defmodule TobaccosClub.Services.PopulateTest do
         %{"name" => "Brand Two", "url" => "http://test.com/brand-two"}
       ])
 
-      assert 2 == Enum.count(Tobaccos.list_brands())
-      assert "Brand One" = Tobaccos.get_brand_by_slug("brand-one").name
-      assert "Brand Two" = Tobaccos.get_brand_by_slug("brand-two").name
+      assert 2 == Enum.count(Reviewer.list_brands())
+      assert "Brand One" = Reviewer.get_brand_by_slug("brand-one").name
+      assert "Brand Two" = Reviewer.get_brand_by_slug("brand-two").name
     end
   end
 
@@ -23,14 +24,14 @@ defmodule TobaccosClub.Services.PopulateTest do
         %{"blend_type" => "Virginia/Perique"}
       ])
 
-      assert 2 == Enum.count(Tobaccos.list_blend_types())
-      assert %Tobaccos.BlendType{} = Tobaccos.get_blend_type_by_name("Aromatic")
-      assert %Tobaccos.BlendType{} = Tobaccos.get_blend_type_by_name("Virginia/Perique")
+      assert 2 == Enum.count(Reviewer.list_blend_types())
+      assert %Pipes.BlendType{} = Reviewer.get_blend_type_by_name("Aromatic")
+      assert %Pipes.BlendType{} = Reviewer.get_blend_type_by_name("Virginia/Perique")
     end
 
     test "populate blends" do
-      Tobaccos.create_blend_type(%{name: "Virginia"})
-      Tobaccos.create_brand(%{name: "Brand", slug: "blend", url: "http://test.com"})
+      Reviewer.create_blend_type(%{name: "Virginia"})
+      Reviewer.create_brand(%{name: "Brand", slug: "blend", url: "http://test.com"})
 
       Populate.blends([
         %{
@@ -49,7 +50,7 @@ defmodule TobaccosClub.Services.PopulateTest do
         }
       ])
 
-      assert Enum.count(Tobaccos.list_blends()) == 1
+      assert Enum.count(Reviewer.list_blends()) == 1
     end
   end
 end

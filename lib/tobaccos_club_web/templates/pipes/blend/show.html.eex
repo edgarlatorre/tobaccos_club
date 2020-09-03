@@ -1,0 +1,38 @@
+<section>
+  <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
+  <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %><h5>
+  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @brand.name %><h5>
+  <div class="p-6 bg-white rounded-md shadow-md">
+    <ul class="list-inside">
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase">
+          <%= gettext("Blended By") %>
+        </label>
+        <p><%= @blend.blended_by %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Blend Type") %></label>
+        <p><%= @blend_type.name %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Cut") %></label>
+        <p><%= @blend.cut %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Contents") %></label>
+        <p><%= @blend.contents %></p>
+      </li>
+      <li class="mb-2">
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Country") %></label>
+        <p><%= @blend.country %></p>
+      </li>
+      <li>
+        <label class="font-bold text-orange-900 uppercase"><%= gettext("Availability") %></label>
+        <p><%= @blend.production %></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<span><%= link "Edit", to: Routes.pipes_blend_path(@conn, :edit, @blend) %></span>
+<span><%= link "Back", to: Routes.pipes_blend_path(@conn, :index) %></span>
