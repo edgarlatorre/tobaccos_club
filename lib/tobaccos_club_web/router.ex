@@ -17,7 +17,7 @@ defmodule TobaccosClubWeb.Router do
   scope "/", TobaccosClubWeb do
     pipe_through :browser
     resources "/blends", Pipes.BlendController, as: "pipes_blend"
-    live "/", PageLive, :index
+    live "/", PageLive
     live "/:slug", Brands.ShowLive, :show
     live "/:brand/:blend_id", Blends.ShowLive, :show
   end
