@@ -1,8 +1,8 @@
-<span><%= link "New Blend", to: Routes.pipes_blend_path(@conn, :new) %></span>
-
-
 <section>
-  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Blends" %></h1>
+  <div class="flex items-center justify-between">
+    <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Blends" %></h1>
+    <span class="bg-orange-700 rounded text-white px-1"><%= link gettext("Create"), to: Routes.pipes_blend_path(@conn, :new) %></span>
+  </div>
   <div class="flex justify-center">
     <form class="w-full max-w-sm" phx-submit="search">
       <div class="flex items-center border-b border-orange-500 py-2">
@@ -15,7 +15,7 @@
       </div>
     </form>
   </div>
-  <div>
+  <div class="hidden md:block">
     <ul class="flex justify-center m-6">
       <%= for a <- @alphabet do %>
         <li class="mr-6 text-lg">
