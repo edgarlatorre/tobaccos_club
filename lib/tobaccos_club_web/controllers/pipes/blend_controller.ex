@@ -6,7 +6,7 @@ defmodule TobaccosClubWeb.Pipes.BlendController do
 
   def index(conn, params) do
     alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
-    blends = Reviewer.list_blends(pagination_params(params))
+    blends = Reviewer.paginate_blends(pagination_params(params))
     render(conn, "index.html", blends: blends, alphabet: alphabet)
   end
 

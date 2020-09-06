@@ -171,14 +171,14 @@ defmodule TobaccosClub.PipesTest do
       assert [%Blend{name: "blend test"}] = Reviewer.list_blends()
     end
 
-    test "list_brands/1 returns paginated brands with 2 entries per page" do
+    test "paginate_blends/1 returns paginated blends with 2 entries per page" do
       insert_list(3, :brand)
-      assert 2 == Reviewer.list_blends(%{page_size: 2, page: 1}).page_size
+      assert 2 == Reviewer.paginate_blends(%{page_size: 2, page: 1}).page_size
     end
 
-    test "list_brands/1 returns paginated brands second page" do
+    test "paginate_blends/1 returns paginated blends second page" do
       insert_list(3, :brand)
-      assert 1 == Reviewer.list_blends(%{page_size: 2, page: 2}).page_number
+      assert 1 == Reviewer.paginate_blends(%{page_size: 2, page: 2}).page_number
     end
 
     test "get_blend!/1 returns the blend with given id" do

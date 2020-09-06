@@ -1,4 +1,4 @@
-defmodule TobaccosClubWeb.Blends.ShowLive do
+defmodule TobaccosClubWeb.BlendsLive.Show do
   use TobaccosClubWeb, :live_view
 
   alias TobaccosClub.Reviewer

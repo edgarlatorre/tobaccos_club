@@ -1,12 +1,12 @@
-defmodule TobaccosClubWeb.PageLive do
+defmodule TobaccosClubWeb.BlendsLive.Index do
   use TobaccosClubWeb, :live_view
 
   alias TobaccosClub.Reviewer
-  alias TobaccosClubWeb.PageLive
-  alias TobaccosClubWeb.Router.Helpers
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(params, _session, socket) do
+    alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
+
     %{
       entries: entries,
       page_number: page_number,
@@ -15,16 +15,14 @@ defmodule TobaccosClubWeb.PageLive do
       total_pages: total_pages
     } =
       if connected?(socket) do
-        Reviewer.paginate_brands()
+        Reviewer.paginate_blends(pagination_params(params))
       else
         %Scrivener.Page{}
       end
 
-    alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
-
     assigns = [
       conn: socket,
-      brands: entries,
+      blends: entries,
       page_number: page_number || 0,
       page_size: page_size || 0,
       total_entries: total_entries || 0,
@@ -33,23 +31,6 @@ defmodule TobaccosClubWeb.PageLive do
     ]
 
     {:ok, assign(socket, assigns)}
-  end
-
-  @impl true
-  def handle_event("filter", %{"letter" => letter}, socket) do
-    brands = Reviewer.list_brands_starting_with(letter)
-    {:noreply, assign(socket, brands: brands)}
-  end
-
-  @impl true
-  def handle_event("search", %{"brand" => brand_name}, socket) do
-    brands = Reviewer.find_brands_name_includes(brand_name)
-    {:noreply, assign(socket, brands: brands)}
-  end
-
-  def handle_event("nav", %{"page" => page}, socket) do
-    # IO.inspect(live_redirect(to: Helpers.live_path(socket, PageLive, page: page)))
-    {:noreply, live_patch(to: Helpers.live_path(socket, PageLive, page: page))}
   end
 
   @impl true
@@ -63,6 +44,18 @@ defmodule TobaccosClubWeb.PageLive do
     {:noreply, assign(socket, assigns)}
   end
 
+  @impl true
+  def handle_event("filter", %{"letter" => letter}, socket) do
+    blends = Reviewer.paginate_blends_starting_with(letter)
+    {:noreply, assign(socket, blends: blends)}
+  end
+
+  @impl true
+  def handle_event("search", %{"brand" => brand_name}, socket) do
+    blends = Reviewer.paginate_blends_name_includes(brand_name)
+    {:noreply, assign(socket, blends: blends)}
+  end
+
   def get_and_assign_page(page_number) do
     %{
       entries: entries,
@@ -70,17 +63,24 @@ defmodule TobaccosClubWeb.PageLive do
       page_size: page_size,
       total_entries: total_entries,
       total_pages: total_pages
-    } = Reviewer.paginate_brands(page: page_number)
+    } = Reviewer.paginate_blends(%{page: page_number})
 
     alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
 
     [
-      brands: entries,
+      blends: entries,
       page_number: page_number,
       page_size: page_size,
       total_entries: total_entries,
       total_pages: total_pages,
       alphabet: alphabet
     ]
+  end
+
+  defp pagination_params(params) do
+    %{
+      page: Map.get(params, "page", 1),
+      page_size: Map.get(params, "page_size", 10)
+    }
   end
 end
