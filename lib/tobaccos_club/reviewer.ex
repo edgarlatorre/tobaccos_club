@@ -224,26 +224,31 @@ defmodule TobaccosClub.Reviewer do
 
   alias TobaccosClub.Pipes.Blend
 
-  def paginate_blends(params \\ []) do
-    Blend
+  def paginate_blends(params) do
+    Brand
     |> order_by(asc: :name)
-    # |> Repo.preload(:brand)
     |> Repo.paginate(params)
   end
 
-  def paginate_blends_starting_with("all"), do: paginate_brands()
+  def paginate_blends(criteria, params) when is_list(criteria) do
+    query = from(b in Blend)
 
-  def paginate_blends_starting_with(letter) do
-    Blend
-    |> where([blend], ilike(blend.name, ^"#{letter}%"))
+    criteria
+    |> Enum.reduce(query, fn
+      {:starts_with, ""}, query ->
+        query
+
+      {:starts_with, starts_with}, query ->
+        from q in query, where: ilike(q.name, ^"#{starts_with}%")
+
+      {:search_text, ""}, query ->
+        query
+
+      {:search_text, search_text}, query ->
+        from q in query, where: ilike(q.name, ^"%#{search_text}%")
+    end)
     |> order_by(asc: :name)
-    |> Repo.paginate()
-  end
-
-  def paginate_blends_name_includes(search_text) do
-    Blend
-    |> where([blend], ilike(blend.name, ^"%#{search_text}%"))
-    |> Repo.paginate()
+    |> Repo.paginate(params)
   end
 
   @doc """

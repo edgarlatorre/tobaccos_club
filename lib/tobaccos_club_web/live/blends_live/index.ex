@@ -27,7 +27,9 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       page_size: page_size || 0,
       total_entries: total_entries || 0,
       total_pages: total_pages || 0,
-      alphabet: alphabet
+      alphabet: alphabet,
+      starts_with: "",
+      search_text: ""
     ]
 
     {:ok, assign(socket, assigns)}
@@ -35,35 +37,44 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
   @impl true
   def handle_params(%{"page" => page}, _, socket) do
-    assigns = get_and_assign_page(page)
+    %{starts_with: starts_with, search_text: search_text} = socket.assigns
+    assigns = get_and_assign_page(starts_with, search_text, page)
+
     {:noreply, assign(socket, assigns)}
   end
 
   def handle_params(_, _, socket) do
-    assigns = get_and_assign_page(nil)
+    %{starts_with: starts_with, search_text: search_text} = socket.assigns
+    assigns = get_and_assign_page(starts_with, search_text, nil)
+
     {:noreply, assign(socket, assigns)}
   end
 
   @impl true
   def handle_event("filter", %{"letter" => letter}, socket) do
-    blends = Reviewer.paginate_blends_starting_with(letter)
-    {:noreply, assign(socket, blends: blends)}
+    %{search_text: search_text} = socket.assigns
+    assigns = get_and_assign_page(letter, search_text, nil)
+    {:noreply, assign(socket, assigns)}
   end
 
   @impl true
   def handle_event("search", %{"brand" => brand_name}, socket) do
-    blends = Reviewer.paginate_blends_name_includes(brand_name)
-    {:noreply, assign(socket, blends: blends)}
+    %{starts_with: starts_with} = socket.assigns
+    assigns = get_and_assign_page(starts_with, brand_name, nil)
+
+    {:noreply, assign(socket, assigns)}
   end
 
-  def get_and_assign_page(page_number) do
+  def get_and_assign_page(starts_with, search_text, page_number) do
+    criteria = [starts_with: starts_with, search_text: search_text]
+
     %{
       entries: entries,
       page_number: page_number,
       page_size: page_size,
       total_entries: total_entries,
       total_pages: total_pages
-    } = Reviewer.paginate_blends(%{page: page_number})
+    } = Reviewer.paginate_blends(criteria, %{page: page_number})
 
     alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
 
@@ -73,7 +84,9 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       page_size: page_size,
       total_entries: total_entries,
       total_pages: total_pages,
-      alphabet: alphabet
+      alphabet: alphabet,
+      starts_with: starts_with,
+      search_text: search_text
     ]
   end
 
