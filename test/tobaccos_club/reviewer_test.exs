@@ -172,18 +172,46 @@ defmodule TobaccosClub.PipesTest do
     end
 
     test "paginate_blends/1 returns paginated blends with 2 entries per page" do
-      insert_list(3, :brand)
+      insert_list(3, :blend)
       assert 2 == Reviewer.paginate_blends(%{page_size: 2, page: 1}).page_size
     end
 
     test "paginate_blends/1 returns paginated blends first page" do
-      insert_list(3, :brand)
+      insert_list(3, :blend)
       assert 1 == Reviewer.paginate_blends(%{page_size: 2, page: 1}).page_number
     end
 
     test "paginate_blends/1 returns paginated blends second page" do
-      insert_list(3, :brand)
+      insert_list(3, :blend)
       assert 2 == Reviewer.paginate_blends(%{page_size: 2, page: 2}).page_number
+    end
+
+    test "paginate_blends/1 returns paginated filtered by starts_with" do
+      insert_list(3, :blend)
+      insert(:blend, name: "Another blend")
+      entries = Reviewer.paginate_blends([starts_with: "A"], %{page: 1}).entries
+
+      assert 1 == Enum.count(entries)
+    end
+
+    test "paginate_blends/1 returns paginated filtered by search_text" do
+      insert_list(3, :blend)
+      insert(:blend, name: "Another 138 Blend")
+      entries = Reviewer.paginate_blends([search_text: "138"], %{page: 1}).entries
+
+      assert 1 == Enum.count(entries)
+    end
+
+    test "paginate_blends/1 returns paginated filtered by blend_types" do
+      blends = insert_list(3, :blend)
+
+      entries =
+        Reviewer.paginate_blends(
+          [blend_type_ids: Enum.map(blends, & &1.blend_type_id)],
+          %{page: 1}
+        ).entries
+
+      assert 3 == Enum.count(entries)
     end
 
     test "get_blend!/1 returns the blend with given id" do

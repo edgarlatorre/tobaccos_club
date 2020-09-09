@@ -1,6 +1,7 @@
 defmodule TobaccosClubWeb.BlendsLive.Index do
   use TobaccosClubWeb, :live_view
 
+  alias TobaccosClub.Pipes.Filter
   alias TobaccosClub.Reviewer
 
   @impl true
@@ -23,13 +24,13 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     assigns = [
       conn: socket,
       blends: entries,
+      blend_types: Reviewer.list_blend_types(),
       page_number: page_number || 0,
-      page_size: page_size || 0,
+      page_size: page_size || 100,
       total_entries: total_entries || 0,
       total_pages: total_pages || 0,
       alphabet: alphabet,
-      starts_with: "",
-      search_text: ""
+      filter: %Filter{starts_with: "", search_text: "", blend_type_ids: []}
     ]
 
     {:ok, assign(socket, assigns)}
@@ -37,36 +38,48 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
   @impl true
   def handle_params(%{"page" => page}, _, socket) do
-    %{starts_with: starts_with, search_text: search_text} = socket.assigns
-    assigns = get_and_assign_page(starts_with, search_text, page)
+    %{filter: filter} = socket.assigns
+    assigns = get_and_assign_page(filter, page)
 
     {:noreply, assign(socket, assigns)}
   end
 
   def handle_params(_, _, socket) do
-    %{starts_with: starts_with, search_text: search_text} = socket.assigns
-    assigns = get_and_assign_page(starts_with, search_text, nil)
+    %{filter: filter} = socket.assigns
+    assigns = get_and_assign_page(filter, nil)
 
     {:noreply, assign(socket, assigns)}
   end
 
-  @impl true
-  def handle_event("filter", %{"letter" => letter}, socket) do
-    %{search_text: search_text} = socket.assigns
-    assigns = get_and_assign_page(letter, search_text, nil)
-    {:noreply, assign(socket, assigns)}
-  end
+  # @impl true
+  # def handle_event("filter", %{"letter" => letter}, socket) do
+  #   filter = %Filter{socket.assigns.filter | starts_with: letter}
+  #   assigns = get_and_assign_page(filter, nil)
+  #   {:noreply, assign(socket, assigns)}
+  # end
 
   @impl true
   def handle_event("search", %{"brand" => brand_name}, socket) do
-    %{starts_with: starts_with} = socket.assigns
-    assigns = get_and_assign_page(starts_with, brand_name, nil)
+    filter = %Filter{socket.assigns.filter | search_text: brand_name}
+    assigns = get_and_assign_page(filter, nil)
 
     {:noreply, assign(socket, assigns)}
   end
 
-  def get_and_assign_page(starts_with, search_text, page_number) do
-    criteria = [starts_with: starts_with, search_text: search_text]
+  @impl true
+  def handle_event("filter", %{"blend_type_ids" => blend_type_ids}, socket) do
+    filter = %Filter{socket.assigns.filter | blend_type_ids: blend_type_ids}
+    assigns = get_and_assign_page(filter, nil)
+
+    {:noreply, assign(socket, assigns)}
+  end
+
+  def get_and_assign_page(filter, page_number) do
+    criteria = [
+      starts_with: filter.starts_with,
+      search_text: filter.search_text,
+      blend_type_ids: filter.blend_type_ids
+    ]
 
     %{
       entries: entries,
@@ -85,15 +98,14 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       total_entries: total_entries,
       total_pages: total_pages,
       alphabet: alphabet,
-      starts_with: starts_with,
-      search_text: search_text
+      filter: filter
     ]
   end
 
   defp pagination_params(params) do
     %{
       page: Map.get(params, "page", 1),
-      page_size: Map.get(params, "page_size", 10)
+      page_size: Map.get(params, "page_size", 100)
     }
   end
 end

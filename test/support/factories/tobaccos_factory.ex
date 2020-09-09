@@ -26,7 +26,7 @@ defmodule TobaccosClub.TobaccosFactory do
       flavouring: "None",
       image_url: "",
       manufactured_by: "some manufactured_by",
-      name: "My Mixture 138",
+      name: sequence(:name, &"Blend #{&1}"),
       packaging: "50 grams tin, bulk",
       production: "Currently available"
     }

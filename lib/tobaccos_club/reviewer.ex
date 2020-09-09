@@ -246,6 +246,15 @@ defmodule TobaccosClub.Reviewer do
 
       {:search_text, search_text}, query ->
         from q in query, where: ilike(q.name, ^"%#{search_text}%")
+
+      {:blend_type_ids, []}, query ->
+        query
+
+      {:blend_type_ids, ["0"]}, query ->
+        query
+
+      {:blend_type_ids, blend_type_ids}, query ->
+        from q in query, where: q.blend_type_id in ^blend_type_ids
     end)
     |> order_by(asc: :name)
     |> Repo.paginate(params)
