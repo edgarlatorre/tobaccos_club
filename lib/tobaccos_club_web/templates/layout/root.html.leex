@@ -10,22 +10,21 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body class="">
-    <div class="">
-      <nav class="bg-orange-300 p-2 mt-0 fixed w-full z-10 top-0">
-        <div class="flex items-center">
-          <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-            <img class="fill-current h-8 w-8 mr-2"
-              src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
-            <a class="text-orange-900 no-underline hover:text-white hover:no-underline" href="/">
-              <span class="text-2xl pl-2"><i class="em em-grinning"></i> Tobacco's Club</span>
-            </a>
-          </div>
-        </div>
-      </nav>
-      <div class="container mt-10">
-        <%= @inner_content %>
+  <body>
+    <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
+      <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+        <img
+          class="fill-current h-8 w-8 mr-2"
+          src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
+        <span class="font-semibold text-xl tracking-tight">
+          <a href="/" class="blocklg:inline-block lg:mt-0 text-orange-900 hover:text-orange-700 mr-4">
+            Tobacco's Club
+          </a>
+        </span>
       </div>
+    </nav>
+    <div class="container mx-auto">
+      <%= @inner_content %>
     </div>
   </body>
 </html>

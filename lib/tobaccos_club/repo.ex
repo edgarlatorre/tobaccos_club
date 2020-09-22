@@ -3,5 +3,5 @@ defmodule TobaccosClub.Repo do
     otp_app: :tobaccos_club,
     adapter: Ecto.Adapters.Postgres
 
-  use Scrivener, page_size: 100
+  use Scrivener, page_size: 15
 end
