@@ -15,7 +15,7 @@ msgstr ""
 #: lib/tobaccos_club_web/live/blends_live/index.html.leex:2
 #: lib/tobaccos_club_web/live/brands/show_live.html.leex:8 lib/tobaccos_club_web/templates/pipes/blend/index.html.eex:3
 msgid "Blends"
-msgstr "Mixturas"
+msgstr "Misturas"
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/index.html.leex:13
@@ -38,13 +38,13 @@ msgstr "Disponibilidade"
 #: lib/tobaccos_club_web/live/blends_live/index.html.leex:28
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:14 lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:14
 msgid "Blend Type"
-msgstr "Tipo de Mixtura"
+msgstr "Tipo de Mistura"
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:9
 #: lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:9
 msgid "Blended By"
-msgstr "Mixtura produzida por"
+msgstr "Mistura produzida por"
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:3
