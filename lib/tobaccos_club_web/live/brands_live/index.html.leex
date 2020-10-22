@@ -1,0 +1,21 @@
+<div class="flex items-center justify-center">
+  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Brands" %></h1>
+</div>
+<div class="mt-10 justify-center">
+  <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+    <table class="w-full">
+      <tbody>
+        <%= for brand <- @brands do %>
+          <tr class="hover:bg-orange-100">
+            <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
+              <%= link(brand.name, to: Routes.live_path(@socket, TobaccosClubWeb.BrandsLive.Show, brand.slug)) %>
+            </td>
+            <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
+              <span><%= link "Edit", to: "#" %></span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

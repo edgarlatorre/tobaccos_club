@@ -19,8 +19,8 @@ defmodule TobaccosClubWeb.Router do
     resources "/blends", Pipes.BlendController, as: "pipes_blend"
     live "/", BlendsLive.Index
     live "/:brand/:blend_id", BlendsLive.Show
-    live "/brands", PagesLive
-    live "/:slug", Brands.ShowLive, :show
+    live "/brands", BrandsLive.Index
+    live "/:brand_slug", BrandsLive.Show
     live "/:brand/:blend_id", Blends.ShowLive, :show
   end
 

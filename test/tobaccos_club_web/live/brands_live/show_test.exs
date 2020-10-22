@@ -9,6 +9,6 @@ defmodule TobaccosClubWeb.Brands.ShowLiveTest do
 
     {:ok, page_live, disconnected_html} = live(conn, "/blend-test")
     assert disconnected_html =~ "Blend Test"
-    assert render(page_live) =~ "Mixturas"
+    assert render(page_live) =~ "Misturas"
   end
 end
