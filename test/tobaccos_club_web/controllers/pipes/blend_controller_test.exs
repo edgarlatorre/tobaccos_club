@@ -5,7 +5,7 @@ defmodule TobaccosClubWeb.Pipes.BlendControllerTest do
   describe "index" do
     test "lists all blends", %{conn: conn} do
       conn = get(conn, Routes.pipes_blend_path(conn, :index))
-      assert html_response(conn, 200) =~ "Blends"
+      assert html_response(conn, 200) =~ "Mixturas"
     end
   end
 
