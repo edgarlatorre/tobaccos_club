@@ -54,7 +54,7 @@
         <%= for blend <- @blends do %>
           <tr class="hover:bg-orange-100">
             <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
-              <%= link(blend.name, to: Routes.live_path(@socket, TobaccosClubWeb.BlendsLive.Show, blend.brand_id, blend.id)) %>
+              <%= link(blend.name, to: Routes.live_path(@socket, TobaccosClubWeb.BlendsLive.Show, blend.brand.slug, blend.id)) %>
             </td>
             <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
               <span><%= link "Edit", to: "#" %></span>

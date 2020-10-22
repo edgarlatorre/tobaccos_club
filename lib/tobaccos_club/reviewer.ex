@@ -231,7 +231,7 @@ defmodule TobaccosClub.Reviewer do
   end
 
   def paginate_blends(criteria, params) when is_list(criteria) do
-    query = from(b in Blend)
+    query = from(b in Blend, preload: [:brand])
 
     criteria
     |> Enum.reduce(query, fn
