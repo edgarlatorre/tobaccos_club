@@ -45,6 +45,7 @@ defmodule TobaccosClubWeb do
     quote do
       use Phoenix.LiveView,
         layout: {TobaccosClubWeb.LayoutView, "live.html"}
+
       import TobaccosClubWeb.LiveHelpers
 
       unquote(view_helpers())
