@@ -225,7 +225,7 @@ defmodule TobaccosClub.Reviewer do
   alias TobaccosClub.Pipes.Blend
 
   def paginate_blends(params) do
-    Brand
+    Blend
     |> order_by(asc: :name)
     |> Repo.paginate(params)
   end
@@ -274,7 +274,9 @@ defmodule TobaccosClub.Reviewer do
   end
 
   def paginate_brands(params \\ []) do
-    Repo.paginate(Brand, params)
+    Brand
+    |> order_by(asc: :name)
+    |> Repo.paginate(params)
   end
 
   @doc """

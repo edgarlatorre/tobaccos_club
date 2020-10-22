@@ -1,6 +1,7 @@
 defmodule TobaccosClubWeb.BlendsLive.Index do
   use TobaccosClubWeb, :live_view
 
+  alias TobaccosClub.Pagination.Info
   alias TobaccosClub.Pipes.Filter
   alias TobaccosClub.Reviewer
 
@@ -25,10 +26,12 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       conn: socket,
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
-      page_number: page_number || 0,
-      page_size: page_size || 100,
-      total_entries: total_entries || 0,
-      total_pages: total_pages || 0,
+      pagination_info: %Info{
+        page_number: page_number || 0,
+        page_size: page_size || 100,
+        total_entries: total_entries || 0,
+        total_pages: total_pages || 0
+      },
       alphabet: alphabet,
       filter: %Filter{starts_with: "", search_text: "", blend_type_ids: []}
     ]
@@ -93,10 +96,12 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
     [
       blends: entries,
-      page_number: page_number,
-      page_size: page_size,
-      total_entries: total_entries,
-      total_pages: total_pages,
+      pagination_info: %Info{
+        page_number: page_number,
+        page_size: page_size,
+        total_entries: total_entries,
+        total_pages: total_pages
+      },
       alphabet: alphabet,
       filter: filter
     ]

@@ -2,6 +2,8 @@
   <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Brands" %></h1>
 </div>
 <div class="mt-10 justify-center">
+  <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BrandsLive.Index) %>
+
   <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
     <table class="w-full">
       <tbody>
@@ -18,4 +20,6 @@
       </tbody>
     </table>
   </div>
+
+  <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BrandsLive.Index) %>
 </div>
