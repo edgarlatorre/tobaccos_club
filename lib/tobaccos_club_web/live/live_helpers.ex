@@ -4,6 +4,10 @@ defmodule TobaccosClubWeb.LiveHelpers do
 
   alias TobaccosClubWeb.Router.Helpers, as: Routes
 
+  def value_or_dash(nil), do: "-"
+  def value_or_dash(""), do: "-"
+  def value_or_dash(value), do: value
+
   def render_pagination_navigation(socket, pagination_info, route) do
     assigns = %{socket: socket, pagination_info: pagination_info, route: route}
 

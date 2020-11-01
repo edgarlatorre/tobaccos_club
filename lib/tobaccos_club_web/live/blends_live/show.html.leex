@@ -1,35 +1,74 @@
-<section>
+<section x-data="{ isEditing: false } mt-2">
   <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
   <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %><h5>
   <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @brand.name %><h5>
-  <div class="p-6 bg-white rounded-md shadow-md">
-    <ul class="list-inside">
-      <li class="mb-2">
-        <label class="font-bold text-orange-900 uppercase">
-          <%= gettext("Blended By") %>
-        </label>
-        <p><%= @blend.blended_by %></p>
-      </li>
-      <li class="mb-2">
-        <label class="font-bold text-orange-900 uppercase"><%= gettext("Blend Type") %></label>
-        <p><%= @blend_type.name %></p>
-      </li>
-      <li class="mb-2">
-        <label class="font-bold text-orange-900 uppercase"><%= gettext("Cut") %></label>
-        <p><%= @blend.cut %></p>
-      </li>
-      <li class="mb-2">
-        <label class="font-bold text-orange-900 uppercase"><%= gettext("Contents") %></label>
-        <p><%= @blend.contents %></p>
-      </li>
-      <li class="mb-2">
-        <label class="font-bold text-orange-900 uppercase"><%= gettext("Country") %></label>
-        <p><%= @blend.country %></p>
-      </li>
-      <li>
-        <label class="font-bold text-orange-900 uppercase"><%= gettext("Availability") %></label>
-        <p><%= @blend.production %></p>
-      </li>
-    </ul>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
+    <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-orange-900">
+        <%= gettext("Blend Information") %>
+      </h3>
+      <div class="mt-1 max-w-2xl text-sm leading-5 text-orange-700 flex align-center justify-between">
+        <p><%= gettext("All information related to a blend.") %></p>
+        <a href="#" class="hidden text-orange-700 text-1xl font-bold" @click="isEditing = !isEditing">Edit</a>
+      </div>
+    </div>
+    <div>
+      <dl>
+        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Blended By") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= value_or_dash(@blend.blended_by) %>
+          </dd>
+        </div>
+
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Blend Type") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= @blend_type.name %>
+          </dd>
+        </div>
+
+        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Cut") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= @blend.cut %>
+          </dd>
+        </div>
+
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Contents") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= @blend.contents %>
+          </dd>
+        </div>
+
+        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Country") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= @blend.country %>
+          </dd>
+        </div>
+
+        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <dt class="text-sm leading-5 font-medium text-orange-700">
+            <%= gettext("Availability") %>
+          </dt>
+          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
+            <%= @blend.production %>
+          </dd>
+        </div>
+      </dl>
+    </div>
   </div>
 </section>
