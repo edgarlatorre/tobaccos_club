@@ -59,8 +59,8 @@ msgid "Contents"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:56
-#: lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:26
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:53
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:56 lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:26
 msgid "Country"
 msgstr ""
 
@@ -112,4 +112,76 @@ msgstr ""
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:9
 msgid "Blend Information"
+msgstr ""
+
+msgid "United States"
+msgstr ""
+
+msgid "Denmark"
+msgstr ""
+
+msgid "United Kingdom"
+msgstr ""
+
+msgid "Germany"
+msgstr ""
+
+msgid "Canada"
+msgstr ""
+
+msgid "Sweden"
+msgstr ""
+
+msgid "Argentina"
+msgstr ""
+
+msgid "Austria"
+msgstr ""
+
+msgid "France"
+msgstr ""
+
+msgid "Turkey"
+msgstr ""
+
+msgid "Italy"
+msgstr ""
+
+msgid "Ireland"
+msgstr ""
+
+msgid "Switzerland"
+msgstr ""
+
+msgid "Brazil"
+msgstr ""
+
+msgid "Netherlands"
+msgstr ""
+
+msgid "Russia"
+msgstr ""
+
+msgid "Belgium"
+msgstr ""
+
+msgid "Portugal"
+msgstr ""
+
+msgid "Mexico"
+msgstr ""
+
+msgid "Japan"
+msgstr ""
+
+msgid "Indonesia"
+msgstr ""
+
+msgid "South Africa"
+msgstr ""
+
+msgid "Czech Republic"
+msgstr ""
+
+msgid "Greece"
 msgstr ""

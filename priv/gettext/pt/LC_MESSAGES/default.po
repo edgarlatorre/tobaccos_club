@@ -59,8 +59,8 @@ msgid "Contents"
 msgstr "Ingredientes"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:56
-#: lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:26
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:53
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:56 lib/tobaccos_club_web/templates/pipes/blend/show.html.eex:26
 msgid "Country"
 msgstr "País"
 
@@ -113,3 +113,75 @@ msgstr "As informações desta mistura são mantidas por usuários, sinta-se à 
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:9
 msgid "Blend Information"
 msgstr "Informações sobre a mistura"
+
+msgid "United States"
+msgstr "Estados Unidos"
+
+msgid "Denmark"
+msgstr "Dinamarca"
+
+msgid "United Kingdom"
+msgstr "Reino Unido"
+
+msgid "Germany"
+msgstr "Alemanha"
+
+msgid "Canada"
+msgstr "Canadá"
+
+msgid "Sweden"
+msgstr "Suécia"
+
+msgid "Argentina"
+msgstr "Argentina"
+
+msgid "Austria"
+msgstr "Áustria"
+
+msgid "France"
+msgstr "França"
+
+msgid "Turkey"
+msgstr "Turquia"
+
+msgid "Italy"
+msgstr "Itália"
+
+msgid "Ireland"
+msgstr "Irlanda"
+
+msgid "Switzerland"
+msgstr "Suíça"
+
+msgid "Brazil"
+msgstr "Brasil"
+
+msgid "Netherlands"
+msgstr "Holanda"
+
+msgid "Russia"
+msgstr "Rússia"
+
+msgid "Belgium"
+msgstr "Bélgica"
+
+msgid "Portugal"
+msgstr "Portugal"
+
+msgid "Mexico"
+msgstr "México"
+
+msgid "Japan"
+msgstr "Japão"
+
+msgid "Indonesia"
+msgstr "Indonésia"
+
+msgid "South Africa"
+msgstr "África do Sul"
+
+msgid "Czech Republic"
+msgstr "República Checa"
+
+msgid "Greece"
+msgstr "Grécia"
