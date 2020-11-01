@@ -4,6 +4,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   alias TobaccosClub.Pagination.Info
   alias TobaccosClub.Pipes.Filter
   alias TobaccosClub.Reviewer
+  alias TobaccosClub.Utils.Country
 
   @impl true
   def mount(params, _session, socket) do
@@ -26,6 +27,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       conn: socket,
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
+      countries: Country.list_localized_countries(),
       pagination_info: %Info{
         page_number: page_number || 0,
         page_size: page_size || 100,
@@ -33,7 +35,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
         total_pages: total_pages || 0
       },
       alphabet: alphabet,
-      filter: %Filter{starts_with: "", search_text: "", blend_type_ids: []}
+      filter: %Filter{starts_with: "", search_text: "", blend_type_ids: [], countries: []}
     ]
 
     {:ok, assign(socket, assigns)}
@@ -54,13 +56,6 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     {:noreply, assign(socket, assigns)}
   end
 
-  # @impl true
-  # def handle_event("filter", %{"letter" => letter}, socket) do
-  #   filter = %Filter{socket.assigns.filter | starts_with: letter}
-  #   assigns = get_and_assign_page(filter, nil)
-  #   {:noreply, assign(socket, assigns)}
-  # end
-
   @impl true
   def handle_event("search", %{"brand" => brand_name}, socket) do
     filter = %Filter{socket.assigns.filter | search_text: brand_name}
@@ -77,11 +72,20 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     {:noreply, assign(socket, assigns)}
   end
 
+  @impl true
+  def handle_event("filter", %{"countries" => countries}, socket) do
+    filter = %Filter{socket.assigns.filter | countries: countries}
+    assigns = get_and_assign_page(filter, nil)
+
+    {:noreply, assign(socket, assigns)}
+  end
+
   def get_and_assign_page(filter, page_number) do
     criteria = [
       starts_with: filter.starts_with,
       search_text: filter.search_text,
-      blend_type_ids: filter.blend_type_ids
+      blend_type_ids: filter.blend_type_ids,
+      countries: filter.countries
     ]
 
     %{

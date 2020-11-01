@@ -255,6 +255,15 @@ defmodule TobaccosClub.Reviewer do
 
       {:blend_type_ids, blend_type_ids}, query ->
         from q in query, where: q.blend_type_id in ^blend_type_ids
+
+      {:countries, []}, query ->
+        query
+
+      {:countries, ["all"]}, query ->
+        query
+
+      {:countries, countries}, query ->
+        from q in query, where: q.country in ^countries
     end)
     |> order_by(asc: :name)
     |> Repo.paginate(params)
