@@ -4,7 +4,8 @@ defmodule TobaccosClub.Pipes.FilterTest do
 
   describe "Filter" do
     test "build empty filter" do
-      assert %{starts_with: "", search_text: "", blend_type_ids: [], countries: []} = Filter.build()
+      assert %{starts_with: "", search_text: "", blend_type_ids: [], countries: []} =
+               Filter.build()
     end
   end
 end
