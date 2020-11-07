@@ -302,7 +302,7 @@ defmodule TobaccosClub.Reviewer do
       ** (Ecto.NoResultsError)
 
   """
-  def get_blend!(id), do: Repo.get!(Blend, id)
+  def get_blend!(id), do: Repo.preload(Repo.get!(Blend, id), [:cut, :blend_type])
 
   @doc """
   Creates a blend.

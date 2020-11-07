@@ -1,4 +1,5 @@
 defmodule TobaccosClub.Services.Populate do
+  alias TobaccosClub.Pipes
   alias TobaccosClub.Reviewer
 
   def brands(brands_data) do
@@ -16,6 +17,10 @@ defmodule TobaccosClub.Services.Populate do
     |> Enum.each(fn bt -> Reviewer.create_blend_type(%{name: bt}) end)
   end
 
+  def cuts(cuts_data) do
+    Enum.each(cuts_data, fn cut -> Pipes.create_cut(cut) end)
+  end
+
   defp create_brand(params) do
     slug = List.last(String.split(params["url"], "/"))
     {:ok, _} = Reviewer.create_brand(%{name: params["name"], url: params["url"], slug: slug})
@@ -24,6 +29,8 @@ defmodule TobaccosClub.Services.Populate do
   defp create_blend(params) do
     brand = Reviewer.get_brand_by_name(params["brand"])
     blend_type = Reviewer.get_blend_type_by_name(params["blend_type"])
+    cut = if params["cut"], do: Pipes.get_cut_by_name(params["cut"]), else: nil
+    cut_id = if cut, do: cut.id, else: nil
 
     blend = %{
       brand_id: brand.id,
@@ -33,7 +40,7 @@ defmodule TobaccosClub.Services.Populate do
       manufactured_by: params["manufactured_by"],
       contents: params["contents"],
       flavouring: params["flavouring"],
-      cut: params["cut"],
+      cut_id: cut_id,
       packaging: params["packaging"],
       country: params["country"],
       production: params["production"],

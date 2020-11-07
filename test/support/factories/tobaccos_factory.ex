@@ -22,13 +22,19 @@ defmodule TobaccosClub.TobaccosFactory do
       brand: build(:brand),
       contents: "Cavendish, Latakia, Oriental/Turkish, Virginia",
       country: "UK",
-      cut: "Ribbon",
+      cut: build(:cut),
       flavouring: "None",
       image_url: "",
       manufactured_by: "some manufactured_by",
       name: sequence(:name, &"Blend #{&1}"),
       packaging: "50 grams tin, bulk",
       production: "Currently available"
+    }
+  end
+
+  def cut_factory do
+    %Pipes.Cut{
+      name: sequence(:name, &"Cut #{&1}")
     }
   end
 end

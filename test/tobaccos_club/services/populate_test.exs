@@ -32,6 +32,7 @@ defmodule TobaccosClub.Services.PopulateTest do
     test "populate blends" do
       Reviewer.create_blend_type(%{name: "Virginia"})
       Reviewer.create_brand(%{name: "Brand", slug: "blend", url: "http://test.com"})
+      Pipes.create_cut(%{name: "Ribbon"})
 
       Populate.blends([
         %{
@@ -40,7 +41,7 @@ defmodule TobaccosClub.Services.PopulateTest do
           "brand" => "Brand",
           "contents" => "some contents",
           "country" => "some country",
-          "cut" => "some cut",
+          "cut" => "Ribbon",
           "flavouring" => "some flavouring",
           "image_url" => "some image_url",
           "manufactured_by" => "some manufactured_by",

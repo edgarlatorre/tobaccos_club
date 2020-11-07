@@ -224,7 +224,6 @@ defmodule TobaccosClub.ReviewerTest do
       assert blend.blended_by == "some blended_by"
       assert blend.contents == "some contents"
       assert blend.country == "some country"
-      assert blend.cut == "some cut"
       assert blend.flavouring == "some flavouring"
       assert blend.image_url == "some image_url"
       assert blend.manufactured_by == "some manufactured_by"
@@ -239,7 +238,6 @@ defmodule TobaccosClub.ReviewerTest do
       assert blend.blended_by == "some updated blended_by"
       assert blend.contents == "some updated contents"
       assert blend.country == "some updated country"
-      assert blend.cut == "some updated cut"
       assert blend.flavouring == "some updated flavouring"
       assert blend.image_url == "some updated image_url"
       assert blend.manufactured_by == "some updated manufactured_by"
@@ -250,6 +248,7 @@ defmodule TobaccosClub.ReviewerTest do
 
     test "delete_blend/1 deletes the blend" do
       blend = insert(:blend)
+
       assert {:ok, %Blend{}} = Reviewer.delete_blend(blend)
       assert_raise Ecto.NoResultsError, fn -> Reviewer.get_blend!(blend.id) end
     end
