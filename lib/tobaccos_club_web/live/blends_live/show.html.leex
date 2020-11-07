@@ -1,7 +1,7 @@
 <section x-data="{ isEditing: false } mt-2">
   <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
   <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %><h5>
-  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @brand.name %><h5>
+  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @blend.brand.name %><h5>
 
   <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
     <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
@@ -29,7 +29,7 @@
             <%= gettext("Blend Type") %>
           </dt>
           <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend_type.name %>
+            <%= @blend.blend_type.name %>
           </dd>
         </div>
 
