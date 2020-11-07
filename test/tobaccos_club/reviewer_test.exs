@@ -1,4 +1,4 @@
-defmodule TobaccosClub.PipesTest do
+defmodule TobaccosClub.ReviewerTest do
   use TobaccosClub.DataCase
 
   alias TobaccosClub.Reviewer
