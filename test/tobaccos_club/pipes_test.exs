@@ -2,6 +2,7 @@ defmodule TobaccosClub.PipesTest do
   use TobaccosClub.DataCase
 
   alias TobaccosClub.Pipes
+  import TobaccosClub.TobaccosFactory
 
   describe "cuts" do
     alias TobaccosClub.Pipes.Cut
@@ -10,22 +11,13 @@ defmodule TobaccosClub.PipesTest do
     @update_attrs %{name: "some updated name"}
     @invalid_attrs %{name: nil}
 
-    def cut_fixture(attrs \\ %{}) do
-      {:ok, cut} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Pipes.create_cut()
-
-      cut
-    end
-
     test "list_cuts/0 returns all cuts" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert Pipes.list_cuts() == [cut]
     end
 
     test "get_cut!/1 returns the cut with given id" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert Pipes.get_cut!(cut.id) == cut
     end
 
@@ -39,26 +31,31 @@ defmodule TobaccosClub.PipesTest do
     end
 
     test "update_cut/2 with valid data updates the cut" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert {:ok, %Cut{} = cut} = Pipes.update_cut(cut, @update_attrs)
       assert cut.name == "some updated name"
     end
 
     test "update_cut/2 with invalid data returns error changeset" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert {:error, %Ecto.Changeset{}} = Pipes.update_cut(cut, @invalid_attrs)
       assert cut == Pipes.get_cut!(cut.id)
     end
 
     test "delete_cut/1 deletes the cut" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert {:ok, %Cut{}} = Pipes.delete_cut(cut)
       assert_raise Ecto.NoResultsError, fn -> Pipes.get_cut!(cut.id) end
     end
 
     test "change_cut/1 returns a cut changeset" do
-      cut = cut_fixture()
+      cut = insert(:cut)
       assert %Ecto.Changeset{} = Pipes.change_cut(cut)
+    end
+
+    test "get_cut_by_name/1 returns a cut" do
+      insert(:cut, name: "Flake")
+      assert %Pipes.Cut{} = Pipes.get_cut_by_name("Flake")
     end
   end
 end

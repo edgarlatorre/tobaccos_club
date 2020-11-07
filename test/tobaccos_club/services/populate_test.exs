@@ -54,4 +54,17 @@ defmodule TobaccosClub.Services.PopulateTest do
       assert Enum.count(Reviewer.list_blends()) == 1
     end
   end
+
+  describe "populate cuts" do
+    test "create cuts" do
+      Populate.cuts([
+        %{"name" => "Ribbon"},
+        %{"name" => "Flake"}
+      ])
+
+      assert 2 == Enum.count(Pipes.list_cuts())
+      assert %Pipes.Cut{} = Pipes.get_cut_by_name("Ribbon")
+      assert %Pipes.Cut{} = Pipes.get_cut_by_name("Flake")
+    end
+  end
 end
