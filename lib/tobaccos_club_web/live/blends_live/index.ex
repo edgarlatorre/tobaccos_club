@@ -2,6 +2,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   use TobaccosClubWeb, :live_view
 
   alias TobaccosClub.Pagination.Info
+  alias TobaccosClub.Pipes
   alias TobaccosClub.Pipes.Filter
   alias TobaccosClub.Reviewer
   alias TobaccosClub.Utils.Country
@@ -28,6 +29,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
       countries: Country.list_localized_countries(),
+      cuts: Pipes.list_cuts(),
       pagination_info: %Info{
         page_number: page_number || 0,
         page_size: page_size || 100,
@@ -35,7 +37,13 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
         total_pages: total_pages || 0
       },
       alphabet: alphabet,
-      filter: %Filter{starts_with: "", search_text: "", blend_type_ids: [], countries: []}
+      filter: %Filter{
+        starts_with: "",
+        search_text: "",
+        blend_type_ids: [],
+        countries: [],
+        cut_ids: []
+      }
     ]
 
     {:ok, assign(socket, assigns)}
@@ -80,12 +88,21 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     {:noreply, assign(socket, assigns)}
   end
 
+  @impl true
+  def handle_event("filter", %{"cut_ids" => cut_ids}, socket) do
+    filter = %Filter{socket.assigns.filter | cut_ids: cut_ids}
+    assigns = get_and_assign_page(filter, nil)
+
+    {:noreply, assign(socket, assigns)}
+  end
+
   def get_and_assign_page(filter, page_number) do
     criteria = [
       starts_with: filter.starts_with,
       search_text: filter.search_text,
       blend_type_ids: filter.blend_type_ids,
-      countries: filter.countries
+      countries: filter.countries,
+      cut_ids: filter.cut_ids
     ]
 
     %{

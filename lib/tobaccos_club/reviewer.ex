@@ -259,11 +259,20 @@ defmodule TobaccosClub.Reviewer do
       {:countries, []}, query ->
         query
 
-      {:countries, ["all"]}, query ->
+      {:countries, ["0"]}, query ->
         query
 
       {:countries, countries}, query ->
         from q in query, where: q.country in ^countries
+
+      {:cut_ids, []}, query ->
+        query
+
+      {:cut_ids, ["0"]}, query ->
+        query
+
+      {:cut_ids, cut_ids}, query ->
+        from q in query, where: q.cut_id in ^cut_ids
     end)
     |> order_by(asc: :name)
     |> Repo.paginate(params)
