@@ -245,7 +245,10 @@ defmodule TobaccosClub.Reviewer do
         query
 
       {:search_text, search_text}, query ->
-        from q in query, where: ilike(q.name, ^"%#{search_text}%")
+        blend_with_brands = from q in query, join: b in Brand, as: :brand, on: q.brand_id == b.id
+
+        from [blend, brand: brand] in blend_with_brands,
+          where: ilike(blend.name, ^"%#{search_text}%") or ilike(brand.name, ^"%#{search_text}%")
 
       {:blend_type_ids, []}, query ->
         query
