@@ -13,7 +13,12 @@ config :tobaccos_club, TobaccosClubWeb.Endpoint,
   url: [scheme: "https", host: "tabacos.club", port: 443],
   http: [port: {:system, "PORT"}],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: [
+    "https://tabacos.club",
+    "https://www.tabacos.club",
+    "http://tobaccos.herokuapp.com/"
+  ]
 
 # Do not print debug messages in production
 config :logger, level: :info
