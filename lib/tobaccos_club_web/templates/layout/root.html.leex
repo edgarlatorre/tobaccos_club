@@ -5,19 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Tobacco's club" %>
+    <%= live_title_tag assigns[:page_title] || gettext("Tobacco's Club") %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <nav class="flex items-center justify-between flex-wrap bg-orange-300 p-6">
+    <nav class="flex items-center justify-between flex-wrap bg-yellow-400 p-6">
       <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
         <img
           class="fill-current h-8 w-8 mr-2"
           src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
         <span class="font-semibold text-xl tracking-tight">
-          <a href="/" class="blocklg:inline-block lg:mt-0 text-orange-900 hover:text-orange-700 mr-4">
-            Tobacco's Club
+          <a href="/" class="blocklg:inline-block lg:mt-0 uppercase font-mono font-light text-2xl text-yellow-800 hover:text-yellow-700 mr-4">
+            <%= gettext("Tobacco's Club") %>
           </a>
         </span>
       </div>
