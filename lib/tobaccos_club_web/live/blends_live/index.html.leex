@@ -1,10 +1,8 @@
-<div class="flex items-center justify-center">
-  <h1 class="text-orange-900 text-4xl font-bold text-center m-4"><%= gettext "Blends" %></h1>
-</div>
 <div class="mt-10 justify-center">
   <div class="flex flex-col items-center justify-center m-5">
-      <form class="max-w-sm w-full" phx-submit="search">
-      <div class="pt-2 relative mx-auto text-gray-600 w-full">
+    <div class="flex flex-col justify-center md:w-3/5">
+      <form class="p-3" phx-submit="search">
+        <div class="pt-2 relative mx-auto text-gray-600 w-full">
           <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full"
             type="search"
             name="brand"
@@ -22,14 +20,13 @@
           </button>
         </div>
       </form>
-    <div class="flex flex-row items-center justify-center z-40">
-      <%= render_filter_options(@socket, @blend_types, gettext("Blend Type"), "blend_type_ids", @filter) %>
-      <%= render_filter_options(@socket, @countries, gettext("Country"), "countries", @filter, "locale") %>
-      <%= render_filter_options(@socket, @cuts, gettext("Cut"), "cut_ids", @filter) %>
+      <div class="flex flex-wrap-mx-3 mb-2 z-40 mt-4">
+        <%= render_filter_options(@socket, @blend_types, gettext("Blend Type"), "blend_type_ids", @filter) %>
+        <%= render_filter_options(@socket, @countries, gettext("Country"), "countries", @filter, "locale") %>
+        <%= render_filter_options(@socket, @cuts, gettext("Cut"), "cut_ids", @filter) %>
+      </div>
     </div>
   </div>
-
-  <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
 
   <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
     <table class="w-full">

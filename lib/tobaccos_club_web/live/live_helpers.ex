@@ -49,27 +49,37 @@ defmodule TobaccosClubWeb.LiveHelpers do
     assigns = %{socket: socket, filter: filter}
 
     ~L"""
-    <div @click.away="open = false" class="relative" x-data="{ open: false }">
-      <button @click="open = !open" class="flex flex-row items-center px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-orange-100 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-orange-100 focus:bg-orange-100 focus:outline-none focus:shadow-outline">
-        <span><%= name %></span>
-        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-      </button>
-      <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-lg">
-        <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
-          <form phx-change="filter">
-            <input type="hidden" name="<%= input_name %>[]" value="0"/>
-            <%= for el <- elements do %>
-              <label class="inline-flex mt-3 hover:text-orange-600">
-                <input
-                  class="form-checkbox h-5 w-5 text-gray-600"
-                  type="checkbox"
-                  name="<%= input_name %>[]"
-                  value="<%= Map.get(el, String.to_atom(value_name)) %>"
-                  <%= if to_string(Map.get(el, String.to_atom(value_name))) in Filter.filter_by_name(filter, input_name), do: "checked" %>>
-                <span class="ml-2 text-gray-700"><%= el.name %></span>
-              </label>
-            <% end %>
-          </form>
+    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+      <div @click.away="open = false" class="relative border-2 border-gray-300 rounded-lg" x-data="{ open: false }">
+        <button @click="open = !open" class="relative w-full bg-white b-2 border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <span class="flex items-center">
+            <span class="block truncate text-gray-400">
+              <%= name %>
+            </span>
+          </span>
+          <span class="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <svg class="h-5 w-5 text-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+        <div x-show="open" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-lg">
+          <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+            <form phx-change="filter">
+              <input type="hidden" name="<%= input_name %>[]" value="0">
+              <%= for el <- elements do %>
+                <label class="inline-flex mt-3 hover:text-orange-600 w-full">
+                  <input
+                    class="form-checkbox h-5 w-5 text-gray-600"
+                    type="checkbox"
+                    name="<%= input_name %>[]"
+                    value="<%= Map.get(el, String.to_atom(value_name)) %>"
+                    <%= if to_string(Map.get(el, String.to_atom(value_name))) in Filter.filter_by_name(filter, input_name), do: "checked" %>>
+                  <span class="ml-2 text-gray-700"><%= el.name %></span>
+                </label>
+              <% end %>
+            </form>
+          </div>
         </div>
       </div>
     </div>
