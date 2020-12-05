@@ -12,9 +12,8 @@
   <body>
     <nav class="flex items-center justify-between flex-wrap bg-yellow-400 p-6">
       <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-        <img
-          class="fill-current h-8 w-8 mr-2"
-          src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
+        <img class="fill-current h-8 w-8 mr-2"
+             src="<%= Routes.static_path(@conn, "/images/pipe.png") %>" alt="Tobacco's club Logo"/>
         <span class="font-semibold text-xl tracking-tight">
           <a href="/" class="blocklg:inline-block lg:mt-0 uppercase font-mono font-light text-2xl text-yellow-800 hover:text-yellow-700 mr-4">
             <%= gettext("Tobacco's Club") %>
