@@ -51,7 +51,7 @@ defmodule TobaccosClubWeb.LiveHelpers do
     ~L"""
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
       <div @click.away="open = false" class="relative border-2 border-gray-300 rounded-lg" x-data="{ open: false }">
-        <button @click="open = !open" class="relative w-full bg-white b-2 border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-0 sm:text-sm">
+        <button @click="open = !open" class="relative w-full bg-white b-2 border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left focus:outline-none focus:ring-0 sm:text-sm">
           <span class="flex items-center">
             <span class="block truncate text-gray-400">
               <%= name %>

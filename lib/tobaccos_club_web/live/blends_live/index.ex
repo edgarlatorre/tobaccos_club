@@ -124,7 +124,8 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
         total_pages: total_pages
       },
       alphabet: alphabet,
-      filter: filter
+      filter: filter,
+      selected_filters: selected_filters(filter)
     ]
   end
 
@@ -133,5 +134,9 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       page: Map.get(params, "page", 1),
       page_size: Map.get(params, "page_size", 100)
     }
+  end
+
+  defp selected_filters(filter) do
+    filter.blend_type_ids ++ filter.countries ++ filter.cut_ids
   end
 end

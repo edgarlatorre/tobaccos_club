@@ -1,16 +1,16 @@
 <div class="mt-10 justify-center">
   <div class="flex flex-col items-center justify-center m-5">
-    <div class="flex flex-col justify-center md:w-3/5">
+    <div class="flex flex-col justify-center w-full">
       <form class="p-3" phx-submit="search">
-        <div class="pt-2 relative mx-auto text-gray-600 w-full">
-          <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full"
+        <div class="pt-2 relative mx-auto w-full">
+          <input class="border-2 border-gray-300 text-gray-400 placeholder-gray-400 bg-white h-10 px-5 pr-16 rounded-lg w-full ring-0 focus:ring-0"
             type="search"
             name="brand"
             aria-label="Brand name"
             value="<%= @filter.search_text %>"
             placeholder="<%= gettext "Search by Blend or Brand" %>">
-          <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-            <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+          <button type="submit" class="absolute right-0 top-0 mt-5 mr-4 text-gray-300">
+            <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
               viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
               width="512px" height="512px">
@@ -19,28 +19,38 @@
           </button>
         </div>
       </form>
-      <div class="flex flex-wrap-mx-3 mb-2 z-40 mt-4">
+      <div class="flex flex-wrap-mx-3 mb-2 z-40">
         <%= render_filter_options(@socket, @blend_types, gettext("Blend Type"), "blend_type_ids", @filter) %>
         <%= render_filter_options(@socket, @countries, gettext("Country"), "countries", @filter, "locale") %>
         <%= render_filter_options(@socket, @cuts, gettext("Cut"), "cut_ids", @filter) %>
       </div>
+      <div class="mt-4 px-3 flex">
+        <%= for item <- @selected_filters do %>
+          <div class="flex items-center rounded-full border-2 px-1 w-min bg-gray-200 text-gray-500 text-xs font-semibold">
+            <span class=""><%= item %></span>
+            <svg class="h-5 w-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        <% end %>
+      </div>
+      <div class="inline-block m-3 mt-6 shadow rounded-lg overflow-hidden">
+        <table class="w-full">
+          <tbody>
+            <%= for blend <- @blends do %>
+              <tr class="hover:bg-orange-100">
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
+                  <%= link(blend.name, to: Routes.live_path(@socket, TobaccosClubWeb.BlendsLive.Show, blend.brand.slug, blend.id)) %>
+                </td>
+                <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
+                  <span><%= link "Edit", to: "#" %></span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
     </div>
   </div>
-  <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-    <table class="w-full">
-      <tbody>
-        <%= for blend <- @blends do %>
-          <tr class="hover:bg-orange-100">
-            <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
-              <%= link(blend.name, to: Routes.live_path(@socket, TobaccosClubWeb.BlendsLive.Show, blend.brand.slug, blend.id)) %>
-            </td>
-            <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
-              <span><%= link "Edit", to: "#" %></span>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
 </div>
