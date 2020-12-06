@@ -22,6 +22,21 @@ defmodule TobaccosClub.Pipes do
   end
 
   @doc """
+  Returns the list of cuts by ids.
+
+  ## Examples
+
+      iex> list_cuts([1, 2, 3])
+      [%Cut{id: 1}, ...]
+
+  """
+  def list_cuts_by_ids(ids) do
+    query = from(b in Cut, where: b.id in ^ids)
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single cut.
 
   Raises `Ecto.NoResultsError` if the Cut does not exist.

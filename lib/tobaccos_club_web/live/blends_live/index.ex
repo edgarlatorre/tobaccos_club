@@ -137,6 +137,10 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   end
 
   defp selected_filters(filter) do
-    filter.blend_type_ids ++ filter.countries ++ filter.cut_ids
+    blends = Enum.map(Reviewer.list_blend_types_by_ids(filter.blend_type_ids), fn b -> b.name end)
+    cuts = Enum.map(Pipes.list_cuts_by_ids(filter.cut_ids), fn c -> c.name end)
+    countries = Country.list_countries_by_codes(filter.countries)
+
+    countries ++ cuts ++ blends
   end
 end

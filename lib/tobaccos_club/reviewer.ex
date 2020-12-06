@@ -138,6 +138,21 @@ defmodule TobaccosClub.Reviewer do
   end
 
   @doc """
+  Returns the list of blend_types by list of ids.
+
+  ## Examples
+
+      iex> list_blend_types([1, 2, 3])
+      [%BlendType{id: 1...}, ...]
+
+  """
+  def list_blend_types_by_ids(ids) do
+    query = from(b in BlendType, where: b.id in ^ids)
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single blend_type.
 
   Raises `Ecto.NoResultsError` if the Blend type does not exist.

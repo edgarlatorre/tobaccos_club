@@ -11,6 +11,12 @@ defmodule TobaccosClub.Utils.Country do
     end)
   end
 
+  def list_countries_by_codes(codes) do
+    list_localized_countries()
+    |> Enum.filter(fn c -> Enum.member?(codes, c.locale) end)
+    |> Enum.map(fn c -> c.name end)
+  end
+
   def list_countries do
     [
       %Country{locale: "US", name: "United States"},
