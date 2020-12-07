@@ -29,8 +29,10 @@ defmodule TobaccosClub.Services.Populate do
   defp create_blend(params) do
     brand = Reviewer.get_brand_by_name(params["brand"])
     blend_type = Reviewer.get_blend_type_by_name(params["blend_type"])
+    country = if params["country"], do: Pipes.get_country_by_locale(params["country"]), else: nil
     cut = if params["cut"], do: Pipes.get_cut_by_name(params["cut"]), else: nil
     cut_id = if cut, do: cut.id, else: nil
+    country_id = if country, do: country.id, else: nil
 
     blend = %{
       brand_id: brand.id,
@@ -42,7 +44,7 @@ defmodule TobaccosClub.Services.Populate do
       flavouring: params["flavouring"],
       cut_id: cut_id,
       packaging: params["packaging"],
-      country: params["country"],
+      country_id: country_id,
       production: params["production"],
       image_url: params["image"]
     }

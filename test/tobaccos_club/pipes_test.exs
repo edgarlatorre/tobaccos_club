@@ -58,4 +58,65 @@ defmodule TobaccosClub.PipesTest do
       assert %Pipes.Cut{} = Pipes.get_cut_by_name("Flake")
     end
   end
+
+  describe "countries" do
+    alias TobaccosClub.Pipes.Country
+
+    @valid_attrs %{locale: "some locale", name: "some name"}
+    @update_attrs %{locale: "some updated locale", name: "some updated name"}
+    @invalid_attrs %{locale: nil, name: nil}
+
+    def country_fixture(attrs \\ %{}) do
+      {:ok, country} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Pipes.create_country()
+
+      country
+    end
+
+    test "list_countries/0 returns all countries" do
+      country = country_fixture()
+      assert Pipes.list_countries() == [country]
+    end
+
+    test "get_country!/1 returns the country with given id" do
+      country = country_fixture()
+      assert Pipes.get_country!(country.id) == country
+    end
+
+    test "create_country/1 with valid data creates a country" do
+      assert {:ok, %Country{} = country} = Pipes.create_country(@valid_attrs)
+      assert country.locale == "some locale"
+      assert country.name == "some name"
+    end
+
+    test "create_country/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Pipes.create_country(@invalid_attrs)
+    end
+
+    test "update_country/2 with valid data updates the country" do
+      country = country_fixture()
+      assert {:ok, %Country{} = country} = Pipes.update_country(country, @update_attrs)
+      assert country.locale == "some updated locale"
+      assert country.name == "some updated name"
+    end
+
+    test "update_country/2 with invalid data returns error changeset" do
+      country = country_fixture()
+      assert {:error, %Ecto.Changeset{}} = Pipes.update_country(country, @invalid_attrs)
+      assert country == Pipes.get_country!(country.id)
+    end
+
+    test "delete_country/1 deletes the country" do
+      country = country_fixture()
+      assert {:ok, %Country{}} = Pipes.delete_country(country)
+      assert_raise Ecto.NoResultsError, fn -> Pipes.get_country!(country.id) end
+    end
+
+    test "change_country/1 returns a country changeset" do
+      country = country_fixture()
+      assert %Ecto.Changeset{} = Pipes.change_country(country)
+    end
+  end
 end
