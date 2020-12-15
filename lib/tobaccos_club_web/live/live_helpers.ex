@@ -45,7 +45,7 @@ defmodule TobaccosClubWeb.LiveHelpers do
     """
   end
 
-  def render_filter_options(socket, elements, name, input_name, filter, value_name \\ "id") do
+  def render_filter_options(socket, elements, name, input_name, filter) do
     assigns = %{socket: socket, filter: filter}
 
     ~L"""
@@ -73,8 +73,8 @@ defmodule TobaccosClubWeb.LiveHelpers do
                     class="h-5 w-5 text-yellow-800 border-2 focus:ring-0"
                     type="checkbox"
                     name="<%= input_name %>[]"
-                    value="<%= Map.get(el, String.to_atom(value_name)) %>"
-                    <%= if to_string(Map.get(el, String.to_atom(value_name))) in Filter.filter_by_name(filter, input_name), do: "checked" %>>
+                    value="<%= el.id %>"
+                    <%= if to_string(el.id) in Filter.filter_by_name(filter, input_name), do: "checked" %>>
                   <span class="ml-2 text-gray-700"><%= el.name %></span>
                 </label>
               <% end %>

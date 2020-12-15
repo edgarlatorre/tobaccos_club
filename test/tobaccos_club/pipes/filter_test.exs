@@ -4,7 +4,7 @@ defmodule TobaccosClub.Pipes.FilterTest do
 
   describe "Filter" do
     test "build empty filter" do
-      assert %{starts_with: "", search_text: "", blend_type_ids: [], countries: [], cut_ids: []} =
+      assert %{starts_with: "", search_text: "", blend_type_ids: [], country_ids: [], cut_ids: []} =
                Filter.build()
     end
   end
@@ -14,7 +14,7 @@ defmodule TobaccosClub.Pipes.FilterTest do
       starts_with: "A",
       search_text: "peterson",
       blend_type_ids: [1, 2],
-      countries: ["BR"],
+      country_ids: [1],
       cut_ids: [3, 4]
     }
 
@@ -26,8 +26,8 @@ defmodule TobaccosClub.Pipes.FilterTest do
       assert [1, 2] == Filter.filter_by_name(@filter, "blend_type_ids")
     end
 
-    test "countries" do
-      assert ["BR"] == Filter.filter_by_name(@filter, "countries")
+    test "country_ids" do
+      assert [1] == Filter.filter_by_name(@filter, "country_ids")
     end
 
     test "search_text" do
