@@ -63,7 +63,7 @@ defmodule TobaccosClubWeb.LiveHelpers do
             </svg>
           </span>
         </button>
-        <div x-show="open" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-2xl">
+        <div x-show="open" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-2xl z-10">
           <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
             <form phx-change="filter">
               <input type="hidden" name="<%= input_name %>[]" value="0">
