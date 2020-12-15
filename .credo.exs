@@ -4,7 +4,7 @@
       name: "default",
       strict: true,
       files: %{
-        included: ["*.exs", "lib/", "test/", "priv/", "config/", "rel/"],
+        included: ["*.exs", "lib/", "test/", "config/", "rel/"],
         excluded: []
       },
       checks: [

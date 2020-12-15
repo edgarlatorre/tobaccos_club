@@ -9,6 +9,13 @@ defmodule TobaccosClub.TobaccosFactory do
     }
   end
 
+  def country_factory do
+    %Pipes.Country{
+      name: sequence(:name, &"Country #{&1}"),
+      locale: sequence(:locale, &"C#{&1}")
+    }
+  end
+
   def blend_type_factory do
     %Pipes.BlendType{
       name: sequence(:name, &"Virginia #{&1}")
@@ -21,7 +28,7 @@ defmodule TobaccosClub.TobaccosFactory do
       blend_type: build(:blend_type),
       brand: build(:brand),
       contents: "Cavendish, Latakia, Oriental/Turkish, Virginia",
-      country: "UK",
+      country: build(:country),
       cut: build(:cut),
       flavouring: "None",
       image_url: "",

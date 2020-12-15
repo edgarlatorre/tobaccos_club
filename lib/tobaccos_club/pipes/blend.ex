@@ -5,7 +5,6 @@ defmodule TobaccosClub.Pipes.Blend do
   schema "blends" do
     field :blended_by, :string
     field :contents, :string
-    field :country, :string
     field :flavouring, :string
     field :image_url, :string
     field :manufactured_by, :string
@@ -16,6 +15,7 @@ defmodule TobaccosClub.Pipes.Blend do
     belongs_to :brand, TobaccosClub.Pipes.Brand
     belongs_to :blend_type, TobaccosClub.Pipes.BlendType
     belongs_to :cut, TobaccosClub.Pipes.Cut
+    belongs_to :country, TobaccosClub.Pipes.Country
 
     timestamps()
   end
@@ -32,7 +32,7 @@ defmodule TobaccosClub.Pipes.Blend do
       :flavouring,
       :cut_id,
       :packaging,
-      :country,
+      :country_id,
       :production,
       :image_url
     ])

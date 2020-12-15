@@ -166,3 +166,9 @@ msgstr "Grécia"
 #: lib/tobaccos_club_web/live/blends_live/index.html.leex:13
 msgid "Search by Blend or Brand"
 msgstr "Buscar por mistura ou marca"
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/layout/root.html.leex:8
+#: lib/tobaccos_club_web/templates/layout/root.html.leex:20
+msgid "Tobacco's Club"
+msgstr "Clube do Tabaco"

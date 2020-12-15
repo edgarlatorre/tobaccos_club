@@ -1,8 +1,7 @@
 <section x-data="{ isEditing: false } mt-2">
   <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
-  <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %><h5>
-  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @blend.brand.name %><h5>
-
+  <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %></h5>
+  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @blend.brand.name %></h5>
   <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
     <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-orange-900">
@@ -23,7 +22,6 @@
             <%= value_or_dash(@blend.blended_by) %>
           </dd>
         </div>
-
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-orange-700">
             <%= gettext("Blend Type") %>
@@ -32,7 +30,6 @@
             <%= @blend.blend_type.name %>
           </dd>
         </div>
-
         <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-orange-700">
             <%= gettext("Cut") %>
@@ -41,7 +38,6 @@
             <%= @blend.cut.name %>
           </dd>
         </div>
-
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-orange-700">
             <%= gettext("Contents") %>
@@ -50,16 +46,14 @@
             <%= @blend.contents %>
           </dd>
         </div>
-
         <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-orange-700">
             <%= gettext("Country") %>
           </dt>
           <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.country %>
+            <%= @blend.country.name %>
           </dd>
         </div>
-
         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt class="text-sm leading-5 font-medium text-orange-700">
             <%= gettext("Availability") %>

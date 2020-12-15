@@ -5,7 +5,7 @@ defmodule TobaccosClubWeb.BrandsLive.IndexTest do
 
   test "disconnected and connected render", %{conn: conn} do
     {:ok, page_live, disconnected_html} = live(conn, "/brands")
-    assert disconnected_html =~ "Tobacco"
-    assert render(page_live) =~ "Brands"
+    assert disconnected_html =~ "Marcas"
+    assert render(page_live) =~ "Marcas"
   end
 end

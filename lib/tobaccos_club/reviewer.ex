@@ -138,6 +138,21 @@ defmodule TobaccosClub.Reviewer do
   end
 
   @doc """
+  Returns the list of blend_types by list of ids.
+
+  ## Examples
+
+      iex> list_blend_types([1, 2, 3])
+      [%BlendType{id: 1...}, ...]
+
+  """
+  def list_blend_types_by_ids(ids) do
+    query = from(b in BlendType, where: b.id in ^ids)
+
+    Repo.all(query)
+  end
+
+  @doc """
   Gets a single blend_type.
 
   Raises `Ecto.NoResultsError` if the Blend type does not exist.
@@ -259,14 +274,14 @@ defmodule TobaccosClub.Reviewer do
       {:blend_type_ids, blend_type_ids}, query ->
         from q in query, where: q.blend_type_id in ^blend_type_ids
 
-      {:countries, []}, query ->
+      {:country_ids, []}, query ->
         query
 
-      {:countries, ["0"]}, query ->
+      {:country_ids, ["0"]}, query ->
         query
 
-      {:countries, countries}, query ->
-        from q in query, where: q.country in ^countries
+      {:country_ids, country_ids}, query ->
+        from q in query, where: q.country_id in ^country_ids
 
       {:cut_ids, []}, query ->
         query
@@ -314,7 +329,8 @@ defmodule TobaccosClub.Reviewer do
       ** (Ecto.NoResultsError)
 
   """
-  def get_blend!(id), do: Repo.preload(Repo.get!(Blend, id), [:cut, :blend_type, :brand])
+  def get_blend!(id),
+    do: Repo.preload(Repo.get!(Blend, id), [:cut, :blend_type, :brand, :country])
 
   @doc """
   Creates a blend.
