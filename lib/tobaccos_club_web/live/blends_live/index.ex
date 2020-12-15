@@ -5,7 +5,6 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   alias TobaccosClub.Pipes
   alias TobaccosClub.Pipes.Filter
   alias TobaccosClub.Reviewer
-  alias TobaccosClub.Utils.Country
 
   @impl true
   def mount(params, _session, socket) do
@@ -28,7 +27,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       conn: socket,
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
-      countries: Country.list_localized_countries(),
+      countries: Pipes.list_countries(),
       cuts: Pipes.list_cuts(),
       pagination_info: %Info{
         page_number: page_number || 0,
@@ -41,7 +40,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
         starts_with: "",
         search_text: "",
         blend_type_ids: [],
-        countries: [],
+        country_ids: [],
         cut_ids: []
       }
     ]
@@ -81,8 +80,8 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   end
 
   @impl true
-  def handle_event("filter", %{"countries" => countries}, socket) do
-    filter = %Filter{socket.assigns.filter | countries: countries}
+  def handle_event("filter", %{"country_ids" => country_ids}, socket) do
+    filter = %Filter{socket.assigns.filter | country_ids: country_ids}
     assigns = get_and_assign_page(filter, nil)
 
     {:noreply, assign(socket, assigns)}
@@ -96,12 +95,40 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     {:noreply, assign(socket, assigns)}
   end
 
+  @impl true
+  def handle_event("uncheck_filter", %{"id" => id, "struct" => struct}, socket) do
+    %{cut_ids: cut_ids, country_ids: country_ids, blend_type_ids: blend_type_ids} =
+      socket.assigns.filter
+
+    filter =
+      case struct do
+        "Elixir.TobaccosClub.Pipes.BlendType" ->
+          %Filter{
+            socket.assigns.filter
+            | blend_type_ids: List.delete(blend_type_ids, id)
+          }
+
+        "Elixir.TobaccosClub.Pipes.Cut" ->
+          %Filter{socket.assigns.filter | cut_ids: List.delete(cut_ids, id)}
+
+        "Elixir.TobaccosClub.Pipes.Country" ->
+          %Filter{socket.assigns.filter | country_ids: List.delete(country_ids, id)}
+
+        _ ->
+          socket.assigns.filter
+      end
+
+    assigns = get_and_assign_page(filter, nil)
+
+    {:noreply, assign(socket, assigns)}
+  end
+
   def get_and_assign_page(filter, page_number) do
     criteria = [
       starts_with: filter.starts_with,
       search_text: filter.search_text,
       blend_type_ids: filter.blend_type_ids,
-      countries: filter.countries,
+      country_ids: filter.country_ids,
       cut_ids: filter.cut_ids
     ]
 
@@ -137,10 +164,11 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   end
 
   defp selected_filters(filter) do
-    blends = Enum.map(Reviewer.list_blend_types_by_ids(filter.blend_type_ids), fn b -> b.name end)
-    cuts = Enum.map(Pipes.list_cuts_by_ids(filter.cut_ids), fn c -> c.name end)
-    countries = Country.list_countries_by_codes(filter.countries)
+    blend_types = Enum.map(Reviewer.list_blend_types_by_ids(filter.blend_type_ids), fn b -> b end)
 
-    countries ++ cuts ++ blends
+    cuts = Enum.map(Pipes.list_cuts_by_ids(filter.cut_ids), fn c -> c end)
+    countries = Enum.map(Pipes.list_countries_by_ids(filter.country_ids), fn c -> c end)
+
+    countries ++ cuts ++ blend_types
   end
 end

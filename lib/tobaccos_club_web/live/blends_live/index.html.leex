@@ -21,16 +21,18 @@
       </form>
       <div class="flex flex-wrap-mx-3 mb-2 z-40">
         <%= render_filter_options(@socket, @blend_types, gettext("Blend Type"), "blend_type_ids", @filter) %>
-        <%= render_filter_options(@socket, @countries, gettext("Country"), "countries", @filter, "locale") %>
+        <%= render_filter_options(@socket, @countries, gettext("Country"), "country_ids", @filter) %>
         <%= render_filter_options(@socket, @cuts, gettext("Cut"), "cut_ids", @filter) %>
       </div>
       <div class="mt-4 px-3 flex">
         <%= for item <- @selected_filters do %>
           <div class="flex items-center rounded-full border-2 px-1 w-auto bg-gray-200 text-gray-500 text-xs font-semibold">
-            <span class=""><%= item %></span>
-            <svg class="h-5 w-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-            </svg>
+            <span class=""><%= item.name %></span>
+            <div phx-click="uncheck_filter" phx-value-id="<%= item.id %>" phx-value-struct="<%= item.__struct__ %>">
+              <svg class="h-5 w-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </div>
           </div>
         <% end %>
       </div>

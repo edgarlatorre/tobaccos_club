@@ -274,14 +274,14 @@ defmodule TobaccosClub.Reviewer do
       {:blend_type_ids, blend_type_ids}, query ->
         from q in query, where: q.blend_type_id in ^blend_type_ids
 
-      {:countries, []}, query ->
+      {:country_ids, []}, query ->
         query
 
-      {:countries, ["0"]}, query ->
+      {:country_ids, ["0"]}, query ->
         query
 
-      {:countries, countries}, query ->
-        from q in query, where: q.country in ^countries
+      {:country_ids, country_ids}, query ->
+        from q in query, where: q.country_id in ^country_ids
 
       {:cut_ids, []}, query ->
         query
