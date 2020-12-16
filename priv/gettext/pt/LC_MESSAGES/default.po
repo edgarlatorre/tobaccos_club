@@ -36,7 +36,7 @@ msgstr "Mistura produzida por"
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:3
 msgid "By"
-msgstr "por"
+msgstr "Por"
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:47

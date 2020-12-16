@@ -50,8 +50,8 @@ defmodule TobaccosClubWeb.LiveHelpers do
 
     ~L"""
     <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <div @click.away="open = false" class="relative border-2 border-gray-300 rounded-lg" x-data="{ open: false }">
-        <button @click="open = !open" class="relative w-full bg-white b-2 border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left focus:outline-none focus:ring-0 sm:text-sm">
+      <div x-on:click.away="<%= input_name %> = false" class="relative border-2 border-gray-300 rounded-lg">
+        <button x-on:click="<%= input_name %> = !<%= input_name %>" class="relative w-full bg-white b-2 border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left focus:outline-none focus:ring-0 sm:text-sm">
           <span class="flex items-center">
             <span class="block truncate text-gray-400">
               <%= name %>
@@ -63,7 +63,7 @@ defmodule TobaccosClubWeb.LiveHelpers do
             </svg>
           </span>
         </button>
-        <div x-show="open" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-2xl z-10">
+        <div x-show="<%= input_name %>" class="absolute right-0 mt-2 origin-top-right rounded-md shadow-2xl z-10">
           <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
             <form phx-change="filter">
               <input type="hidden" name="<%= input_name %>[]" value="0">
@@ -84,5 +84,25 @@ defmodule TobaccosClubWeb.LiveHelpers do
       </div>
     </div>
     """
+  end
+
+  def schema_to_json(blend) do
+    brand_name = if blend.brand, do: blend.brand.name, else: "-"
+    blend_type_name = if blend.blend_type, do: blend.blend_type.name, else: "-"
+    cut_name = if blend.cut, do: blend.cut.name, else: "-"
+    country_name = if blend.country, do: blend.country.name, else: "-"
+
+    Jason.encode!(
+      %{
+        name: blend.name,
+        blended_by: blend.blended_by,
+        blend_type: blend_type_name,
+        brand: brand_name,
+        contents: blend.contents,
+        country: Gettext.gettext(TobaccosClubWeb.Gettext, country_name),
+        cut: cut_name,
+        production: blend.production
+      }
+    )
   end
 end

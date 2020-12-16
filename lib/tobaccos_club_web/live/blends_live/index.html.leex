@@ -1,5 +1,5 @@
-<div class="mt-10 justify-center">
-  <div class="flex flex-col items-center justify-center m-5">
+<div class="flex mt-10 justify-center" x-data="{blend: false, blend_type_ids: false, country_ids: false, cut_ids: false}">
+  <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full">
     <div class="flex flex-col justify-center w-full">
       <form class="p-3" phx-submit="search">
         <div class="pt-2 relative mx-auto w-full">
@@ -42,7 +42,7 @@
             <%= for blend <- @blends do %>
               <tr class="hover:bg-orange-100">
                 <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
-                  <%= link(blend.name, to: Routes.live_path(@socket, TobaccosClubWeb.BlendsLive.Show, blend.brand.slug, blend.id)) %>
+                  <a href="#" x-on:click="blend = <%= schema_to_json(blend) %>"><%= blend.name %></a>
                 </td>
                 <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
                   <span><%= link "Edit", to: "#" %></span>
@@ -53,6 +53,48 @@
         </table>
       </div>
       <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
+    </div>
+  </div>
+  <div x-show="blend" @click.away="blend = false" class="bg-white w-2/5 shadow-2xl">
+    <div class="flex justify-end border-b-2 p-3">
+      <a href="#" @click="blend = false">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="h-4 w-4 self-end">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </a>
+    </div>
+    <h3 x-text="blend.name" class="text-4xl text-yellow-800 text-left p-2 mt-2"></h3>
+    <div class="text-yellow-800 px-2">
+      <%= gettext("By") %>: <span x-text="blend.brand"></span>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Blended By") %></p>
+      <p x-text="blend.blended_by"></p>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Blend Type") %></p>
+      <p x-text="blend.blend_type"></p>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Cut") %></p>
+      <p x-text="blend.cut"></p>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Contents") %></p>
+      <p x-text="blend.contents"></p>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Country") %></p>
+      <p x-text="blend.country"></p>
+    </div>
+    <div class="px-3 mt-3">
+      <p><%= gettext("Production") %></p>
+      <p x-text="blend.production"></p>
     </div>
   </div>
 </div>
