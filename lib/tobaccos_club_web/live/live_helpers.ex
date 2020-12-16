@@ -92,17 +92,15 @@ defmodule TobaccosClubWeb.LiveHelpers do
     cut_name = if blend.cut, do: blend.cut.name, else: "-"
     country_name = if blend.country, do: blend.country.name, else: "-"
 
-    Jason.encode!(
-      %{
-        name: blend.name,
-        blended_by: blend.blended_by,
-        blend_type: blend_type_name,
-        brand: brand_name,
-        contents: blend.contents,
-        country: Gettext.gettext(TobaccosClubWeb.Gettext, country_name),
-        cut: cut_name,
-        production: blend.production
-      }
-    )
+    Jason.encode!(%{
+      name: blend.name,
+      blended_by: blend.blended_by,
+      blend_type: blend_type_name,
+      brand: brand_name,
+      contents: blend.contents,
+      country: Gettext.gettext(TobaccosClubWeb.Gettext, country_name),
+      cut: cut_name,
+      production: blend.production
+    })
   end
 end
