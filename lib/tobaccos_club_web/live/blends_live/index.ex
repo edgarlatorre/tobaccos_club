@@ -45,7 +45,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       }
     ]
 
-    {:ok, assign(socket, assigns)}
+    {:ok, assign(socket, assigns), temporary_assigns: [blend: nil]}
   end
 
   @impl true
@@ -121,6 +121,12 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     assigns = get_and_assign_page(filter, nil)
 
     {:noreply, assign(socket, assigns)}
+  end
+
+  @impl true
+  def handle_event("show_blend", %{"id" => blend_id}, socket) do
+    blend = Reviewer.get_blend!(blend_id)
+    {:noreply, assign(socket, :blend, blend)}
   end
 
   def get_and_assign_page(filter, page_number) do
