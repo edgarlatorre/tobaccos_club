@@ -17,7 +17,8 @@ config :tobaccos_club, TobaccosClubWeb.Endpoint,
   check_origin: [
     "https://tabacos.club",
     "https://www.tabacos.club",
-    "https://tobaccos.herokuapp.com/"
+    "https://tobaccos.gigalixirapp.com",
+    "https://tobaccos.herokuapp.com"
   ]
 
 # Do not print debug messages in production
