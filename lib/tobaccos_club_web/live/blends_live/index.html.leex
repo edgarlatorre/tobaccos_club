@@ -1,5 +1,5 @@
 <div class="flex mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
-  <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full">
+  <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full static">
     <div class="flex flex-col justify-center w-full">
       <form class="p-3" phx-submit="search">
         <div class="pt-2 relative mx-auto w-full">
@@ -55,7 +55,7 @@
       <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
     </div>
   </div>
-  <div x-show="showBlend" @click.away="showBlend = false" class="bg-white w-2/5 shadow-2xl">
+  <div x-show="showBlend" @click.away="showBlend = false" class="bg-white sm:w-2/5 shadow-2xl absolute  py-2">
     <div class="flex justify-end border-b-2 p-3">
       <a href="#" @click="showBlend = false">
         <svg
@@ -69,7 +69,7 @@
       </a>
     </div>
     <%= if @blend do %>
-      <h3 class="text-4xl text-yellow-800 text-left p-2 mt-2"><%= @blend.name %></h3>
+      <h3 class=" text-2xl sm:text-4xl text-yellow-800 text-left p-2 mt-2"><%= @blend.name %></h3>
       <div class="text-yellow-800 px-2">
         <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
       </div>
