@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build_test_deploy:
@@ -15,7 +15,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: postgres
         ports:
-          - '5432:5432'
+          - "5432:5432"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -26,8 +26,8 @@ jobs:
       - name: Set up Elixir
         uses: actions/setup-elixir@v1
         with:
-          elixir-version: '1.10.3' # Define the elixir version [required]
-          otp-version: '22.3' # Define the OTP version [required]
+          elixir-version: "1.10.3" # Define the elixir version [required]
+          otp-version: "22.3" # Define the OTP version [required]
       - name: Restore dependencies cache
         uses: actions/cache@v2
         with:
@@ -46,10 +46,10 @@ jobs:
         run: mix ecto.migrate
       - name: Run tests
         run: mix test
-      - name: Deploy to Heroku
-        uses: actions/checkout@v2
-      - name: Add backend remote origin
-        run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
-      - run: git fetch --unshallow
-      - name: Deploy to Heroku
-        run: git push heroku master:refs/heads/master --force
+      # - name: Deploy to Heroku
+      #   uses: actions/checkout@v2
+      # - name: Add backend remote origin
+      #   run: git remote add heroku https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+      # - run: git fetch --unshallow
+      # - name: Deploy to Heroku
+      #   run: git push heroku master:refs/heads/master --force
