@@ -1,4 +1,4 @@
-<div class="flex mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
+<div class="flex flex-nowrap mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
   <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full static">
     <div class="flex flex-col justify-center w-full">
       <form class="p-3" phx-submit="search">
@@ -55,7 +55,7 @@
       <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
     </div>
   </div>
-  <div x-show.transition.duration.200ms="showBlend" class="bg-white border border-gray-100 w-5/6 sm:w-2/5 shadow-2xl absolute py-2">
+  <div x-show.transition.duration.200ms="showBlend" class="fixed bg-white border border-gray-100 w-5/6 sm:w-2/5 shadow-2xl mb-4">
     <div class="flex justify-end border-b-2 p-3">
       <a href="#" @click="showBlend = false" phx-click="show_blend" phx-value-id="">
         <svg
