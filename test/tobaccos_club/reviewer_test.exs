@@ -197,8 +197,7 @@ defmodule TobaccosClub.ReviewerTest do
     test "paginate_blends/1 returns paginated filtered by search_text" do
       insert_list(3, :blend)
       insert(:blend, name: "Another 138 Blend")
-      entries = Reviewer.paginate_blends([search_text: "138"], %{page: 1}).entries
-
+      entries = Reviewer.paginate_blends([search_text: "Another 138"], %{page: 1}).entries
       assert 1 == Enum.count(entries)
     end
 
