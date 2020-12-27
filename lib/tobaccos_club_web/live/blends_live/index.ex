@@ -125,7 +125,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
   @impl true
   def handle_event("show_blend", %{"id" => blend_id}, socket) do
-    blend = Reviewer.get_blend!(blend_id)
+    blend = if blend_id != "", do: Reviewer.get_blend!(blend_id), else: nil
     {:noreply, assign(socket, :blend, blend)}
   end
 
