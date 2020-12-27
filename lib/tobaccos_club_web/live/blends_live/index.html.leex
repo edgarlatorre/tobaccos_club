@@ -74,27 +74,27 @@
         <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
       </div>
       <div class="px-3 mt-3">
-        <p><%= gettext("Blended By") %></p>
+        <p class="text-yellow-800"><%= gettext("Blended By") %></p>
         <p><%= @blend.blended_by %></p>
       </div>
       <div class="px-3 mt-3">
-        <p><%= gettext("Blend Type") %></p>
+        <p class="text-yellow-800"><%= gettext("Blend Type") %></p>
         <p><%= @blend.blend_type.name %></p>
       </div>
       <div class="px-3 mt-3">
-        <p><%= gettext("Cut") %></p>
+        <p class="text-yellow-800"><%= gettext("Cut") %></p>
         <p><%= @blend.cut.name %></p>
       </div>
       <div class="px-3 mt-3">
-        <p><%= gettext("Contents") %></p>
+        <p class="text-yellow-800"><%= gettext("Contents") %></p>
         <p><%= @blend.contents %></p>
       </div>
       <div class="px-3 mt-3">
-        <p><%= gettext("Country") %></p>
+        <p class="text-yellow-800"><%= gettext("Country") %></p>
         <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.country.name) %></p>
       </div>
-      <div class="px-3 mt-3">
-        <p><%= gettext("Availability") %></p>
+      <div class="px-3 mt-3 pb-2">
+        <p class="text-yellow-800"><%= gettext("Availability") %></p>
         <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.production) %></p>
       </div>
     <% end %>
