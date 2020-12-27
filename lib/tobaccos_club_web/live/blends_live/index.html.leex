@@ -95,7 +95,7 @@
       </div>
       <div class="px-3 mt-3">
         <p><%= gettext("Availability") %></p>
-        <p><%= @blend.production %></p>
+        <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.production) %></p>
       </div>
     <% end %>
   </div>

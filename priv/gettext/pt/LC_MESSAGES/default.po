@@ -12,66 +12,69 @@ msgstr ""
 "Plural-Forms: nplurals=2\n"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:2
 #: lib/tobaccos_club_web/live/brands_live/show.html.leex:8
 msgid "Blends"
 msgstr "Misturas"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:65
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:97
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:59
 msgid "Availability"
 msgstr "Disponibilidade"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:26
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:29
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:23
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:81 lib/tobaccos_club_web/live/blends_live/show.html.leex:27
 msgid "Blend Type"
 msgstr "Tipo de Mistura"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:20
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:77
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:19
 msgid "Blended By"
 msgstr "Mistura produzida por"
 
 #, elixir-format
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:74
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:3
 msgid "By"
 msgstr "Por"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:47
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:89
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:43
 msgid "Contents"
 msgstr "Ingredientes"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:27
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:56
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:24
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:93 lib/tobaccos_club_web/live/blends_live/show.html.leex:51
 msgid "Country"
 msgstr "País"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:28
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:38
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:25
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:85 lib/tobaccos_club_web/live/blends_live/show.html.leex:35
 msgid "Cut"
 msgstr "Corte"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/live_helpers.ex:20
+#: lib/tobaccos_club_web/live/live_helpers.ex:19
 msgid "Showing"
 msgstr "Exibindo"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/live_helpers.ex:24
+#: lib/tobaccos_club_web/live/live_helpers.ex:23
 msgid "of"
 msgstr "de"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/live_helpers.ex:26
+#: lib/tobaccos_club_web/live/live_helpers.ex:25
 msgid "results"
 msgstr "resultados"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/live_helpers.ex:22
+#: lib/tobaccos_club_web/live/live_helpers.ex:21
 msgid "to"
 msgstr "até"
 
@@ -81,12 +84,12 @@ msgid "Brands"
 msgstr "Marcas"
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:12
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:11
 msgid "All information related to a blend."
 msgstr "As informações desta mistura são mantidas por usuários, sinta-se à vontade de editar caso ache necessário."
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:9
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:8
 msgid "Blend Information"
 msgstr "Informações sobre a mistura"
 
@@ -162,13 +165,24 @@ msgstr "República Checa"
 msgid "Greece"
 msgstr "Grécia"
 
+msgid "Currently available"
+msgstr "Atualmente disponível"
+
+msgid "No longer in production"
+msgstr "Atualmente indisponível"
+
+msgid "Re-release"
+msgstr "Relançado"
+
+msgid "Unknown"
+msgstr "Desconhecido"
+
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:13
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:11
 msgid "Search by Blend or Brand"
 msgstr "Buscar por mistura ou marca"
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/layout/root.html.leex:8
-#: lib/tobaccos_club_web/templates/layout/root.html.leex:20
 msgid "Tobacco's Club"
 msgstr "Clube do Tabaco"
