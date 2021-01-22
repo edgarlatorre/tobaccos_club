@@ -73,6 +73,11 @@
       <div class="text-yellow-800 px-2">
         <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
       </div>
+      <%= if @blend.image_url do %>
+        <div class="px-3 mt-3 flex flex-col justify-center items-center">
+          <img src="<%= @blend.image_url %>" class="h-40 w-40 border-2 border-gray-100 border-opacity-25 rounded-lg">
+        </div>
+      <% end %>
       <div class="px-3 mt-3">
         <p class="text-yellow-800"><%= gettext("Blended By") %></p>
         <p><%= @blend.blended_by %></p>
