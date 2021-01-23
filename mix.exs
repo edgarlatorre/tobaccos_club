@@ -37,9 +37,9 @@ defmodule TobaccosClub.MixProject do
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_view, "~> 0.15.0"},
+      {:phoenix_live_view, "~> 0.15.3"},
       {:floki, ">= 0.0.0", only: :test},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 2.14.3"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_dashboard, "~> 0.4"},
       {:telemetry_metrics, "~> 0.4"},
@@ -50,7 +50,7 @@ defmodule TobaccosClub.MixProject do
       {:scrivener_ecto, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:ex_machina, "~> 2.4", only: :test},
-      {:sonic_client, "~> 0.2"}
+      {:httpoison, "~> 1.6", only: [:dev, :test]}
     ]
   end
 
