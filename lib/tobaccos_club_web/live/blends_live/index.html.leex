@@ -38,11 +38,30 @@
       </div>
       <div class="inline-block m-3 mt-6 shadow rounded-lg overflow-hidden">
         <table class="w-full">
+          <thead class="bg-gray-100">
+            <tr>
+              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                <%= gettext("Name") %>
+              </th>
+              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                <%= gettext("Brand") %>
+              </th>
+              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                <%= gettext("Blend Type") %>
+              </th>
+            </tr>
+          </thead>
           <tbody>
             <%= for blend <- @blends do %>
               <tr class="hover:bg-orange-100">
-                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg">
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
                   <a href="#" phx-click="show_blend" phx-value-id="<%= blend.id %>" x-on:click="showBlend = true"><%= blend.name %></a>
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
+                  <%= blend.brand.name %>
+                </td>
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
+                  <%= blend.blend_type.name %>
                 </td>
                 <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
                   <span><%= link "Edit", to: "#" %></span>
