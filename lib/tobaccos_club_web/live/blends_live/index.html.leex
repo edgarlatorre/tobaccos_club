@@ -55,7 +55,7 @@
       <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
     </div>
   </div>
-  <div x-show.transition.duration.200ms="showBlend" class="fixed bg-white border border-gray-100 w-5/6 sm:w-2/5 shadow-2xl mb-4">
+  <div x-show.transition.duration.200ms="showBlend" class="fixed self-start bg-white border border-gray-100 w-5/6 sm:w-2/5 shadow-2xl mb-4">
     <div class="flex justify-end border-b-2 p-3">
       <a href="#" @click="showBlend = false" phx-click="show_blend" phx-value-id="">
         <svg
@@ -69,15 +69,19 @@
       </a>
     </div>
     <%= if @blend do %>
-      <h3 class=" text-2xl sm:text-4xl text-yellow-800 text-left p-2 mt-2"><%= @blend.name %></h3>
-      <div class="text-yellow-800 px-2">
-        <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
-      </div>
-      <%= if @blend.image_url do %>
-        <div class="px-3 mt-3 flex flex-col justify-center items-center">
-          <img src="<%= @blend.image_url %>" class="h-40 w-40 border-2 border-gray-100 border-opacity-25 rounded-lg">
+      <div class="flex justify-between">
+        <div class="flex flex-col">
+          <h3 class="text-2xl sm:text-4xl text-yellow-800 text-left p-2 mt-2"><%= @blend.name %></h3>
+          <div class="text-yellow-800 px-2">
+            <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
+          </div>
         </div>
-      <% end %>
+        <%= if @blend.image_url do %>
+          <div class="px-3 mt-3 flex flex-col justify-center items-center">
+            <img src="<%= @blend.image_url %>" class="h-40 w-40 border-2 border-gray-100 border-opacity-25 rounded-lg">
+          </div>
+        <% end %>
+      </div>
       <div class="px-3 mt-3">
         <p class="text-yellow-800"><%= gettext("Blended By") %></p>
         <p><%= @blend.blended_by %></p>
