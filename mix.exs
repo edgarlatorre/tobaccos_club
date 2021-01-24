@@ -50,7 +50,7 @@ defmodule TobaccosClub.MixProject do
       {:scrivener_ecto, "~> 2.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:ex_machina, "~> 2.4", only: :test},
-      {:httpoison, "~> 1.6", only: [:dev, :test]}
+      {:httpoison, "~> 1.6"}
     ]
   end
 
