@@ -333,6 +333,24 @@ defmodule TobaccosClub.Reviewer do
     do: Repo.preload(Repo.get!(Blend, id), [:cut, :blend_type, :brand, :country])
 
   @doc """
+  Gets a single blend by slug.
+
+  Returns nil if the Blend slug does not exist.
+
+  ## Examples
+
+      iex> get_blend_by_slug("blend-slug")
+      %Blend{}
+
+      iex> get_blend_by_slug("invalid-slug")
+      nil
+
+  """
+  def get_blend_by_slug(slug) do
+    Blend |> Repo.get_by(slug: slug) |> Repo.preload(:brand)
+  end
+
+  @doc """
   Creates a blend.
 
   ## Examples

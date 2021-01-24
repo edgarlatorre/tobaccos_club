@@ -11,6 +11,7 @@ defmodule TobaccosClub.Pipes.Blend do
     field :name, :string
     field :packaging, :string
     field :production, :string
+    field :slug, :string
 
     belongs_to :brand, TobaccosClub.Pipes.Brand
     belongs_to :blend_type, TobaccosClub.Pipes.BlendType
@@ -22,7 +23,8 @@ defmodule TobaccosClub.Pipes.Blend do
 
   @doc false
   def changeset(blend, attrs) do
-    cast(blend, attrs, [
+    blend
+    |> cast(attrs, [
       :name,
       :brand_id,
       :blend_type_id,
@@ -34,7 +36,9 @@ defmodule TobaccosClub.Pipes.Blend do
       :packaging,
       :country_id,
       :production,
-      :image_url
+      :image_url,
+      :slug
     ])
+    |> unique_constraint(:slug)
   end
 end

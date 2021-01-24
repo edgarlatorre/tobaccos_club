@@ -230,6 +230,12 @@ defmodule TobaccosClub.ReviewerTest do
       assert blend.production == "some production"
     end
 
+    test "create_blend/1 returns errors when slug already exist" do
+      insert(:blend, slug: "test-blend")
+      attrs = Map.put(@valid_attrs, :slug, "test-blend")
+      assert {:error, %Ecto.Changeset{}} = Reviewer.create_blend(attrs)
+    end
+
     test "update_blend/2 with valid data updates the blend" do
       blend = insert(:blend)
       assert {:ok, %Blend{} = blend} = Reviewer.update_blend(blend, @update_attrs)
@@ -253,6 +259,16 @@ defmodule TobaccosClub.ReviewerTest do
     test "change_blend/1 returns a blend changeset" do
       blend = insert(:blend)
       assert %Ecto.Changeset{} = Reviewer.change_blend(blend)
+    end
+
+    test "get_blend_by_slug/1 returns a blend" do
+      insert(:blend, slug: "blend-slug")
+
+      assert "blend-slug" == Reviewer.get_blend_by_slug("blend-slug").slug
+    end
+
+    test "get_blend_by_slug/1 returns nil" do
+      assert nil == Reviewer.get_blend_by_slug("blend-slug")
     end
   end
 end

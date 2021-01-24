@@ -35,7 +35,8 @@ defmodule TobaccosClub.TobaccosFactory do
       manufactured_by: "some manufactured_by",
       name: sequence(:name, &"Blend #{&1}"),
       packaging: "50 grams tin, bulk",
-      production: "Currently available"
+      production: "Currently available",
+      slug: sequence(:slug, &"blend-#{&1}")
     }
   end
 
