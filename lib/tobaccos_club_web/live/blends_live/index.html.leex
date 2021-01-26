@@ -1,3 +1,12 @@
+<%= if @live_action in [:new] do %>
+  <%= live_modal @socket, TobaccosClubWeb.BlendsLive.FormComponent,
+    id: @new_blend.id || :new,
+    title: "Blend",
+    action: @live_action,
+    blend: @new_blend,
+    return_to: Routes.blends_index_path(@socket, :index) %>
+<% end %>
+
 <div class="flex flex-nowrap mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
   <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full static">
     <div class="flex flex-col justify-center w-full">
@@ -23,6 +32,10 @@
         <%= live_component @socket, TobaccosClubWeb.FilterComponent, elements: @blend_types, name: gettext("Blend Type"), input_name: "blend_type_ids", filter: @filter %>
         <%= live_component @socket, TobaccosClubWeb.FilterComponent, elements: @countries, name: gettext("Country"), input_name: "country_ids", filter: @filter %>
         <%= live_component @socket, TobaccosClubWeb.FilterComponent, elements: @cuts, name: gettext("Cut"), input_name: "cut_ids", filter: @filter %>
+
+        <div class="px-3 mt-3 flex flex-col justify-end items-end">
+          <%= live_patch gettext("New Blend"), to: Routes.blends_index_path(@socket, :new), class: "self-end inline-flex py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800" %>
+        </div>
       </div>
       <div class="mt-4 px-3 flex flex-wrap space-x-2 space-y-1">
         <%= for item <- @selected_filters do %>
@@ -49,6 +62,9 @@
               <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                 <%= gettext("Blend Type") %>
               </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -63,15 +79,21 @@
                 <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
                   <%= blend.blend_type.name %>
                 </td>
-                <td class="hidden py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
-                  <span><%= link "Edit", to: "#" %></span>
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
+                  <a href="<%= Routes.blends_show_path(@socket, :show, blend.brand.slug, blend.slug) %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-blue-300" aria-labelledby="title">
+                      <title>Edit blend</title>
+                      <desc>Link to edit a blend</desc>
+                      <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                    </svg>
+                  </a>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
-      <%= render_pagination_navigation(@socket, @pagination_info, TobaccosClubWeb.BlendsLive.Index) %>
+      <%= render_pagination_navigation(@socket, @pagination_info, :index) %>
     </div>
   </div>
   <!-- blend modal -->

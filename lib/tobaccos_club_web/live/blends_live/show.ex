@@ -4,7 +4,15 @@ defmodule TobaccosClubWeb.BlendsLive.Show do
   alias TobaccosClub.Reviewer
 
   @impl true
-  def mount(%{"blend_id" => blend_id}, _session, socket) do
-    {:ok, assign(socket, blend: Reviewer.get_blend!(blend_id))}
+  def mount(%{"blend_slug" => blend_slug}, _session, socket) do
+    {:ok, assign(socket, blend: Reviewer.get_blend_by_slug(blend_slug))}
+  end
+
+  @impl true
+  def handle_params(%{"blend_slug" => blend_slug}, _, socket) do
+    {:noreply,
+     socket
+     |> assign(:page_title, "Testing")
+     |> assign(:user, Reviewer.get_blend_by_slug(blend_slug))}
   end
 end

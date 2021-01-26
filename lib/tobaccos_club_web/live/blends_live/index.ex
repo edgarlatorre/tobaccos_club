@@ -25,6 +25,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
     assigns = [
       conn: socket,
+      new_blend: %Pipes.Blend{},
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
       countries: Pipes.list_countries(),

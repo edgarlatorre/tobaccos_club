@@ -1,68 +1,55 @@
-<section x-data="{ isEditing: false } mt-2">
-  <h1 class="text-orange-900 text-4xl font-bold text-center mt-4 uppercase"><%= @blend.name %></h1>
-  <h5 class="text-orange-900 font-bold text-center uppercase"><%= gettext("By") %></h5>
-  <h5 class="text-orange-700 text-2xl font-bold text-center uppercase"><%= @blend.brand.name %></h5>
-  <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4">
-    <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
-      <h3 class="text-lg leading-6 font-medium text-orange-900">
-        <%= gettext("Blend Information") %>
-      </h3>
-      <div class="mt-1 max-w-2xl text-sm leading-5 text-orange-700 flex align-center justify-between">
-        <p><%= gettext("All information related to a blend.") %></p>
-        <a href="#" class="hidden text-orange-700 text-1xl font-bold" @click="isEditing = !isEditing">Edit</a>
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, TobaccosClubWeb.BlendsLive.FormComponent,
+    id: @blend.id,
+    title: "Blend",
+    action: @live_action,
+    blend: @blend,
+    return_to: Routes.blends_show_path(@socket, :show, @blend.brand.slug, @blend.slug) %>
+<% end %>
+
+
+<%= if @blend do %>
+  <div class="flex justify-between">
+    <div class="flex flex-col">
+      <h3 class="text-2xl sm:text-4xl text-yellow-800 text-left p-2 mt-2"><%= @blend.name %></h3>
+      <div class="text-yellow-800 px-2">
+        <%= gettext("By") %>: <span><%= @blend.brand.name %></span>
+      </div>
+      <div class="px-3 mt-3">
+        <p class="text-yellow-800"><%= gettext("Blended By") %></p>
+        <p><%= @blend.blended_by %></p>
+      </div>
+      <div class="px-3 mt-3">
+        <p class="text-yellow-800"><%= gettext("Blend Type") %></p>
+        <p><%= @blend.blend_type.name %></p>
+      </div>
+      <div class="px-3 mt-3">
+        <p class="text-yellow-800"><%= gettext("Cut") %></p>
+        <p><%= @blend.cut.name %></p>
+      </div>
+      <div class="px-3 mt-3">
+        <p class="text-yellow-800"><%= gettext("Contents") %></p>
+        <p><%= @blend.contents %></p>
+      </div>
+      <div class="px-3 mt-3">
+        <p class="text-yellow-800"><%= gettext("Country") %></p>
+        <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.country.name) %></p>
+      </div>
+      <div class="px-3 mt-3 pb-2">
+        <p class="text-yellow-800"><%= gettext("Availability") %></p>
+        <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.production) %></p>
       </div>
     </div>
-    <div>
-      <dl>
-        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Blended By") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= value_or_dash(@blend.blended_by) %>
-          </dd>
+    <%= if @blend.image_url do %>
+      <div class="px-3 mt-3 flex flex-col justify-start items-end">
+        <div class="flex w-64 justify-end">
+          <%= live_patch gettext("Back"), to: Routes.blends_index_path(@socket, :index), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800 mr-3" %>
+          <%= live_patch gettext("Edit"), to: Routes.blends_show_path(@socket, :edit, @blend.brand.slug, @blend.slug), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800" %>
         </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Blend Type") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.blend_type.name %>
-          </dd>
+        <div>
+          <img src="<%= @blend.image_url %>" class="h-64 w-64 border-2 border-gray-100 border-opacity-25 rounded-lg">
         </div>
-        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Cut") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.cut.name %>
-          </dd>
-        </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Contents") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.contents %>
-          </dd>
-        </div>
-        <div class="bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Country") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.country.name %>
-          </dd>
-        </div>
-        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm leading-5 font-medium text-orange-700">
-            <%= gettext("Availability") %>
-          </dt>
-          <dd class="mt-1 text-sm leading-5 text-orange-900 sm:mt-0 sm:col-span-2">
-            <%= @blend.production %>
-          </dd>
-        </div>
-      </dl>
-    </div>
+      </div>
+    <% end %>
   </div>
-</section>
+<% end %>

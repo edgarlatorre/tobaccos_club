@@ -1,11 +1,15 @@
 defmodule TobaccosClub.Services.SlugGenerator do
   alias TobaccosClub.Repo
 
+  @chars_to_be_removed ~r/[,.!?;\(\)\[\]]/
+
   def generate(text, schema) do
     slug =
       text
       |> String.downcase()
+      |> String.trim()
       |> String.replace(" ", "-")
+      |> String.replace(@chars_to_be_removed, "")
 
     if Repo.get_by(schema, slug: slug) do
       generate(slug, schema, 1)

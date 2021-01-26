@@ -16,5 +16,9 @@ defmodule TobaccosClub.Services.SlugGeneratorTest do
       insert(:blend, slug: "test-slug-1")
       assert "test-slug-2" == SlugGenerator.generate("Test Slug", Blend)
     end
+
+    test "Remove special characters" do
+      assert "test-slug-onetwo" == SlugGenerator.generate("Test, Slug; (one)[two]", Blend)
+    end
   end
 end

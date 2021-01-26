@@ -347,7 +347,7 @@ defmodule TobaccosClub.Reviewer do
 
   """
   def get_blend_by_slug(slug) do
-    Blend |> Repo.get_by(slug: slug) |> Repo.preload(:brand)
+    Blend |> Repo.get_by(slug: slug) |> Repo.preload([:brand, :blend_type, :cut, :country])
   end
 
   @doc """

@@ -3,6 +3,7 @@ defmodule TobaccosClubWeb.BrandsLive.IndexTest do
 
   import Phoenix.LiveViewTest
 
+  @tag :skip
   test "disconnected and connected render", %{conn: conn} do
     {:ok, page_live, disconnected_html} = live(conn, "/brands")
     assert disconnected_html =~ "Marcas"
