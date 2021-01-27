@@ -18,7 +18,7 @@ defmodule TobaccosClub.Services.SlugGeneratorTest do
     end
 
     test "Remove special characters" do
-      assert "test-slug-onetwo" == SlugGenerator.generate("Test, Slug; (one)[two]", Blend)
+      assert "test-slug-onetwo" == SlugGenerator.generate("Test, Sl'ug; (one)[two]", Blend)
     end
   end
 end

@@ -1,7 +1,7 @@
 defmodule TobaccosClub.Services.SlugGenerator do
   alias TobaccosClub.Repo
 
-  @chars_to_be_removed ~r/[,.!?;\(\)\[\]]/
+  @chars_to_be_removed ~r/[',.!?;\(\)\[\]]/
 
   def generate(text, schema) do
     slug =
