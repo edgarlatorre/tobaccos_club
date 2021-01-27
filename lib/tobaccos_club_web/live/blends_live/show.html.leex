@@ -40,16 +40,16 @@
         <p><%= Gettext.gettext(TobaccosClubWeb.Gettext, @blend.production) %></p>
       </div>
     </div>
-    <%= if @blend.image_url do %>
-      <div class="px-3 mt-3 flex flex-col justify-start items-end">
-        <div class="flex w-64 justify-end">
-          <%= live_patch gettext("Back"), to: Routes.blends_index_path(@socket, :index), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800 mr-3" %>
-          <%= live_patch gettext("Edit"), to: Routes.blends_show_path(@socket, :edit, @blend.brand.slug, @blend.slug), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800" %>
-        </div>
+    <div class="px-3 mt-3 flex flex-col justify-start items-end">
+      <div class="flex w-64 justify-end">
+        <%= live_patch gettext("Back"), to: Routes.blends_index_path(@socket, :index), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800 mr-3" %>
+        <%= live_patch gettext("Edit"), to: Routes.blends_show_path(@socket, :edit, @blend.brand.slug, @blend.slug), class: "inline-flex justify-center py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800" %>
+      </div>
+      <%= if @blend.image_url do %>
         <div>
           <img src="<%= @blend.image_url %>" class="h-64 w-64 border-2 border-gray-100 border-opacity-25 rounded-lg">
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>
