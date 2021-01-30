@@ -309,6 +309,12 @@ defmodule TobaccosClub.Reviewer do
     Repo.all(Blend)
   end
 
+  def list_blends_with_labels do
+    Blend
+    |> where([blend], not is_nil(blend.image_url) or blend.image_url != "")
+    |> Repo.all()
+  end
+
   def paginate_brands(params \\ []) do
     Brand
     |> order_by(asc: :name)
