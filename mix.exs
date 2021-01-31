@@ -72,7 +72,8 @@ defmodule TobaccosClub.MixProject do
         "populate.blend_types",
         "populate.cuts",
         "populate.brands",
-        "populate.blends"
+        "populate.blends",
+        "populate.blend_slugs"
       ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs", "ingest_data"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
