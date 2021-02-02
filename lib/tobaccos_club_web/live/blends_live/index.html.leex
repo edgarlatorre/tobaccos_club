@@ -56,10 +56,10 @@
               <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                 <%= gettext("Name") %>
               </th>
-              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                 <%= gettext("Brand") %>
               </th>
-              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-6 py-4 text-left text-sm font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                 <%= gettext("Blend Type") %>
               </th>
               <th scope="col" class="relative px-6 py-3">
@@ -73,10 +73,10 @@
                 <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
                   <a href="#" phx-click="show_blend" phx-value-id="<%= blend.id %>" x-on:click="showBlend = true"><%= blend.name %></a>
                 </td>
-                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base hidden sm:table-cell">
                   <%= blend.brand.name %>
                 </td>
-                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base">
+                <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-base hidden sm:table-cell">
                   <%= blend.blend_type.name %>
                 </td>
                 <td class="py-4 px-6 border-b border-gray-200 text-orange-700 text-lg text-right">
