@@ -1,6 +1,21 @@
 defmodule TobaccosClubWeb.BlendsLive.PanelComponent do
   use TobaccosClubWeb, :live_component
 
+  defp generate_url(image_url) do
+    response =
+      ExAws.S3.presigned_url(
+        ExAws.Config.new(:s3),
+        :get,
+        Application.get_env(:ex_aws, :bucket),
+        image_url
+      )
+
+    case response do
+      {:ok, url} -> url
+      _ -> ""
+    end
+  end
+
   @impl true
   def render(assigns) do
     ~L"""
@@ -27,7 +42,7 @@ defmodule TobaccosClubWeb.BlendsLive.PanelComponent do
           </div>
           <%= if @blend.image_url do %>
             <div class="px-3 mt-3 flex flex-col justify-center items-center">
-              <img src="<%= @blend.image_url %>" class="h-40 w-40 border-2 border-gray-100 border-opacity-25 rounded-lg">
+              <img src="<%= generate_url(@blend.image_url) %>" class="h-40 w-40 border-2 border-gray-100 border-opacity-25 rounded-lg">
             </div>
           <% end %>
         </div>

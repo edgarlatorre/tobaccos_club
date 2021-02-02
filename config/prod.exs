@@ -24,6 +24,14 @@ config :tobaccos_club, TobaccosClubWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :ex_aws,
+  access_key_id: System.get_env("AWS_ACCESS_KEY_ID"),
+  secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
+  bucket: System.get_env("AWS_BUCKET_NAME", "tobaccos"),
+  region: "eu-central-1",
+  scheme: "http",
+  host: "s3.amazonaws.com"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
