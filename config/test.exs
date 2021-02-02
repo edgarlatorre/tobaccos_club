@@ -20,3 +20,11 @@ config :tobaccos_club, TobaccosClubWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :ex_aws,
+  access_key_id: "AWS_ACCESS_KEY_ID_TEST",
+  secret_access_key: "AWS_SECRET_ACCESS_KEY_TEST",
+  bucket: "tobaccos_test",
+  region: "eu-central-1",
+  scheme: "http",
+  host: "s3.amazonaws.com"
