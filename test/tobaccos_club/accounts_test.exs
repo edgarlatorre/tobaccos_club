@@ -3,7 +3,8 @@ defmodule TobaccosClub.AccountsTest do
 
   alias TobaccosClub.Accounts
   import TobaccosClub.AccountsFixtures
-  alias TobaccosClub.Accounts.{User, UserToken}
+  alias TobaccosClub.Accounts.User
+  alias TobaccosClub.Accounts.UserToken
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do
