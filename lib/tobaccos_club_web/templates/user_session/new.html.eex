@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center">
+  <h1 class="m-4 text-2xl font-bold text-yellow-900"><%= dgettext("users", "Log in") %></h1>
+  <%= form_for @conn, Routes.user_session_path(@conn, :create), [as: :user, class: "flex flex-col items-center w-full"], fn f -> %>
+    <%= if @error_message do %>
+      <div class="alert alert-danger">
+        <p><%= @error_message %></p>
+      </div>
+    <% end %>
+
+    <div class="flex flex-col mb-2 w-1/3">
+      <%= label f, :email, dgettext("users", "Email") %>
+      <%= email_input f, :email, required: true %>
+    </div>
+
+    <div class="flex flex-col mb-2 w-1/3">
+      <%= label f, :password, dgettext("users", "Password") %>
+      <%= password_input f, :password, required: true %>
+    </div>
+
+    <div class="flex justify-center items-center mb-2 w-1/3">
+      <%= label f, :remember_me, dgettext("users", "Keep me logged in for 60 days") %>
+      <%= checkbox f, :remember_me, class: "ml-2 text-yellow-800 focus:outline-none focus:ring-0" %>
+    </div>
+
+    <div>
+      <%= submit dgettext("users", "Log in"),
+          class: "self-end inline-flex py-2 px-4 mb-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-orange-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-800" %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= link dgettext("users", "Register"), to: Routes.user_registration_path(@conn, :new) %> |
+    <%= link dgettext("users", "Forgot your password?"), to: Routes.user_reset_password_path(@conn, :new) %>
+  </p>
+</div>

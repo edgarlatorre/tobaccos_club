@@ -17,45 +17,45 @@ msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:58
-#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:55 lib/tobaccos_club_web/live/blends_live/show.html.leex:39
+#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:56 lib/tobaccos_club_web/live/blends_live/show.html.leex:39
 msgid "Availability"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/index.html.leex:32
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:63 lib/tobaccos_club_web/live/blends_live/panel_component.ex:39
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:63 lib/tobaccos_club_web/live/blends_live/panel_component.ex:40
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:23
 msgid "Blend Type"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:28
-#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:35 lib/tobaccos_club_web/live/blends_live/show.html.leex:19
+#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:36 lib/tobaccos_club_web/live/blends_live/show.html.leex:19
 msgid "Blended By"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:25
+#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:26
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:16
 msgid "By"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:46
-#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:47 lib/tobaccos_club_web/live/blends_live/show.html.leex:31
+#: lib/tobaccos_club_web/live/blends_live/panel_component.ex:48 lib/tobaccos_club_web/live/blends_live/show.html.leex:31
 msgid "Contents"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:52
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:33 lib/tobaccos_club_web/live/blends_live/panel_component.ex:51
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:33 lib/tobaccos_club_web/live/blends_live/panel_component.ex:52
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:35
 msgid "Country"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:40
-#: lib/tobaccos_club_web/live/blends_live/index.html.leex:34 lib/tobaccos_club_web/live/blends_live/panel_component.ex:43
+#: lib/tobaccos_club_web/live/blends_live/index.html.leex:34 lib/tobaccos_club_web/live/blends_live/panel_component.ex:44
 #: lib/tobaccos_club_web/live/blends_live/show.html.leex:27
 msgid "Cut"
 msgstr ""
@@ -192,7 +192,7 @@ msgid "Name"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:46
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:45
 msgid "Back"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "Blended Type"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/show.html.leex:47
+#: lib/tobaccos_club_web/live/blends_live/show.html.leex:46
 msgid "Edit"
 msgstr ""
 
@@ -219,14 +219,4 @@ msgstr ""
 #, elixir-format
 #: lib/tobaccos_club_web/live/blends_live/form_component.html.leex:66
 msgid "Saving..."
-msgstr ""
-
-#, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/form_component.ex:50
-msgid "Blend updated successfully"
-msgstr ""
-
-#, elixir-format
-#: lib/tobaccos_club_web/live/blends_live/form_component.ex:68
-msgid "Blend created successfully"
 msgstr ""
