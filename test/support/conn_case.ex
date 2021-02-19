@@ -25,7 +25,6 @@ defmodule TobaccosClubWeb.ConnCase do
       import TobaccosClubWeb.ConnCase
 
       alias TobaccosClubWeb.Router.Helpers, as: Routes
-
       # The default endpoint for testing
       @endpoint TobaccosClubWeb.Endpoint
     end
@@ -51,6 +50,7 @@ defmodule TobaccosClubWeb.ConnCase do
   """
   def register_and_log_in_user(%{conn: conn}) do
     user = TobaccosClub.AccountsFixtures.user_fixture()
+    Gettext.put_locale("en")
     %{conn: log_in_user(conn, user), user: user}
   end
 
@@ -65,5 +65,10 @@ defmodule TobaccosClubWeb.ConnCase do
     conn
     |> Phoenix.ConnTest.init_test_session(%{})
     |> Plug.Conn.put_session(:user_token, token)
+  end
+
+  def put_locale_en(%{conn: conn}) do
+    Gettext.put_locale("en")
+    %{conn: conn}
   end
 end

@@ -3,6 +3,8 @@ defmodule TobaccosClubWeb.UserRegistrationControllerTest do
 
   import TobaccosClub.AccountsFixtures
 
+  setup :put_locale_en
+
   describe "GET /users/register" do
     test "renders registration page", %{conn: conn} do
       conn = get(conn, Routes.user_registration_path(conn, :new))
