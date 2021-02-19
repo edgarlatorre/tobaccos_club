@@ -34,12 +34,14 @@ msgstr "Cadastrar Usuario"
 #, elixir-format
 #: lib/tobaccos_club_web/templates/user_registration/new.html.eex:12
 #: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:7 lib/tobaccos_club_web/templates/user_session/new.html.eex:11
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:15
 msgid "Email"
 msgstr "Email"
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/user_registration/new.html.eex:18
-#: lib/tobaccos_club_web/templates/user_session/new.html.eex:16
+#: lib/tobaccos_club_web/templates/user_session/new.html.eex:16 lib/tobaccos_club_web/templates/user_settings/edit.html.eex:21
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:58
 msgid "Password"
 msgstr "Senha"
 
@@ -50,6 +52,7 @@ msgstr "Manter logado por 60 dias"
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/user_registration/new.html.eex:7
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:9 lib/tobaccos_club_web/templates/user_settings/edit.html.eex:39
 msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Por favor cheque os erros abaixo"
 
@@ -90,6 +93,7 @@ msgstr "Enviar instruções para alterar a senha"
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:4
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:2
 msgid "Settings"
 msgstr "Configurações"
 
@@ -97,3 +101,45 @@ msgstr "Configurações"
 #: lib/tobaccos_club_web/controllers/user_registration_controller.ex:23
 msgid "User created successfully."
 msgstr "Usuário criado com sucesso."
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_settings_controller.ex:28
+msgid "A link to confirm your email change has been sent to the new address."
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:5
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:27
+msgid "Change email"
+msgstr "Alterar email"
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:34
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:64
+msgid "Change password"
+msgstr "Alterar senha"
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:52
+msgid "Confirm new password"
+msgstr "Confirme a nova senha"
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_settings_controller.ex:65
+msgid "Email change link is invalid or it has expired."
+msgstr "Link para alterar o email expirou ou é inválido."
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_settings_controller.ex:60
+msgid "Email changed successfully."
+msgstr "Email alterado com sucesso."
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:46
+msgid "New password"
+msgstr "Nova senha"
+
+#, elixir-format, fuzzy
+#: lib/tobaccos_club_web/controllers/user_settings_controller.ex:47
+msgid "Password updated successfully."
+msgstr "Senha alterada com sucesso."
