@@ -18,22 +18,23 @@ msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:26
-#: lib/tobaccos_club_web/templates/user_registration/new.html.eex:30 lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:19
-#: lib/tobaccos_club_web/templates/user_session/new.html.eex:2 lib/tobaccos_club_web/templates/user_session/new.html.eex:26
+#: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:18 lib/tobaccos_club_web/templates/user_registration/new.html.eex:30
+#: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:19 lib/tobaccos_club_web/templates/user_session/new.html.eex:2
+#: lib/tobaccos_club_web/templates/user_session/new.html.eex:26
 msgid "Log in"
 msgstr ""
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:27
-#: lib/tobaccos_club_web/templates/user_registration/new.html.eex:2 lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:18
-#: lib/tobaccos_club_web/templates/user_session/new.html.eex:32
+#: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:17 lib/tobaccos_club_web/templates/user_registration/new.html.eex:2
+#: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:18 lib/tobaccos_club_web/templates/user_session/new.html.eex:32
 msgid "Register"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/user_registration/new.html.eex:12
-#: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:7 lib/tobaccos_club_web/templates/user_session/new.html.eex:11
-#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:15
+#: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:6
+#: lib/tobaccos_club_web/templates/user_registration/new.html.eex:12 lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:7
+#: lib/tobaccos_club_web/templates/user_session/new.html.eex:11 lib/tobaccos_club_web/templates/user_settings/edit.html.eex:15
 msgid "Email"
 msgstr ""
 
@@ -150,4 +151,25 @@ msgstr ""
 #: lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:2
 #: lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:23
 msgid "Reset password"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:2
+#: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:11
+msgid "Resend confirmation instructions"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_confirmation_controller.ex:53
+msgid "Account confirmation link is invalid or it has expired."
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_confirmation_controller.ex:37
+msgid "Account confirmed successfully."
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/controllers/user_confirmation_controller.ex:22
+msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 msgstr ""

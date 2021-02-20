@@ -19,8 +19,11 @@ defmodule TobaccosClubWeb.UserConfirmationController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system and it has not been confirmed yet, " <>
-        "you will receive an email with instructions shortly."
+      dgettext(
+        "users",
+        "If your email is in our system and it has not been confirmed yet, " <>
+          "you will receive an email with instructions shortly."
+      )
     )
     |> redirect(to: "/")
   end
@@ -31,7 +34,7 @@ defmodule TobaccosClubWeb.UserConfirmationController do
     case Accounts.confirm_user(token) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Account confirmed successfully.")
+        |> put_flash(:info, dgettext("users", "Account confirmed successfully."))
         |> redirect(to: "/")
 
       :error ->
@@ -45,7 +48,10 @@ defmodule TobaccosClubWeb.UserConfirmationController do
 
           %{} ->
             conn
-            |> put_flash(:error, "Account confirmation link is invalid or it has expired.")
+            |> put_flash(
+              :error,
+              dgettext("users", "Account confirmation link is invalid or it has expired.")
+            )
             |> redirect(to: "/")
         end
     end

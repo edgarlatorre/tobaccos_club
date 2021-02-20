@@ -6,6 +6,7 @@ defmodule TobaccosClubWeb.UserConfirmationControllerTest do
   import TobaccosClub.AccountsFixtures
 
   setup do
+    Gettext.put_locale("en")
     %{user: user_fixture()}
   end
 
