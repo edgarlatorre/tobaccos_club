@@ -55,7 +55,7 @@ defmodule TobaccosClubWeb.UserResetPasswordControllerTest do
 
     test "renders reset password", %{conn: conn, token: token} do
       conn = get(conn, Routes.user_reset_password_path(conn, :edit, token))
-      assert html_response(conn, 200) =~ "<h1>Reset password</h1>"
+      assert html_response(conn, 200) =~ "Reset password</h1>"
     end
 
     test "does not render reset password with invalid token", %{conn: conn} do
@@ -100,7 +100,7 @@ defmodule TobaccosClubWeb.UserResetPasswordControllerTest do
         })
 
       response = html_response(conn, 200)
-      assert response =~ "<h1>Reset password</h1>"
+      assert response =~ "Reset password</h1>"
       assert response =~ "should be at least 4 character(s)"
       assert response =~ "does not match password"
     end
