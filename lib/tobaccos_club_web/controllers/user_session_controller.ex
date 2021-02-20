@@ -19,7 +19,6 @@ defmodule TobaccosClubWeb.UserSessionController do
   end
 
   def delete(conn, _params) do
-    conn
-    |> UserAuth.log_out_user()
+    UserAuth.log_out_user(conn)
   end
 end
