@@ -29,7 +29,7 @@ msgstr "Entrar"
 #: lib/tobaccos_club_web/templates/user_registration/new.html.eex:2 lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:18
 #: lib/tobaccos_club_web/templates/user_session/new.html.eex:32
 msgid "Register"
-msgstr "Cadastrar Usuario"
+msgstr "Cadastrar Usuário"
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/user_registration/new.html.eex:12
@@ -105,7 +105,7 @@ msgstr "Usuário criado com sucesso."
 #, elixir-format
 #: lib/tobaccos_club_web/controllers/user_settings_controller.ex:28
 msgid "A link to confirm your email change has been sent to the new address."
-msgstr ""
+msgstr "Um link para confirmar a alteração do email foi enviado para seu novo endereço de email."
 
 #, elixir-format
 #: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:5
