@@ -82,3 +82,5 @@ config :ex_aws,
   region: "eu-central-1",
   scheme: "http",
   host: "s3.amazonaws.com"
+
+config :tobaccos_club, TobaccosClub.Mailer, adapter: Swoosh.Adapters.Local

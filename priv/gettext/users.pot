@@ -173,3 +173,50 @@ msgstr ""
 #: lib/tobaccos_club_web/controllers/user_confirmation_controller.ex:22
 msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:38
+msgid "Change email instructions"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:7
+#: lib/tobaccos_club/accounts/user_email.ex:26 lib/tobaccos_club/accounts/user_email.ex:45
+msgid "Hi %{email}"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:13
+msgid "If you didn't create an account with us, please ignore this."
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:32
+#: lib/tobaccos_club/accounts/user_email.ex:51
+msgid "If you didn't request this change, please ignore this."
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:19
+msgid "Instructions to account confirmation"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:57
+msgid "Reset password instructions"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:28
+msgid "You can change your email by visiting the URL below:"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:9
+msgid "You can confirm your account by visiting the URL below:"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:47
+msgid "You can reset your password by visiting the URL below:"
+msgstr ""

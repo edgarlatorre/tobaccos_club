@@ -32,6 +32,10 @@ config :ex_aws,
   scheme: "http",
   host: "s3.amazonaws.com"
 
+config :tobaccos_club, TobaccosClub.Mailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: System.get_env("SENDGRID_API_KEY")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
