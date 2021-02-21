@@ -4,10 +4,10 @@ defmodule TobaccosClub.Accounts.UserNotifier do
 
   defp deliver(email) do
     require Logger
-    Logger.debug(email.text_body)
+    Logger.debug(email.html_body)
     Mailer.deliver!(email)
 
-    {:ok, %{to: email.to, body: email.text_body}}
+    {:ok, %{to: email.to, body: email.html_body}}
   end
 
   @doc """

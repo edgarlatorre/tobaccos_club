@@ -57,7 +57,8 @@ defmodule TobaccosClub.MixProject do
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
-      {:swoosh, "~> 1.0"}
+      {:swoosh, "~> 1.0"},
+      {:phoenix_swoosh, "~> 0.3"}
     ]
   end
 
