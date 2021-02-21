@@ -174,3 +174,50 @@ msgstr "Conta confirmada com sucesso."
 #: lib/tobaccos_club_web/controllers/user_confirmation_controller.ex:22
 msgid "If your email is in our system and it has not been confirmed yet, you will receive an email with instructions shortly."
 msgstr "Você receberá um email em breve com as instruções para confirmar sua conta."
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:38
+msgid "Change email instructions"
+msgstr "Instruções para alterar email"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:7
+#: lib/tobaccos_club/accounts/user_email.ex:26 lib/tobaccos_club/accounts/user_email.ex:45
+msgid "Hi %{email}"
+msgstr "Olá %{email}"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:13
+msgid "If you didn't create an account with us, please ignore this."
+msgstr "Caso você não tenha criado uma conta conosco, por favor ignore este email."
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:32
+#: lib/tobaccos_club/accounts/user_email.ex:51
+msgid "If you didn't request this change, please ignore this."
+msgstr "Caso você não solicitou esta mudança, por favor ignore este email."
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:19
+msgid "Instructions to account confirmation"
+msgstr "Instruções para confirmar sua conta"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:57
+msgid "Reset password instructions"
+msgstr "Instruções para alterar sua senha"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:28
+msgid "You can change your email by visiting the URL below:"
+msgstr "Você pode alterar seu email acessando o link abaixo:"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:9
+msgid "You can confirm your account by visiting the URL below:"
+msgstr "Você pode confirmar sua conta acessando o link abaixo:"
+
+#, elixir-format
+#: lib/tobaccos_club/accounts/user_email.ex:47
+msgid "You can reset your password by visiting the URL below:"
+msgstr "Você pode alterar sua senha acessando o link abaixo:"
