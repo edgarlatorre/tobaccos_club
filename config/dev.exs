@@ -83,6 +83,4 @@ config :ex_aws,
   scheme: "http",
   host: "s3.amazonaws.com"
 
-config :tobaccos_club, TobaccosClub.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: System.get_env("SENDGRID_API_KEY")
+config :tobaccos_club, TobaccosClub.Mailer, adapter: Swoosh.Adapters.Local
