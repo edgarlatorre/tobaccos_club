@@ -31,6 +31,7 @@ defmodule TobaccosClubWeb do
     quote do
       use Phoenix.View,
         root: "lib/tobaccos_club_web/templates",
+        pattern: "**/*",
         namespace: TobaccosClubWeb
 
       # Import convenience functions from controllers
