@@ -110,7 +110,7 @@ msgid "A link to confirm your email change has been sent to the new address."
 msgstr "Um link para confirmar a alteração do email foi enviado para seu novo endereço de email."
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:5
+#: lib/tobaccos_club_web/templates/email/accounts/change_email_confirmation.html.eex:4 lib/tobaccos_club_web/templates/user_settings/edit.html.eex:5
 #: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:27
 msgid "Change email"
 msgstr "Alterar email"
@@ -149,8 +149,8 @@ msgid "Password updated successfully."
 msgstr "Senha alterada com sucesso."
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:2
-#: lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:23
+#: lib/tobaccos_club_web/templates/email/accounts/reset_password.html.eex:4
+#: lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:2 lib/tobaccos_club_web/templates/user_reset_password/edit.html.eex:23
 msgid "Reset password"
 msgstr "Nova senha"
 
@@ -176,48 +176,52 @@ msgid "If your email is in our system and it has not been confirmed yet, you wil
 msgstr "Você receberá um email em breve com as instruções para confirmar sua conta."
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:38
+#: lib/tobaccos_club/accounts/user_email.ex:21
 msgid "Change email instructions"
 msgstr "Instruções para alterar email"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:7
-#: lib/tobaccos_club/accounts/user_email.ex:26 lib/tobaccos_club/accounts/user_email.ex:45
+#: lib/tobaccos_club_web/templates/email/accounts/account_confirmation.html.eex:2
+#: lib/tobaccos_club_web/templates/email/accounts/change_email_confirmation.html.eex:2 lib/tobaccos_club_web/templates/email/accounts/reset_password.html.eex:2
 msgid "Hi %{email}"
 msgstr "Olá %{email}"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:13
+#: lib/tobaccos_club_web/templates/email/accounts/account_confirmation.html.eex:5
 msgid "If you didn't create an account with us, please ignore this."
 msgstr "Caso você não tenha criado uma conta conosco, por favor ignore este email."
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:32
-#: lib/tobaccos_club/accounts/user_email.ex:51
+#: lib/tobaccos_club_web/templates/email/accounts/change_email_confirmation.html.eex:5 lib/tobaccos_club_web/templates/email/accounts/reset_password.html.eex:5
 msgid "If you didn't request this change, please ignore this."
 msgstr "Caso você não solicitou esta mudança, por favor ignore este email."
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:19
+#: lib/tobaccos_club/accounts/user_email.ex:13
 msgid "Instructions to account confirmation"
 msgstr "Instruções para confirmar sua conta"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:57
+#: lib/tobaccos_club/accounts/user_email.ex:29
 msgid "Reset password instructions"
 msgstr "Instruções para alterar sua senha"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:28
+#: lib/tobaccos_club_web/templates/email/accounts/change_email_confirmation.html.eex:3
 msgid "You can change your email by visiting the URL below:"
 msgstr "Você pode alterar seu email acessando o link abaixo:"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:9
+#: lib/tobaccos_club_web/templates/email/accounts/account_confirmation.html.eex:3
 msgid "You can confirm your account by visiting the URL below:"
 msgstr "Você pode confirmar sua conta acessando o link abaixo:"
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:47
+#: lib/tobaccos_club_web/templates/email/accounts/reset_password.html.eex:3
 msgid "You can reset your password by visiting the URL below:"
 msgstr "Você pode alterar sua senha acessando o link abaixo:"
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/email/accounts/account_confirmation.html.eex:4
+msgid "Confirm account"
+msgstr "Confirmar conta"

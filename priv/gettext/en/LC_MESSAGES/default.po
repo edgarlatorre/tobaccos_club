@@ -176,8 +176,8 @@ msgid "Search by Blend or Brand"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club/accounts/user_email.ex:18
-#: lib/tobaccos_club/accounts/user_email.ex:37 lib/tobaccos_club/accounts/user_email.ex:56
+#: lib/tobaccos_club/accounts/user_email.ex:12
+#: lib/tobaccos_club/accounts/user_email.ex:20 lib/tobaccos_club/accounts/user_email.ex:28
 #: lib/tobaccos_club_web/templates/layout/root.html.leex:8
 msgid "Tobacco's Club"
 msgstr ""
