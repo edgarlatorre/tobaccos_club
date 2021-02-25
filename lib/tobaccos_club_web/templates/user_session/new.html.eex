@@ -7,17 +7,17 @@
       </div>
     <% end %>
 
-    <div class="flex flex-col mb-2 w-1/3">
+    <div class="flex flex-col mb-2 w-3/4 md:w-1/3">
       <%= label f, :email, dgettext("users", "Email") %>
       <%= email_input f, :email, required: true %>
     </div>
 
-    <div class="flex flex-col mb-2 w-1/3">
+    <div class="flex flex-col mb-2 w-3/4 md:w-1/3">
       <%= label f, :password, dgettext("users", "Password") %>
       <%= password_input f, :password, required: true %>
     </div>
 
-    <div class="flex justify-center items-center mb-2 w-1/3">
+    <div class="flex justify-center items-center mb-2 w-3/4 md:w-1/3">
       <%= label f, :remember_me, dgettext("users", "Keep me logged in for 60 days") %>
       <%= checkbox f, :remember_me, class: "ml-2 text-yellow-800 focus:outline-none focus:ring-0" %>
     </div>

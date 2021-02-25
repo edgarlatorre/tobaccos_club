@@ -8,13 +8,13 @@
       </div>
     <% end %>
 
-    <div class="flex flex-col mb-2 w-1/3">
+    <div class="flex flex-col mb-2 w-3/4 md:w-1/3">
       <%= label f, :email, dgettext("users", "Email") %>
       <%= email_input f, :email, required: true, class: "focus:border-yellow-800 focus:outline-none focus:ring-0" %>
       <span class="mt-4"><%= error_tag f, :email %></span>
     </div>
 
-    <div class="flex flex-col mb-2 w-1/3">
+    <div class="flex flex-col mb-2 w-3/4 md:w-1/3">
       <%= label f, :password, dgettext("users", "Password") %>
       <%= password_input f, :password, required: true, class: "focus:border-yellow-800 focus:outline-none focus:ring-0" %>
       <span class="mt-4"><%= error_tag f, :password %></span>
