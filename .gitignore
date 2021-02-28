@@ -36,3 +36,5 @@ npm-debug.log
 .tool-versions
 
 .devcontainer/
+
+.env

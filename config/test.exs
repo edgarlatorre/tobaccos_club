@@ -32,4 +32,6 @@ config :ex_aws,
   scheme: "http",
   host: "s3.amazonaws.com"
 
+config :tobaccos_club, sitemap_file: "sitemap_test.xml"
+
 config :tobaccos_club, TobaccosClub.Mailer, adapter: Swoosh.Adapters.Test

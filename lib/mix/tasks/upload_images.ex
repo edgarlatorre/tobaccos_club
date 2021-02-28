@@ -1,6 +1,7 @@
 defmodule Mix.Tasks.UploadImages do
   use Mix.Task
   alias TobaccosClub.Reviewer
+  alias TobaccosClub.Services.Storage
 
   @shortdoc "Upload photos to S3"
   def run(args) do
@@ -31,11 +32,6 @@ defmodule Mix.Tasks.UploadImages do
 
   defp upload(path, name) do
     IO.puts("Upload: #{name}")
-    bucket = Application.get_env(:ex_aws, :bucket)
-
-    path
-    |> ExAws.S3.Upload.stream_file()
-    |> ExAws.S3.upload(bucket, name)
-    |> ExAws.request!()
+    Storage.upload_file(path, name)
   end
 end

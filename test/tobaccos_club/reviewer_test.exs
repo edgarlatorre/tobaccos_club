@@ -139,6 +139,7 @@ defmodule TobaccosClub.ReviewerTest do
 
   describe "blends" do
     alias TobaccosClub.Pipes.Blend
+    alias TobaccosClub.Pipes.Brand
 
     @valid_attrs %{
       blended_by: "some blended_by",
@@ -169,6 +170,14 @@ defmodule TobaccosClub.ReviewerTest do
     test "list_blends/0 returns all blends" do
       insert(:blend, name: "blend test")
       assert [%Blend{name: "blend test"}] = Reviewer.list_blends()
+    end
+
+    test "list_blends/1 returns all blends preloading brands" do
+      brand = insert(:brand, name: "My Brand")
+      insert(:blend, name: "blend test", brand: brand)
+
+      assert [%Blend{name: "blend test", brand: %Brand{name: "My Brand"}}] =
+               Reviewer.list_blends(brand: true)
     end
 
     test "paginate_blends/1 returns paginated blends with 2 entries per page" do

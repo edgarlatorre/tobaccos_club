@@ -1,0 +1,10 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<%= for blend <- @blends do %>
+  <url>
+    <loc><%= url_for(blend) %></loc>
+    <lastmod><%= Date.to_string(blend.updated_at) %></lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+<% end %>
+</urlset>

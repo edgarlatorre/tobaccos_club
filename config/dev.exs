@@ -83,4 +83,6 @@ config :ex_aws,
   scheme: "http",
   host: "s3.amazonaws.com"
 
+config :tobaccos_club, sitemap_file: "sitemap_dev.xml"
+
 config :tobaccos_club, TobaccosClub.Mailer, adapter: Swoosh.Adapters.Local
