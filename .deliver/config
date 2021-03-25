@@ -1,0 +1,22 @@
+APP="tobaccos_club"
+
+BUILD_HOST="tabacos.club"
+BUILD_USER="edgar"
+BUILD_AT="/tmp/edeliver/myapp/builds"
+
+STAGING_HOSTS="staging.tabacos.club"
+STAGING_USER="edgar"
+
+PRODUCTION_HOSTS="tabacos.club"
+PRODUCTION_USER="edgar"
+
+DELIVER_TO="/home/edgar/app"
+# For *Phoenix* projects, symlink prod.secret.exs to our tmp source
+pre_erlang_get_and_update_deps() {
+  local _prod_secret_path="/home/edgar/prod.secret.exs"
+  if [ "$TARGET_MIX_ENV" = "prod" ]; then
+    __sync_remote "
+      ln -sfn '$_prod_secret_path' '$BUILD_AT/config/prod.secret.exs'
+    "
+  fi
+}
