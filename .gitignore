@@ -38,3 +38,4 @@ npm-debug.log
 .devcontainer/
 
 .env
+.deliver/releases/
