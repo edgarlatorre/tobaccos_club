@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
   url: [host: "tabacos.club", port: 80],
-  http: [port: 8888],
+  http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: [
     "https://tabacos.club",
