@@ -2,9 +2,9 @@
 @import "../node_modules/nprogress/nprogress.css";
 
 /* tailwindcss directives */
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* LiveView specific classes for your customizations */
 .invalid-feedback {
