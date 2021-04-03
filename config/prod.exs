@@ -10,12 +10,14 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
-  url: [host: "tabacos.club", port: 80],
+  url: [host: "tabacos.club"],
   http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: [
     "https://tabacos.club",
-    "https://www.tabacos.club"
+    "https://www.tabacos.club",
+    "//tabacos.club",
+    "//www.tabacos.club"
   ]
 
 config :phoenix, :serve_endpoints, true
