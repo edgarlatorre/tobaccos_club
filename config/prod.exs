@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
-  url: [host: "tabacos.club"],
+  url: [host: "127.0.0.1"],
   http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: [

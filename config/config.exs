@@ -12,8 +12,8 @@ config :tobaccos_club,
 
 # Configures the endpoint
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "iMGDqVp285quNur7Kygqe135lvyK5diVfXcwk0np+mEKBNe4WTD2yBP8fx399MoT",
+  url: [host: "127.0.0.1"],
+  secret_key_base: System.get_env("SECRET_KEY_BASE") || "iMGDqVp285quNur7Kygqe135lvyK5diVfXcwk0np+mEKBNe4WTD2yBP8fx399MoT",
   render_errors: [view: TobaccosClubWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: TobaccosClub.PubSub,
   live_view: [signing_salt: "/kbfh/W1"]

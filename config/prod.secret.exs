@@ -18,7 +18,11 @@ config :tobaccos_club, TobaccosClub.Repo,
 
 secret_key_base =
   System.get_env("SECRET_KEY_BASE") ||
-    "FSTYXtS52qrk14G5eZQ+T3lhujUR8UOAH751FCs1hpkzi1T/8N/GwOm+WTwXfh2W"
+    raise """
+    environment variable SECRET_KEY_BASE is missing.
+    You can generate one by calling: mix phx.gen.secret
+    """
+
 
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
   http: [
