@@ -37,6 +37,15 @@ jobs:
           path: deps
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix-
+      - name: Create SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ../private.key
+          sudo chmod 600 ../private.key
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SERVER_KEY}}
+          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
       - name: Install dependencies
         run: mix deps.get
       - name: Check format
@@ -55,5 +64,3 @@ jobs:
           python-version: '3.8.1'
       - name: Deploy to Digital Ocean
         run: mix edeliver update production
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.GIGALIXIR_PRIVATE_KEY }}
