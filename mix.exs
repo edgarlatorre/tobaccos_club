@@ -20,7 +20,7 @@ defmodule TobaccosClub.MixProject do
   def application do
     [
       mod: {TobaccosClub.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -58,7 +58,9 @@ defmodule TobaccosClub.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:swoosh, "~> 1.0"},
-      {:phoenix_swoosh, "~> 0.3"}
+      {:phoenix_swoosh, "~> 0.3"},
+      {:edeliver, ">= 1.6.0"},
+      {:distillery, "~> 2.0", warn_missing: false}
     ]
   end
 

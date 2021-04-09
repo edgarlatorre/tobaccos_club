@@ -10,17 +10,17 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :tobaccos_club, TobaccosClubWeb.Endpoint,
-  url: [scheme: "https", host: "tabacos.club", port: 443],
-  http: [port: {:system, "PORT"}],
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  url: [host: "127.0.0.1"],
+  http: [port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: [
     "https://tabacos.club",
     "https://www.tabacos.club",
-    "https://tobaccos.gigalixirapp.com",
-    "https://tobaccos.herokuapp.com"
+    "//tabacos.club",
+    "//www.tabacos.club"
   ]
 
+config :phoenix, :serve_endpoints, true
 # Do not print debug messages in production
 config :logger, level: :info
 
