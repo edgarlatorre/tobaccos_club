@@ -10,9 +10,15 @@ defmodule TobaccosClubWeb.BlendsLive.Show do
 
   @impl true
   def handle_params(%{"blend_slug" => blend_slug}, _, socket) do
+    blend = Reviewer.get_blend_by_slug(blend_slug)
+
     {:noreply,
      socket
-     |> assign(:page_title, "Testing")
+     |> assign(:page_title, page_title(blend))
      |> assign(:user, Reviewer.get_blend_by_slug(blend_slug))}
+  end
+
+  defp page_title(blend) do
+    "#{gettext("Tobacco's Club")} - #{blend.name}"
   end
 end

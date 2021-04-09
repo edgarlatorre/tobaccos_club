@@ -23,10 +23,12 @@
         <p class="text-yellow-800"><%= gettext("Blend Type") %></p>
         <p><%= @blend.blend_type.name %></p>
       </div>
+      <%= if @blend.cut do %>
       <div class="px-3 mt-3">
         <p class="text-yellow-800"><%= gettext("Cut") %></p>
         <p><%= @blend.cut.name %></p>
       </div>
+      <% end %>
       <div class="px-3 mt-3">
         <p class="text-yellow-800"><%= gettext("Contents") %></p>
         <p><%= @blend.contents %></p>
