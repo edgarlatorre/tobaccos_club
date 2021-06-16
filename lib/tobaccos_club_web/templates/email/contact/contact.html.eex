@@ -1,0 +1,4 @@
+<div>
+  <p><%= dgettext("contact", "Message from %{name} - %{email}", name: @name, email: @contact) %></p>
+  <p><%= @message %></p>
+</div>

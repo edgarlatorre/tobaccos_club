@@ -1,0 +1,51 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here as no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/email/contact/contact.html.eex:2
+msgid "Message from %{name} - %{email}"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.ex:32
+msgid "Message sent successfully"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/templates/layout/root.html.leex:59
+msgid "Contact"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.html.leex:17
+msgid "Email"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.html.leex:27
+msgid "Message"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.html.leex:12
+msgid "Name"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.html.leex:33
+msgid "Send"
+msgstr ""
+
+#, elixir-format
+#: lib/tobaccos_club_web/live/components/contact_component.html.leex:22
+msgid "Subject"
+msgstr ""

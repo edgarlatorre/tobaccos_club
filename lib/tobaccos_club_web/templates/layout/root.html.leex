@@ -55,5 +55,9 @@
     <div class="container mx-auto">
       <%= @inner_content %>
     </div>
+    <footer class="flex items-center justify-center flex-wrap p-6">
+      <%= live_patch dgettext("contact", "Contact"),
+        to: Routes.blends_index_path(@conn, :contact) %>
+    </footer>
   </body>
 </html>

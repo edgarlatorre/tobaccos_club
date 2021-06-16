@@ -7,6 +7,15 @@
     return_to: Routes.blends_index_path(@socket, :index) %>
 <% end %>
 
+<%= if @live_action in [:contact] do %>
+  <%= live_modal @socket, TobaccosClubWeb.ContactComponent,
+    id: "contact",
+    title: gettext("Contact"),
+    action: @live_action,
+    return_to: Routes.blends_index_path(@socket, :index) %>
+<% end %>
+
+
 <div class="flex flex-nowrap mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
   <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full static">
     <div class="flex flex-col justify-center w-full">

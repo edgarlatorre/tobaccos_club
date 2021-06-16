@@ -17,7 +17,7 @@ msgid "Forgot your password?"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:26
+#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:30
 #: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:18 lib/tobaccos_club_web/templates/user_registration/new.html.eex:30
 #: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:19 lib/tobaccos_club_web/templates/user_session/new.html.eex:2
 #: lib/tobaccos_club_web/templates/user_session/new.html.eex:26
@@ -25,7 +25,7 @@ msgid "Log in"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:27
+#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:31
 #: lib/tobaccos_club_web/templates/user_confirmation/new.html.eex:17 lib/tobaccos_club_web/templates/user_registration/new.html.eex:2
 #: lib/tobaccos_club_web/templates/user_reset_password/new.html.eex:18 lib/tobaccos_club_web/templates/user_session/new.html.eex:32
 msgid "Register"
@@ -73,7 +73,7 @@ msgid "Invalid email or password"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:20
+#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:21
 msgid "Log out"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgid "Send instructions to reset password"
 msgstr ""
 
 #, elixir-format
-#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:19
+#: lib/tobaccos_club_web/templates/layout/_user_menu.html.eex:20
 #: lib/tobaccos_club_web/templates/user_settings/edit.html.eex:2
 msgid "Settings"
 msgstr ""

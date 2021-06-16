@@ -85,6 +85,7 @@ defmodule TobaccosClubWeb.Router do
   scope "/", TobaccosClubWeb do
     pipe_through :browser
     live "/", BlendsLive.Index, :index
+    live "/contact", BlendsLive.Index, :contact
     live("/blends/new", BlendsLive.Index, :new)
     live("/:brand_slug/:blend_slug", BlendsLive.Show, :show)
     live "/brands", BrandsLive.Index

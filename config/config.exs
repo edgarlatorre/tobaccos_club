@@ -30,6 +30,9 @@ config :gettext, default_locale: "pt", locales: ~w(en pt)
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Email for contact
+config :tobaccos_club, contact_email: System.get_env("CONTACT_EMAIL")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
