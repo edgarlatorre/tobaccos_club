@@ -3,6 +3,7 @@ APP="tobaccos_club"
 BUILD_HOST="tabacos.club"
 BUILD_USER="edgar"
 BUILD_AT="/tmp/edeliver/myapp/builds"
+AUTO_VERSION=git-revision
 
 STAGING_HOSTS="staging.tabacos.club"
 STAGING_USER="edgar"

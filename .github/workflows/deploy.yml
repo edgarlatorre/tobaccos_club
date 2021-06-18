@@ -55,6 +55,8 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8.1'
+          python-version: "3.8.1"
+      - name: Build release
+        run: mix edeliver build release
       - name: Deploy to Digital Ocean
-        run: mix edeliver update production
+        run: mix edeliver deploy release to production
