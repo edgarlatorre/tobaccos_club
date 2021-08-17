@@ -46,6 +46,9 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       }
     ]
 
+    locale = Map.get(params, "locale", "pt")
+    Gettext.put_locale(locale)
+
     {:ok, assign(socket, assigns), temporary_assigns: [blend: nil]}
   end
 
@@ -62,6 +65,11 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
     assigns = get_and_assign_page(filter, nil)
 
     {:noreply, assign(socket, assigns)}
+  end
+
+  @impl true
+  def handle_event("set_locale", _params, socket) do
+    {:noreply, socket}
   end
 
   @impl true

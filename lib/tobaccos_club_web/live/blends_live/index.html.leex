@@ -15,7 +15,12 @@
     return_to: Routes.blends_index_path(@socket, :index) %>
 <% end %>
 
-
+<div>
+  <ul>
+    <li phx-click="set_locale"><a href="#">PT</a></li>
+    <li phx-click="set_locale"><a href="#">EN</a></li>
+  </ul>
+</div>
 <div class="flex flex-nowrap mt-10 justify-center" x-data="{showBlend: false, blend: {}, blend_type_ids: false, country_ids: false, cut_ids: false}">
   <div class="flex flex-col items-center justify-center m-5 overflow-hidden w-full static">
     <div class="flex flex-col justify-center w-full">
