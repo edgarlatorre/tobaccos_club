@@ -315,6 +315,12 @@ defmodule TobaccosClub.Reviewer do
     |> Repo.all()
   end
 
+  def list_blends_eager do
+    Blend
+    |> preload([:blend_type, :brand, :country, :cut])
+    |> Repo.all()
+  end
+
   def list_blends_with_labels do
     Blend
     |> where([blend], not is_nil(blend.image_url) or blend.image_url != "")

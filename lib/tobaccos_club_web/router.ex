@@ -43,6 +43,18 @@ defmodule TobaccosClubWeb.Router do
     end
   end
 
+  # Graphql API
+
+  scope "/" do
+    pipe_through :api
+
+    forward "/api", Absinthe.Plug, schema: TobaccosClubWeb.Schema
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: TobaccosClubWeb.Schema,
+      interface: :simple
+  end
+
   ## Sitemap
 
   scope "/", TobaccosClubWeb do
