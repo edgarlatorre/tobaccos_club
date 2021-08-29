@@ -62,6 +62,13 @@ defmodule TobaccosClubWeb.Router do
     get "/sitemap.xml", SitemapController, :index
   end
 
+  ## Project Version
+
+  scope "/", TobaccosClubWeb do
+    pipe_through :browser
+    get "/version", VersionController, :index
+  end
+
   ## Authentication routes
 
   scope "/", TobaccosClubWeb do
