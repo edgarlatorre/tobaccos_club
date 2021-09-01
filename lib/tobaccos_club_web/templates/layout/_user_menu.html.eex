@@ -29,6 +29,13 @@
     <div class="flex md:flex-col justify-around md:justify-center mt-4">
       <%= link dgettext("users", "Log in"), to: Routes.user_session_path(@conn, :new), class: "font-semibold text-yellow-800" %>
       <%= link dgettext("users", "Register"), to: Routes.user_registration_path(@conn, :new), class: "font-semibold md:font-normal md:text-sm text-yellow-800" %>
+      <div>
+        <%= if @locale == "pt" do %>
+          <%= link "Português", to: Phoenix.Controller.current_url(@conn, %{locale: "pt"}), class: "font-bold md:font-bold md:text-sm text-yellow-800" %> | <%= link "English", to: Phoenix.Controller.current_url(@conn, %{locale: "en"}), class: "font-semibold md:font-normal md:text-sm text-yellow-800" %>
+        <% else %>
+          <%= link "Português", to: Phoenix.Controller.current_url(@conn, %{locale: "pt"}), class: "font-semibold md:font-normal md:text-sm text-yellow-800" %> | <%= link "English", to: Phoenix.Controller.current_url(@conn, %{locale: "en"}), class: "font-bold md:font-bold md:text-sm text-yellow-800" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

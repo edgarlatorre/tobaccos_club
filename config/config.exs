@@ -26,7 +26,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 # Set default locale
-config :gettext, locales: ~w(en pt), default_locale: "en"
+config :gettext, locales: ~w(en pt es), default_locale: "pt"
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

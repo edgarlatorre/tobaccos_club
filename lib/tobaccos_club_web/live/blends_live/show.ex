@@ -4,8 +4,9 @@ defmodule TobaccosClubWeb.BlendsLive.Show do
   alias TobaccosClub.Reviewer
 
   @impl true
-  def mount(%{"blend_slug" => blend_slug}, _session, socket) do
-    {:ok, assign(socket, blend: Reviewer.get_blend_by_slug(blend_slug))}
+  def mount(%{"blend_slug" => blend_slug}, %{"locale" => locale}, socket) do
+    Gettext.put_locale(locale)
+    {:ok, assign(socket, blend: Reviewer.get_blend_by_slug(blend_slug), locale: locale)}
   end
 
   @impl true

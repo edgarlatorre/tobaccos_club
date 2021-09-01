@@ -7,7 +7,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
   alias TobaccosClub.Reviewer
 
   @impl true
-  def mount(params, _session, socket) do
+  def mount(params, %{"locale" => locale}, socket) do
     alphabet = for n <- ?a..?z, do: String.capitalize(<<n::utf8>>)
 
     %{
@@ -25,6 +25,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
 
     assigns = [
       conn: socket,
+      locale: locale,
       new_blend: %Pipes.Blend{},
       blends: entries,
       blend_types: Reviewer.list_blend_types(),
@@ -46,9 +47,7 @@ defmodule TobaccosClubWeb.BlendsLive.Index do
       }
     ]
 
-    locale = Map.get(params, "locale", "pt")
-    Gettext.put_locale(locale)
-
+    if connected?(socket), do: Gettext.put_locale(locale)
     {:ok, assign(socket, assigns), temporary_assigns: [blend: nil]}
   end
 

@@ -38,6 +38,9 @@ config :tobaccos_club, TobaccosClub.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: System.get_env("SENDGRID_API_KEY")
 
+# Set default locale
+config :gettext, locales: ~w(en pt es), default_locale: "en"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
