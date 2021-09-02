@@ -4,7 +4,7 @@ defmodule TobaccosClub.MixProject do
   def project do
     [
       app: :tobaccos_club,
-      version: "0.4.0",
+      version: "0.5.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
