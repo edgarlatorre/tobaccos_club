@@ -61,9 +61,9 @@ defmodule TobaccosClub.MixProject do
       {:phoenix_swoosh, "~> 0.3"},
       {:edeliver, ">= 1.6.0"},
       {:distillery, "~> 2.0", warn_missing: false},
-      {:absinthe, "~> 1.6.5"},
+      {:absinthe, "~> 1.6.6"},
       {:absinthe_plug, "~> 1.5.8"},
-      {:absinthe_phoenix, "~> 2.0.1"},
+      {:absinthe_phoenix, "~> 2.0.2"},
       {:absinthe_relay, "~> 1.5.1"}
     ]
   end
