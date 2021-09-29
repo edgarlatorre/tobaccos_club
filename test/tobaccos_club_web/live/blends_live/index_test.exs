@@ -6,6 +6,6 @@ defmodule TobaccosClubWeb.BlendsLive.IndexTest do
   test "disconnected and connected render", %{conn: conn} do
     {:ok, page_live, disconnected_html} = live(conn, "/")
     assert disconnected_html =~ "Buscar por mistura ou marca"
-    assert render(page_live) =~ "Blends"
+    assert render(page_live) =~ "mistura"
   end
 end

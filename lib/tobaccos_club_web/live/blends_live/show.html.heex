@@ -49,7 +49,7 @@
       </div>
       <%= if @blend.image_url do %>
         <div>
-          <img src="<%= TobaccosClub.Services.Storage.generate_url(@blend.image_url) %>"
+          <img src={"#{ TobaccosClub.Services.Storage.generate_url(@blend.image_url) }"}
                class="h-64 w-64 border-2 border-gray-100 border-opacity-25 rounded-lg">
         </div>
       <% end %>

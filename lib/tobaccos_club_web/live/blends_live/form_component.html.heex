@@ -1,0 +1,67 @@
+<div>
+  <header class="flex items-center justify-between">
+    <h2 class="text-2xl font-normal"><%= @title %></h2>
+    <%= live_patch raw("&times;"), to: @return_to, class: "text-2xl self-start text-gray-500" %>
+  </header>
+
+  <div>
+    <.form let={f} for={@changeset} url="#" id="user-form" phx-target={@myself} phx-change="validate" phx-submit="save">
+
+      <div class="px-4 py-5 bg-white sm:p-6">
+        <div class="grid grid-cols-6 gap-6">
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :name, gettext("Name"), class: "block text-sm font-medium text-gray-700" %>
+            <%= text_input f, :name, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= error_tag f, :name %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :brand_id, gettext("Brand"), class: "block text-sm font-medium text-gray-700" %>
+            <%= select(f, :brand_id, @brands, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md") %>
+            <%= error_tag f, :brand_id %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :blended_by, gettext("Blended By"), class: "block text-sm font-medium text-gray-700" %>
+            <%= text_input f, :blended_by, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= error_tag f, :blended_by %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :blend_type_id, gettext("Blended Type"), class: "block text-sm font-medium text-gray-700" %>
+            <%= select(f, :blend_type_id, @blend_types, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md") %>
+            <%= error_tag f, :blend_type_id %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :cut_id, gettext("Cut"), class: "block text-sm font-medium text-gray-700" %>
+            <%= select(f, :cut_id, @cuts, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md") %>
+            <%= error_tag f, :cut_id %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :contents, gettext("Contents"), class: "block text-sm font-medium text-gray-700" %>
+            <%= text_input f, :contents, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= error_tag f, :contents %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :country_id, gettext("Country"), class: "block text-sm font-medium text-gray-700" %>
+            <%= select(f, :country_id, @countries, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md") %>
+            <%= error_tag f, :country_id %>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= label f, :production, gettext("Availability"), class: "block text-sm font-medium text-gray-700" %>
+            <%= text_input f, :production, class: "mt-1 focus:ring-yellow-500 focus:border-yellow-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+            <%= error_tag f, :production %>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <%= submit gettext("Save"), phx_disable_with: gettext("Saving..."), class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-800 hover:bg-yellow-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" %>
+      </div>
+    </.form>
+  </div>
+</div>

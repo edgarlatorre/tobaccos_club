@@ -29,7 +29,7 @@ pre_erlang_clean_compile() {
     set -e
 
     cd '$BUILD_AT/assets'
-    npm install $SILENCE
+    npm install -f
   "
 
   status "Building static files"
@@ -38,9 +38,7 @@ pre_erlang_clean_compile() {
       set -e
 
       cd '$BUILD_AT'
-      mkdir -p priv/static
-      cd '$BUILD_AT/assets'
-      npm run deploy $SILENCE
+      MIX_ENV='$TARGET_MIX_ENV' mix assets.deploy
    "
   status "Running phx.digest"
   __sync_remote "

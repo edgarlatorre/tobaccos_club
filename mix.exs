@@ -34,15 +34,15 @@ defmodule TobaccosClub.MixProject do
   defp deps do
     [
       {:bcrypt_elixir, "~> 2.0"},
-      {:phoenix, "~> 1.5.7"},
-      {:phoenix_ecto, "~> 4.1"},
-      {:ecto_sql, "~> 3.4"},
+      {:phoenix, "~> 1.6.0"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_view, "~> 0.15.3"},
+      {:phoenix_live_view, "~> 0.16.4"},
       {:floki, ">= 0.0.0", only: :test},
-      {:phoenix_html, "~> 2.14.3"},
+      {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.4"},
+      {:phoenix_live_dashboard, "~> 0.5"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
@@ -56,15 +56,15 @@ defmodule TobaccosClub.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
-      {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
-      {:swoosh, "~> 1.0"},
+      {:swoosh, "~> 1.3"},
       {:phoenix_swoosh, "~> 0.3"},
       {:edeliver, ">= 1.6.0"},
       {:distillery, "~> 2.0", warn_missing: false},
       {:absinthe, "~> 1.6.6"},
       {:absinthe_plug, "~> 1.5.8"},
       {:absinthe_phoenix, "~> 2.0.2"},
-      {:absinthe_relay, "~> 1.5.1"}
+      {:absinthe_relay, "~> 1.5.1"},
+      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -87,7 +87,8 @@ defmodule TobaccosClub.MixProject do
       ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs", "ingest_data"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      "assets.deploy": ["esbuild default --minify", "phx.digest"]
     ]
   end
 end
