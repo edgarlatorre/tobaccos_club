@@ -6,12 +6,12 @@
   "dependencies": {
     "alpinejs": "^3.4.2",
     "autoprefixer": "^10.3.6",
-    "postcss-import": "^14.0.2",
     "postcss": "^8.3.8",
     "postcss-cli": "^9.0.1",
-    "tailwindcss": "^2.2.16"
+    "postcss-import": "^14.0.2",
+    "tailwindcss": "^2.2.19",
+    "@tailwindcss/forms": "^0.3.4"
   },
-  "devDependencies": {},
   "scripts": {
     "deploy": "NODE_ENV=production postcss css/app.css -o ../priv/static/assets/app.css"
   },
