@@ -6,9 +6,7 @@ defmodule TobaccosClubWeb.ContactComponent do
 
   @impl true
   def update(assigns, socket) do
-    {:ok,
-     socket
-     |> assign(assigns)}
+    {:ok, assign(socket, assigns)}
   end
 
   @impl true
@@ -18,8 +16,6 @@ defmodule TobaccosClubWeb.ContactComponent do
 
   @impl true
   def handle_event("send_email", %{"contact" => contact}, socket) do
-    IO.inspect(contact)
-
     mail =
       ContactMail.main(contact["name"], contact["email"], contact["subject"], contact["message"])
 
