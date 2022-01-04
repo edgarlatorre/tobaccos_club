@@ -22,6 +22,15 @@ pre_erlang_get_and_update_deps() {
   fi
 }
 
+pre_erlang_generate_release() {
+  status "Removing stale start_erl.data"
+  __sync_remote "
+    if test -f '/home/edgar/app/$APP/var/start_erl.data'; then
+      rm '/home/edgar/app/$APP/var/start_erl.data'
+    fi
+  "
+}
+
 pre_erlang_clean_compile() {
   status "Installing NPM dependencies"
   __sync_remote "

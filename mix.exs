@@ -58,7 +58,7 @@ defmodule TobaccosClub.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:swoosh, "~> 1.3"},
       {:phoenix_swoosh, "~> 0.3"},
-      {:edeliver, ">= 1.6.0"},
+      {:edeliver, ">= 1.8.0"},
       {:distillery, "~> 2.0", warn_missing: false},
       {:absinthe, "~> 1.6.6"},
       {:absinthe_plug, "~> 1.5.8"},
